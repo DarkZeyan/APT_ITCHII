@@ -5,6 +5,7 @@ import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+//
 
 public class EventKeyListener_01 extends JFrame{
 
@@ -18,7 +19,7 @@ public class EventKeyListener_01 extends JFrame{
         this.setLayout(null);
         icon = new ImageIcon(this.getClass().getResource("chocola.png"));
         imgLbl = new JLabel(icon);
-        imgLbl.setBounds(position,450,150, 100);
+        imgLbl.setBounds(position,150,icon.getIconWidth(),icon.getIconHeight());
         this.add(imgLbl);
         this.setBounds(100,100,900,600);
         this.setVisible(true);
@@ -32,24 +33,26 @@ public class EventKeyListener_01 extends JFrame{
                 int kc = e.getKeyCode();
                 int ekc = e.getExtendedKeyCode();
 
-                if(kc==39){
+                if(kc==39){// Right arrow key movement
                     position+=displacement;
-                    imgLbl.setBounds(position,450,150,100);
+                    imgLbl.setBounds(position,150,icon.getIconWidth(),icon.getIconHeight());
                 }
-                if(kc==37){ //
-                    position+=displacement;
-                    imgLbl.setBounds(position,450,150,100);
+                if(kc==37){ // Left arrow key movement
+                    position-=displacement;
+                    imgLbl.setBounds(position,150,icon.getIconWidth(),icon.getIconHeight());
                 }
             }
 
             @Override
+            //When key is typed (not pressed) do this
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
                 int kc = e.getKeyCode();
                 int ekc = e.getExtendedKeyCode();
                 
             }
-
+            
+            //Do this when key is released.
             @Override
             public void keyReleased(KeyEvent e) {
                 char c = e.getKeyChar();
@@ -60,5 +63,7 @@ public class EventKeyListener_01 extends JFrame{
         });
 
     }
-
+    public static void main(String[] args) {
+        new EventKeyListener_01();
+    }
 }

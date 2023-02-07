@@ -84,7 +84,7 @@ public class FibonacciExercise extends JFrame {
                         JOptionPane.showMessageDialog(window, "La entrada no es un numero, coloca uno e intenta nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
                         
                     }catch(Exception ex){
-                        JOptionPane.showMessageDialog(window, "La no se puede calcular fibonacci con numeros negativos, intentalo "+
+                        JOptionPane.showMessageDialog(window, "La serie no se puede calcular con numeros negativos, intentalo "+
                         "nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
                     }
                

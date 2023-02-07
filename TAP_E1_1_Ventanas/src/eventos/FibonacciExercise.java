@@ -8,8 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 public class FibonacciExercise extends JFrame {
     private JButton proceed, exit;
@@ -56,9 +56,13 @@ public class FibonacciExercise extends JFrame {
 
     }
 
-    private void createButton(){
+    private void createButtons(){
+        proceed = new JButton("Calcular Serie");
+        exit = new JButton("Salir");
 
+        //Agregar acciones
     }
+    
 
     public static void main(String[] args) {
         new FibonacciExercise();

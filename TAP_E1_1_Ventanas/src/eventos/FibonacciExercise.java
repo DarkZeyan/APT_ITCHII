@@ -43,12 +43,13 @@ public class FibonacciExercise extends JFrame {
         result.setOpaque(true);
         result.setSize(300, 50);
         result.setEditable(false);
-
         this.add(title);
         this.add(numberLbl);
         this.add(resultLbl);
         this.add(result);
+        createButtons(this);
         this.setLayout(null);
+        this.setResizable(false);
         this.getContentPane().setBackground(new Color(135,206,235));
         this.setBounds(600,600,1000,700);
         this.setVisible(true);
@@ -56,13 +57,37 @@ public class FibonacciExercise extends JFrame {
 
     }
 
-    private void createButtons(){
+    private void createButtons(JFrame window){
         proceed = new JButton("Calcular Serie");
         exit = new JButton("Salir");
+        
+        proceed.setSize(150, 50);
+        exit.setSize(150, 50);
 
-        //Agregar acciones
+        proceed.setLocation(300, 250);
+        exit.setLocation(500, 250);
+        
+        //Add each button actions.
+        proceed.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+
+            }
+        });
+        
+        exit.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+
+            }
+        });
+
+
+        //Add the buttons to the pane
+        window.add(proceed);
+        window.add(exit);
     }
-    
+
 
     public static void main(String[] args) {
         new FibonacciExercise();

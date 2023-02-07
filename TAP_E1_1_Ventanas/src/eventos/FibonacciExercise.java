@@ -10,6 +10,7 @@ import javax.swing.JTextArea;
 import javax.swing.JOptionPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JLabel;
 public class FibonacciExercise extends JFrame {
     private JButton proceed, exit;
@@ -19,7 +20,7 @@ public class FibonacciExercise extends JFrame {
     public FibonacciExercise(){
         super("Fibonacci Exercise with manual GUI");
         JLabel title = new JLabel("Sucesion de fibonacci");
-        this.setLocationRelativeTo(null);    
+        
         
         // title.setBounds(450, 50, 300, 30);
         title.setSize(300,50);        
@@ -52,6 +53,7 @@ public class FibonacciExercise extends JFrame {
         this.setResizable(false);
         this.getContentPane().setBackground(new Color(135,206,235));
         this.setBounds(600,600,1000,700);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -72,13 +74,28 @@ public class FibonacciExercise extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e){
 
+                    try{
+                        int entrada =  Integer.parseInt(input.getText());
+                        
+                        if(input.getText()==null || input.getText()=="") throw new NumberFormatException();
+                        else if(entrada<0) throw new Exception("Numero invalido");
+                        result.setText(getFibonacciString(entrada));
+                    }catch(NumberFormatException ex){
+                        JOptionPane.showMessageDialog(window, "La entrada no es un numero, coloca uno e intenta nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
+                        
+                    }catch(Exception ex){
+                        JOptionPane.showMessageDialog(window, "La no se puede calcular fibonacci con numeros negativos, intentalo "+
+                        "nuevamente", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    }
+               
             }
         });
         
         exit.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-
+                window.dispose();
+                System.exit(0);
             }
         });
 
@@ -88,7 +105,20 @@ public class FibonacciExercise extends JFrame {
         window.add(exit);
     }
 
+    private static int calculateFibonacci(int n){
+        if(n==0||n==1)
+            return 1;
+        else
+            return calculateFibonacci(n-1)+calculateFibonacci(n-2);
+    }
 
+    private String getFibonacciString(int n){
+        String fiboString="";
+        for(int i=0; i<=n; i++){
+            fiboString+=(calculateFibonacci(i))+" ";
+        }
+        return fiboString;
+    }
     public static void main(String[] args) {
         new FibonacciExercise();
     }

@@ -11,7 +11,7 @@ public class EventKeyListener_01 extends JFrame{
 
     JLabel imgLbl;
     ImageIcon icon;
-    int displacement=400;
+    int displacement=250;
     int position=400;
 
     public EventKeyListener_01(){
@@ -33,11 +33,12 @@ public class EventKeyListener_01 extends JFrame{
                 int kc = e.getKeyCode();
                 int ekc = e.getExtendedKeyCode();
 
-                if(kc==39){// Right arrow key movement
+                if(kc==39 && position<900-250){// Right arrow key movement
+                
                     position+=displacement;
                     imgLbl.setBounds(position,150,icon.getIconWidth(),icon.getIconHeight());
                 }
-                if(kc==37){ // Left arrow key movement
+                if(kc==37 && position>0){ // Left arrow key movement
                     position-=displacement;
                     imgLbl.setBounds(position,150,icon.getIconWidth(),icon.getIconHeight());
                 }

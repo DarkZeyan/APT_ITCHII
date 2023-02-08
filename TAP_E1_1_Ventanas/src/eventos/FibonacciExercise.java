@@ -28,21 +28,21 @@ public class FibonacciExercise extends JFrame {
         JLabel numberLbl, resultLbl;
         numberLbl = new JLabel("Termino");
         resultLbl = new JLabel("Resultado");
-        numberLbl.setBounds(350,100,250,20);
-        resultLbl.setBounds(350,150,250,20);
+        numberLbl.setBounds(300,100,250,20);
+        resultLbl.setBounds(300,150,250,20);
         title.setFont(new Font("Serif",Font.PLAIN,24));
         resultLbl.setFont(new Font("Serif",Font.PLAIN,24));
         numberLbl.setFont(new Font("Serif",Font.PLAIN,24));
         
         title.setLocation(400,30 );
         input = new JTextField();  
-        input.setLocation(450, 100);
+        input.setLocation(400, 100);
         this.add(input);
-        input.setBounds(500, 100, 300, 20);    
+        input.setBounds(450, 100, 300, 20);    
         result = new JTextArea("Digita un numero arriba para mostrar la serie.");
-        result.setBounds(500, 150, 250, 150);
+        result.setBounds(450, 150, 250, 150);
         result.setOpaque(true);
-        result.setSize(300, 50);
+        result.setSize(300, 125);
         result.setEditable(false);
         this.add(title);
         this.add(numberLbl);
@@ -66,8 +66,8 @@ public class FibonacciExercise extends JFrame {
         proceed.setSize(150, 50);
         exit.setSize(150, 50);
 
-        proceed.setLocation(300, 250);
-        exit.setLocation(500, 250);
+        proceed.setLocation(300, 300);
+        exit.setLocation(500, 300);
         
         //Add each button actions.
         proceed.addActionListener(new ActionListener(){
@@ -118,6 +118,7 @@ public class FibonacciExercise extends JFrame {
         String fiboString="";
         for(int i=0; i<=n; i++){
             fiboString+=(calculateFibonacci(i))+" ";
+            if(i>0 && i%5==0) fiboString+="\n";
         }
         return fiboString;
     }

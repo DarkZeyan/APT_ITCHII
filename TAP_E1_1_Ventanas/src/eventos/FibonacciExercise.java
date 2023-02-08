@@ -35,7 +35,7 @@ public class FibonacciExercise extends JFrame {
         numberLbl.setFont(new Font("Serif",Font.PLAIN,24));
         
         title.setLocation(400,30 );
-        input = new JTextField();
+        input = new JTextField();  
         input.setLocation(450, 100);
         this.add(input);
         input.setBounds(500, 100, 300, 20);    
@@ -106,7 +106,9 @@ public class FibonacciExercise extends JFrame {
     }
 
     private static int calculateFibonacci(int n){
-        if(n==0||n==1)
+        if(n==0) 
+            return 0;
+        if(n==1)
             return 1;
         else
             return calculateFibonacci(n-1)+calculateFibonacci(n-2);

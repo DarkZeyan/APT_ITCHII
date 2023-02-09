@@ -34,4 +34,11 @@ public class FormulaGeneral{
     public void setCTI(byte cTI) {
         this.cTI = cTI;
     }
+
+    public double x1(){
+        return (((-cTL)+Math.sqrt(Math.pow(cTL,2))-(4*cTC*cTI))/(2*cTC));
+    }
+    public double x2(){
+        return (((-cTL)-Math.sqrt(Math.pow(cTL,2))-(4*cTC*cTI))/(2*cTC));
+    }
 }

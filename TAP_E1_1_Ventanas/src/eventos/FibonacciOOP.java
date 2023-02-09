@@ -76,8 +76,8 @@ public class FibonacciOOP  extends JFrame{
             public void actionPerformed(ActionEvent e){
 
                     try{
-                        Fibonacci fb = new Fibonacci();
-                        fb.setNumeroTerminos(Byte.parseByte(input.getText()));
+                        Fibonacci fb = new Fibonacci(Byte.parseByte(input.getText()));
+                        
                         
                         if(input.getText()==null || input.getText()=="") throw new NumberFormatException();
                         else if(fb.getNumeroTerminos()<0) throw new Exception("Numero invalido");
@@ -114,7 +114,7 @@ public class FibonacciOOP  extends JFrame{
 
 
 class Fibonacci{
-    public Fibonacci() {
+    public Fibonacci(byte numeroTerminos) {
         setNumeroTerminos(numeroTerminos);
     }
 
@@ -136,7 +136,7 @@ class Fibonacci{
 
     public String getFibonacciString(){
         String fiboString="";
-        for(byte i=0; i<=numeroTerminos; i++){
+        for(byte i=0; i<numeroTerminos; i++){
             fiboString+=(calculateFibonacci(i))+" ";
             if(i>0 && i%5==0) fiboString+="\n";
         }

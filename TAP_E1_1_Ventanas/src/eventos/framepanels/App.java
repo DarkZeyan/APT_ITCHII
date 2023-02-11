@@ -16,6 +16,27 @@ public class App  extends JFrame{
 
     public App(){
         
+        super("Multiples vistas practica");
+
+        windowContainer = new JPanel();
+        windowContainer.setBackground(new Color(130,70,240));
+        windowContainer.setLayout(new BorderLayout());
+        displayButtons();
+        displayWindows(new MainWindow());
+        mainContainer= new JPanel();
+        mainContainer.setBackground(Color.white);
+        mainContainer.setLayout(new BorderLayout());
+        mainContainer.add(btnContainer,BorderLayout.NORTH);
+        mainContainer.add(windowContainer,BorderLayout.CENTER);
+
+        this.setLayout(new BorderLayout());
+        this.add(mainContainer, BorderLayout.CENTER);
+        this.setBounds(100,100,720,480);
+        this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+
+
     }
     
     public void displayButtons(){
@@ -41,6 +62,10 @@ public class App  extends JFrame{
         btnContainer.setBackground(new Color(30,80,240));
         btnContainer.setLayout(new FlowLayout(FlowLayout.CENTER));
         btnContainer.add(btnPage1);
+        btnContainer.add(btnPage2);
+
+        
+        
 
     }
     private void displayWindows(JPanel window){
@@ -51,5 +76,8 @@ public class App  extends JFrame{
         windowContainer.add(window,BorderLayout.CENTER);
         windowContainer.revalidate();
         windowContainer.repaint();
+    }
+    public static void main(String[] args) {
+        new App();
     }
 }

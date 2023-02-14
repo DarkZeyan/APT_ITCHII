@@ -27,7 +27,8 @@ public class App extends JFrame{
 
         this.setLayout(new BorderLayout());
         this.add(mainContainer, BorderLayout.CENTER);
-        this.setBounds(100,100,720,480);
+        this.setSize(900,600);
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -85,20 +86,19 @@ class MainView extends JPanel{
     private JLabel lblTitle;
 
     public MainView(){
-        lblTitle = new JLabel("Aplicacion para calcular la distancia de una recta");
+        lblTitle = new JLabel("<html>Aplicación para calcular <br> la distancia de una recta</html>");
+        
         lblTitle.setFont(new Font("Serif",Font.BOLD,36));
         lblTitle.setForeground(Color.white);
         lblTitle.setOpaque(true);
         lblTitle.setBackground(new Color(150, 90, 255));
-        //Trying to vertically align.
-        JPanel gb = new JPanel();
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.anchor = GridBagConstraints.NORTH;
-        gbc.weighty = 1;
-
-        this.add(lblTitle,BorderLayout.CENTER);
+        lblTitle.setBorder(BorderFactory.createEmptyBorder(90,150,90,150));
+        lblTitle.setLocation(0, 0);
+        this.add(lblTitle);
+        this.setBorder(BorderFactory.createEmptyBorder(90   ,150,90,150));
         this.setBackground(new Color(140, 60, 255));
     }
+
 
 }
 class PointsView extends JPanel{

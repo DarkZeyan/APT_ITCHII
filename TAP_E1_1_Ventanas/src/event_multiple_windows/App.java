@@ -12,16 +12,23 @@ public class App extends JFrame{
     JPanel btnContainer;
     JPanel windowContainer;
     JButton btnMainView, btnPointsView, btnLineView;
-
-    
+    MainView mv;
+    PointsView pv;
+    LineView lv;
     public App(){
+        
+
+        
         super("Recta entre dos puntos");
         displayButtons();
         windowContainer = new JPanel();
         windowContainer.setBackground(new Color(130,70,240));
         windowContainer.setLayout(new BorderLayout());
         displayButtons();
-        displayWindows(new MainView());
+        mv = new MainView();
+        pv = new PointsView();
+        lv = new LineView();
+        displayWindows(mv);
         mainContainer= new JPanel();
         mainContainer.setBackground(Color.white);
         mainContainer.setLayout(new BorderLayout());
@@ -42,7 +49,7 @@ public class App extends JFrame{
         btnMainView.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                displayWindows(new MainView());
+                displayWindows(mv);
             }
         });
         btnPointsView = new JButton("Crear puntos");
@@ -50,7 +57,7 @@ public class App extends JFrame{
         btnPointsView.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                displayWindows(new PointsView());
+                displayWindows(pv);
             }
         });
         btnLineView = new JButton("Crear Recta");
@@ -58,7 +65,7 @@ public class App extends JFrame{
         btnLineView.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                displayWindows(new LineView());
+                displayWindows(lv);
             }
         });
 

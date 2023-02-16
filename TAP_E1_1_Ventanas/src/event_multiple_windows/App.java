@@ -37,7 +37,7 @@ public class App extends JFrame{
 
         this.setLayout(new BorderLayout());
         this.add(mainContainer, BorderLayout.CENTER);
-        this.setSize(900,750);
+        this.setSize(900,800);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -131,9 +131,11 @@ class PointsView extends JPanel{
     JLabel pointNumberLbl;
     JLabel lblX,lblY;
     JTextField txtX,txtY;
-    public byte pointCounter=0;
+    byte pointCounter=0;
+    
 
     public PointsView(){
+        puntos = new ArrayList<Punto>();
         this.setLayout(new GridBagLayout());
         this.setBackground(new Color(140, 60, 255));
         this.setBorder(new EmptyBorder(200, 300, 300, 300));
@@ -150,8 +152,6 @@ class PointsView extends JPanel{
         title.setBorder(BorderFactory.createEmptyBorder(20,150,20,150));
 
         //
-        boolean isPointCreated=false;
-        byte pointsCounter=0;
         JPanel dataContainer = new JPanel();
         
         GridBagConstraints gbc = new GridBagConstraints();
@@ -170,7 +170,7 @@ class PointsView extends JPanel{
         dgbc.insets = new Insets(10,0,10,0);
         //fill the container
         
-        pointNumberLbl = new JLabel("Punto "+(pointsCounter+1));
+        pointNumberLbl = new JLabel("Punto "+(pointCounter+1));
         pointNumberLbl.setFont(new Font("Arial",Font.BOLD,24));
         pointNumberLbl.setForeground(Color.white);
         dgbc.weightx=1.;
@@ -198,14 +198,78 @@ class PointsView extends JPanel{
         dataContainer.add(lblY,dgbc);
         dataContainer.add(txtY,dgbc);
         
+        JPanel btnContainer = new JPanel(new FlowLayout(FlowLayout.CENTER));     
+        btnContainer.setBackground(new Color(150,90,255));   
+        btnContainer.setBorder(new EmptyBorder(20,20,20,20));
+        initButtons();
+        btnContainer.add(create);
+        btnContainer.add(clean);
+        btnContainer.add(back);
         
-
-
         this.add(title,gbc);
         
         this.add(dataContainer,gbc);
+        this.add(btnContainer,gbc);
     }
+    private void initButtons(){
+        create = new JButton("Crear");
+        clean = new JButton("Limpiar");
+        back = new JButton("Regresar");
 
+
+        clean.setBackground(Color.black);
+        clean.setForeground(Color.white);
+        create.setBackground(Color.black);
+        create.setForeground(Color.white);
+        back.setBackground(Color.black);
+        back.setForeground(Color.white);
+
+        back.setFont(new Font("Arial",Font.BOLD,12));
+        create.setFont(new Font("Arial",Font.BOLD,12));
+        clean.setFont(new Font("Arial",Font.BOLD,12));
+
+        create.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent ev){
+                
+                try{
+                    if(puntos.size()!=2){
+                        puntos.add(new Punto(Integer.parseInt(txtX.getText()), Integer.parseInt(txtY.getText())));
+                        JOptionPane.showMessageDialog(null, "Punto creado exitosamente", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                        pointNumberLbl.setText("Punto "+(puntos.size()+1));
+                        if(puntos.size()<2){
+                            pointNumberLbl.setText("Punto "+(puntos.size()+1));
+                        }else{
+                            pointNumberLbl.setText("Punto "+puntos.size());
+                        }
+
+                    }else{
+                        pointNumberLbl.setText("Punto "+puntos.size());
+                        throw new Exception("Maximo de puntos alcanzado");
+                    }
+                    System.out.println(puntos.size());
+                    for(Punto punto:puntos) System.out.println(punto);
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
+                }
+                
+            }
+        });
+        clean.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent ev){
+
+            }
+        });
+        back.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent ev){
+
+            }
+        });
+
+
+    }
     
 }
 class LineView extends JPanel{

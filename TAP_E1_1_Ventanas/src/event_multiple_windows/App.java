@@ -353,7 +353,7 @@ class LineView extends JPanel {
             dgbc.weightx = 1.;
             dgbc.fill = GridBagConstraints.HORIZONTAL;
             dgbc.gridwidth = GridBagConstraints.REMAINDER;
-
+            dgbc.insets = new Insets(15,0,15,0);
             lblX = new JLabel("Coordenadas X: " + puntos.get(0).getX() + " , " + puntos.get(1).getX());
             lblX.setFont(new Font("Arial", Font.BOLD, 24));
             lblX.setForeground(Color.white);

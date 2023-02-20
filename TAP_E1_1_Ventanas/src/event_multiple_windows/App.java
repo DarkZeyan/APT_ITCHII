@@ -67,8 +67,8 @@ public class App extends JFrame {
         btnLineView.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                lv=pv.lv;
-                displayWindows(lv);
+                lv = pv.lv;
+                displayWindows(lv);            
             }
         });
 
@@ -249,8 +249,9 @@ class PointsView extends JPanel {
                             pointNumberLbl.setText("Punto " + (puntos.size() + 1));
                         } else {
                             pointNumberLbl.setText("Punto " + puntos.size());
+                            lv = new LineView(pv);
+                            
                         }
-                        lv = new LineView(pv);
                     } else {
 
                         throw new Exception("Máximo de puntos alcanzado");
@@ -285,6 +286,7 @@ class PointsView extends JPanel {
                     else {
                         puntos.clear();
                         pointNumberLbl.setText("Punto " + (puntos.size() + 1));
+                        lv = new LineView(pv);
                     }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
@@ -300,7 +302,8 @@ class LineView extends JPanel {
     ArrayList<Punto> puntos;
     JLabel title, lblX, lblY, distancia;
     JTextField txtDistancia;
-    JButton clean,calculate;
+    JButton clean, calculate;
+
     public LineView() {
         puntos = new ArrayList<Punto>();
         this.setBackground(new Color(140, 60, 255));
@@ -309,18 +312,20 @@ class LineView extends JPanel {
         this.setBorder(new EmptyBorder(200, 300, 300, 300));
         initComponents();
     }
+
     public LineView(PointsView pv) {
-        puntos = new ArrayList<Punto>();
+        puntos = pv.puntos;
         this.setBackground(new Color(140, 60, 255));
         this.setLayout(new GridBagLayout());
         this.setBackground(new Color(140, 60, 255));
         this.setBorder(new EmptyBorder(200, 300, 300, 300));
         initComponents();
+        
     }
 
-    private void initComponents() {
+    public void initComponents() {
 
-        title = new JLabel("Crear puntos");
+        title = new JLabel("Crear recta");
         title.setFont(new Font("Arial", Font.BOLD, 36));
         title.setForeground(Color.white);
         title.setOpaque(true);
@@ -338,25 +343,34 @@ class LineView extends JPanel {
         dataContainer.setOpaque(true);
         dataContainer.setBackground(new Color(190, 90, 255));
         dataContainer.setBorder(BorderFactory.createEmptyBorder(100, 100, 150, 100));
+        GridBagConstraints dgbc = new GridBagConstraints();
+        dataContainer.setLayout(new GridBagLayout());
         if (puntos.size() == 2) {
-            lblX = new JLabel("Coordenada X");
+            dgbc.weightx = 1.;
+            dgbc.fill = GridBagConstraints.HORIZONTAL;
+            dgbc.gridwidth = GridBagConstraints.REMAINDER;
+    
+            lblX = new JLabel("Coordenadas X: "+puntos.get(0).getX()+" , "+puntos.get(1).getX());
             lblX.setFont(new Font("Arial", Font.BOLD, 24));
             lblX.setForeground(Color.white);
 
-            lblY = new JLabel("Coordenada Y");
+            lblY = new JLabel("Coordenadas Y: "+puntos.get(0).getY()+" , "+puntos.get(1).getY());
             lblY.setFont(new Font("Arial", Font.BOLD, 24));
             lblY.setForeground(Color.white);
-            dataContainer.add(lblX,gbc);
-            dataContainer.add(lblY,gbc);
+            txtDistancia = new JTextField();
+            txtDistancia.setSize(300, 50);
+            dataContainer.add(lblX, gbc);
+            dataContainer.add(lblY, gbc);
+            dataContainer.add(txtDistancia, dgbc);
         } else {
-            lblX = new JLabel("No hay puntos suficentes para calcular la recta");
+            lblX = new JLabel("No hay puntos suficientes para calcular la recta");
             lblX.setFont(new Font("Arial", Font.BOLD, 16));
             lblX.setForeground(Color.white);
-
-            dataContainer.add(lblX,gbc);
+        
+            dataContainer.add(lblX, gbc);
 
         }
-        
+
         JPanel btnContainer = new JPanel(new FlowLayout(FlowLayout.CENTER));
         btnContainer.setBackground(new Color(150, 90, 255));
         btnContainer.setBorder(new EmptyBorder(20, 20, 20, 20));
@@ -368,28 +382,26 @@ class LineView extends JPanel {
 
         this.add(dataContainer, gbc);
         this.add(btnContainer, gbc);
-        
+
     }
-    private void initButtons() {
+
+    public void initButtons() {
         calculate = new JButton("Calcular recta");
         clean = new JButton("Limpiar campos");
-        
 
         clean.setBackground(Color.black);
         clean.setForeground(Color.white);
         calculate.setBackground(Color.black);
         calculate.setForeground(Color.white);
-        
 
-        
         calculate.setFont(new Font("Arial", Font.BOLD, 12));
         clean.setFont(new Font("Arial", Font.BOLD, 12));
 
-       
         clean.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ev) {
                 try {
+                    if(txtDistancia==null) throw new Exception("No hay puntos para procesar la distancia");
                     if (txtDistancia.getText().equalsIgnoreCase(""))
                         throw new Exception("Los campos ya estan vacios");
                     else {
@@ -404,19 +416,19 @@ class LineView extends JPanel {
             @Override
             public void actionPerformed(ActionEvent ev) {
                 try {
-                    if (txtDistancia.getText().equalsIgnoreCase(""))
-                        throw new Exception("Los campos ya estan vacios");
-                    else {
-                        txtDistancia.setText("");
+                    if(puntos.size()==2){
+                        Recta r = new Recta(puntos.get(0), puntos.get(1));                    
+                        txtDistancia.setText("La distancia entre los puntos es: "+r.distancia());
+                    }else{
+                        throw new Exception("Numero de puntos insuficiente");
                     }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
-       
-    }
 
+    }
 
     public ArrayList<Punto> getPuntos() {
         return puntos;

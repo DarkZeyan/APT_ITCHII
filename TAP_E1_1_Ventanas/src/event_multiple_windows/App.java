@@ -68,7 +68,7 @@ public class App extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 lv = pv.lv;
-                displayWindows(lv);            
+                displayWindows(lv);
             }
         });
 
@@ -240,6 +240,8 @@ class PointsView extends JPanel {
             public void actionPerformed(ActionEvent ev) {
 
                 try {
+                    if (txtX.getText().equals("") || txtY.getText().equals(""))
+                        throw new Exception("Uno de los campos esta vacio");
                     if (puntos.size() != 2) {
                         puntos.add(new Punto(Integer.parseInt(txtX.getText()), Integer.parseInt(txtY.getText())));
                         JOptionPane.showMessageDialog(null, "Punto creado exitosamente", "Exito",
@@ -250,12 +252,14 @@ class PointsView extends JPanel {
                         } else {
                             pointNumberLbl.setText("Punto " + puntos.size());
                             lv = new LineView(pv);
-                            
+
                         }
                     } else {
 
                         throw new Exception("Máximo de puntos alcanzado");
                     }
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "La entrada de algun campo no es un numero", "error", JOptionPane.ERROR_MESSAGE);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -320,7 +324,7 @@ class LineView extends JPanel {
         this.setBackground(new Color(140, 60, 255));
         this.setBorder(new EmptyBorder(200, 300, 300, 300));
         initComponents();
-        
+
     }
 
     public void initComponents() {
@@ -349,24 +353,24 @@ class LineView extends JPanel {
             dgbc.weightx = 1.;
             dgbc.fill = GridBagConstraints.HORIZONTAL;
             dgbc.gridwidth = GridBagConstraints.REMAINDER;
-    
-            lblX = new JLabel("Coordenadas X: "+puntos.get(0).getX()+" , "+puntos.get(1).getX());
+
+            lblX = new JLabel("Coordenadas X: " + puntos.get(0).getX() + " , " + puntos.get(1).getX());
             lblX.setFont(new Font("Arial", Font.BOLD, 24));
             lblX.setForeground(Color.white);
 
-            lblY = new JLabel("Coordenadas Y: "+puntos.get(0).getY()+" , "+puntos.get(1).getY());
+            lblY = new JLabel("Coordenadas Y: " + puntos.get(0).getY() + " , " + puntos.get(1).getY());
             lblY.setFont(new Font("Arial", Font.BOLD, 24));
             lblY.setForeground(Color.white);
             txtDistancia = new JTextField();
             txtDistancia.setSize(300, 50);
-            dataContainer.add(lblX, gbc);
-            dataContainer.add(lblY, gbc);
+            dataContainer.add(lblX, dgbc);
+            dataContainer.add(lblY, dgbc);
             dataContainer.add(txtDistancia, dgbc);
         } else {
-            lblX = new JLabel("No hay puntos suficientes para calcular la recta");
-            lblX.setFont(new Font("Arial", Font.BOLD, 16));
+            lblX = new JLabel("<html> No hay puntos suficientes <br> para calcular la recta </html>");
+            lblX.setFont(new Font("Arial", Font.BOLD, 24));
             lblX.setForeground(Color.white);
-        
+
             dataContainer.add(lblX, gbc);
 
         }
@@ -401,7 +405,8 @@ class LineView extends JPanel {
             @Override
             public void actionPerformed(ActionEvent ev) {
                 try {
-                    if(txtDistancia==null) throw new Exception("No hay puntos para procesar la distancia");
+                    if (txtDistancia == null)
+                        throw new Exception("No hay puntos para procesar la distancia");
                     if (txtDistancia.getText().equalsIgnoreCase(""))
                         throw new Exception("Los campos ya estan vacios");
                     else {
@@ -416,10 +421,10 @@ class LineView extends JPanel {
             @Override
             public void actionPerformed(ActionEvent ev) {
                 try {
-                    if(puntos.size()==2){
-                        Recta r = new Recta(puntos.get(0), puntos.get(1));                    
-                        txtDistancia.setText("La distancia entre los puntos es: "+r.distancia());
-                    }else{
+                    if (puntos.size() == 2) {
+                        Recta r = new Recta(puntos.get(0), puntos.get(1));
+                        txtDistancia.setText("La distancia entre los puntos es: " + r.distancia());
+                    } else {
                         throw new Exception("Numero de puntos insuficiente");
                     }
                 } catch (Exception e) {

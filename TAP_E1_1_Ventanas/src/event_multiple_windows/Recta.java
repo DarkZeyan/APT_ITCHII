@@ -1,5 +1,4 @@
 package event_multiple_windows;
-import java.util.ArrayList;
 public class Recta {
     private Punto punto1;
     private Punto punto2;

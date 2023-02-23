@@ -9,7 +9,7 @@ public class App extends JFrame{
     JPanel mainContainer;
     JPanel btnContainer;
     JPanel windowContainer;
-    JButton btnMainView, btnPointsView, btnLineView;
+    JButton btnMainView, btnCreateView, btnOperationsView;
     MainView mv;
     CreateView cv;
     OperationsView op;
@@ -51,17 +51,17 @@ public class App extends JFrame{
                 displayWindows(mv);
             }
         });
-        btnPointsView = new JButton("Crear quebrados");
-        btnPointsView.setSize(200, 40);
-        btnPointsView.addActionListener(new ActionListener() {
+        btnCreateView = new JButton("Crear quebrados");
+        btnCreateView.setSize(200, 40);
+        btnCreateView.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 displayWindows(cv);
             }
         });
-        btnLineView = new JButton("Operaciones de quebrados");
-        btnLineView.setSize(200, 40);
-        btnLineView.addActionListener(new ActionListener() {
+        btnOperationsView = new JButton("Operaciones de quebrados");
+        btnOperationsView.setSize(200, 40);
+        btnOperationsView.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 op = cv.op;
@@ -75,21 +75,21 @@ public class App extends JFrame{
         btnContainer.setLayout(new FlowLayout(FlowLayout.CENTER));
         setButtonsStyle();
         btnContainer.add(btnMainView);
-        btnContainer.add(btnPointsView);
-        btnContainer.add(btnLineView);
+        btnContainer.add(btnCreateView);
+        btnContainer.add(btnOperationsView);
 
     }
 
     private void setButtonsStyle() {
         btnMainView.setBackground(Color.black);
         btnMainView.setForeground(Color.white);
-        btnPointsView.setBackground(Color.black);
-        btnPointsView.setForeground(Color.white);
-        btnLineView.setBackground(Color.black);
-        btnLineView.setForeground(Color.white);
+        btnCreateView.setBackground(Color.black);
+        btnCreateView.setForeground(Color.white);
+        btnOperationsView.setBackground(Color.black);
+        btnOperationsView.setForeground(Color.white);
 
-        btnLineView.setFont(new Font("Arial", Font.BOLD, 12));
-        btnPointsView.setFont(new Font("Arial", Font.BOLD, 12));
+        btnOperationsView.setFont(new Font("Arial", Font.BOLD, 12));
+        btnCreateView.setFont(new Font("Arial", Font.BOLD, 12));
         btnMainView.setFont(new Font("Arial", Font.BOLD, 12));
     }
 

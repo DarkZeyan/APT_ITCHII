@@ -22,6 +22,6 @@ public class Quebrado {
         this.numerador = numerador;
     }
     public String toString(){
-        return ""+(numerador/denominador);
+        return ""+getNumerador()+"/"+getDenominador();
     }
 }

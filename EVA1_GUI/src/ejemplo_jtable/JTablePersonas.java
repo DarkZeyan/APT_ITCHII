@@ -37,6 +37,7 @@ public class JTablePersonas extends JFrame{
         pnl_buttons.add(btnToggleConsole);
         this.pack();
         this.setVisible(true);
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         btnToggleConsole.addActionListener(new ActionListener(){
             @Override

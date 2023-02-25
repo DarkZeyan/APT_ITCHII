@@ -9,12 +9,12 @@ public class Persona {
     private boolean soltero;
 
     public Persona(String curp, String nombre, String apellido, String celular, int edad, boolean soltero) {
-        this.curp = curp;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.celular = celular;
-        this.edad = edad;
-        this.soltero = soltero;
+        setCurp(curp);
+        setNombre(nombre);
+        setApellido(apellido);
+        setCelular(celular);
+        setEdad(edad);
+        setSoltero(soltero);
     }
 
     public String getCurp() {

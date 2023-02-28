@@ -2,14 +2,15 @@ package modelo;
 
 public class Movimiento {
     private int clave;
-    //private Fecha fechaMovimiento;
+    private Fecha fechaMovimiento;
     private byte tipoMovimiento;
     private double cantidad;
     
-    public Movimiento(int clave, byte tipoMovimiento, double cantidad) {
+    public Movimiento(int clave, byte tipoMovimiento, double cantidad,Fecha fechaMovimiento) {
         setClave(clave);
         setCantidad(cantidad);
         setTipoMovimiento(tipoMovimiento);
+        setFechaMovimiento(fechaMovimiento);
     }
     public int getClave() {
         return clave;
@@ -28,6 +29,12 @@ public class Movimiento {
     }
     public void setCantidad(double cantidad) {
         this.cantidad = cantidad;
+    }
+    public Fecha getFechaMovimiento() {
+        return fechaMovimiento;
+    }
+    public void setFechaMovimiento(Fecha fechaMovimiento) {
+        this.fechaMovimiento = fechaMovimiento;
     }   
     
 }

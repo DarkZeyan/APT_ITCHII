@@ -30,6 +30,7 @@ public class App {
 
     private static ArrayList<Usuario> usuarios;
     public static void main(String[] args) {
+        getUsuarios();
         //new LoginScreen();
     }
     

@@ -25,13 +25,21 @@ import java.io.ObjectOutputStream;
 
 import java.util.ArrayList;
 import modelo.Usuario;
-
+import vistas.*;
 public class App {
 
     private static ArrayList<Usuario> usuarios;
     public static void main(String[] args) {
         getUsuarios();
-        //new LoginScreen();
+        try {
+            new LoginScreen(usuarios);    
+            saveUsers(usuarios);
+        } catch (Exception e) {
+            
+        }  finally{
+            
+        }
+        
     }
     
     public static void saveUsers(ArrayList<Usuario> usuarios) {
@@ -52,6 +60,7 @@ public class App {
     }
     private static ArrayList<Usuario> getUsuarios(){
         usuarios = new ArrayList<Usuario>();
+        usuarios.add(new Usuario("yoyi","nator"));
         try {
 
             FileInputStream openUsersFile = new FileInputStream("src/resources/users.bcny");

@@ -33,11 +33,12 @@ public class App {
         getUsuarios();
         try {
             new LoginScreen(usuarios);    
-            saveUsers(usuarios);
+            
         } catch (Exception e) {
-            
+
         }  finally{
-            
+            saveUsers(usuarios);
+            System.out.println("asd");
         }
         
     }

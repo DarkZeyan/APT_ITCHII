@@ -22,11 +22,11 @@ public class LoginScreen extends JFrame{
         this.setLayout(new GridBagLayout());
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(45,45,45));
-        initComponents();
+        initComponents(this);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    private void initComponents(){
+    private void initComponents(JFrame window){
         title = new JLabel("BANCONY",JLabel.CENTER);
         title.setHorizontalAlignment(SwingConstants.CENTER);
         passwordLbl= new JLabel("Contraseña: ");
@@ -179,6 +179,32 @@ public class LoginScreen extends JFrame{
         gbc.gridy=4;
         gbc.insets = new Insets(100, 225, 220, 0);
         
+        signIn.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int i=0;
+                
+                for(Usuario user: usuarios){
+
+                    String psw = new String(passwordField.getPassword());
+                    if(userField.getText().equals(user.getUsername()) && psw.equals(user.getPassword())){
+                        JOptionPane.showMessageDialog(window, "Inicio de sesion exitoso");    
+                        window.dispose();
+                        new MainMenu(user);
+                        break;
+                    }
+                    else{
+                        i++;
+                    }
+                }
+                if(i==usuarios.size()){
+                    JOptionPane.showMessageDialog(window, "Usuario y/o contraseña incorrecto");
+                }
+            }
+
+        });
+
         this.add(signIn,gbc);
         
     }

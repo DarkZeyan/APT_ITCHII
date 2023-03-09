@@ -28,9 +28,10 @@ import modelo.Usuario;
 import vistas.*;
 public class App {
 
-    private static ArrayList<Usuario> usuarios;
+    
     public static void main(String[] args) {
-        getUsuarios();
+        ArrayList<Usuario>  usuarios = getUsuarios();
+        usuarios.add(new Usuario("yoyi","nator"));
         try {
             new LoginScreen(usuarios);    
             
@@ -38,7 +39,7 @@ public class App {
 
         }  finally{
             saveUsers(usuarios);
-            System.out.println("asd");
+            System.out.println(usuarios.size());
         }
         
     }
@@ -60,8 +61,8 @@ public class App {
         }
     }
     private static ArrayList<Usuario> getUsuarios(){
-        usuarios = new ArrayList<Usuario>();
-        usuarios.add(new Usuario("yoyi","nator"));
+        ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+        
         try {
 
             FileInputStream openUsersFile = new FileInputStream("src/resources/users.bcny");

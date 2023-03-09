@@ -9,7 +9,8 @@ public class LoginScreen extends JFrame{
     private JLabel passwordLbl;
     private JLabel userLbl;
     private JLabel legend;
-    private JTextField passwordField, userField;
+    private JTextField userField;
+    private JPasswordField passwordField;
     private JButton signIn, createAccount;
     private ArrayList<Usuario> usuarios;
 
@@ -71,9 +72,60 @@ public class LoginScreen extends JFrame{
         gbc.weighty=0.0;
 
         userField =  new JTextField("Introduce tu usuario");
-        passwordField =  new JTextField("Introduce tu contraseña");
+        passwordField =  new JPasswordField("Introduce tu contraseña");
+        passwordField.setEchoChar((char)0);
         userField.setSize(150, 30);
+        userField.addKeyListener(new KeyListener(){
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                // TODO Auto-generated method stub
+               if(userField.getText().equals("Introduce tu usuario")) userField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                // TODO Auto-generated method stub
+               
+            }   
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+
+        });
+        passwordField.addKeyListener(new KeyListener(){
+
+            
+            @Override
+            public void keyTyped(KeyEvent e) {
+                // TODO Auto-generated method stub
+
+                String psw = new String(passwordField.getPassword());
+                
+               if(psw.equals("Introduce tu contraseña")){
+                passwordField.setText("");
+                passwordField.setEchoChar('*');
+               }
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                // TODO Auto-generated method stub
+               
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // TODO Auto-generated method stub
+                
+            }
+
+        });
         passwordField.setSize(150,30);
+        
         gbc.gridx=1;
         gbc.gridy=1;
         gbc.gridwidth=1;
@@ -93,7 +145,7 @@ public class LoginScreen extends JFrame{
         
         
         
-        JLabel legend = new JLabel("¿No tienes un usuario? Crea uno nuevo");
+        legend = new JLabel("¿No tienes un usuario? Crea uno nuevo");
         legend.setFont(new Font("Verdana",Font.PLAIN,12));
         legend.setForeground(Color.white);
         

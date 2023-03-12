@@ -189,7 +189,7 @@ public class LoginScreen extends JFrame{
                 if(userField.getText().equals(user.getUsername()) && psw.equals(user.getPassword())){
                     JOptionPane.showMessageDialog(window, "Inicio de sesion exitoso");
                     saveUsers(usuarios);
-                    MainMenu mm=new MainMenu(usuarios,user);
+                    MainMenu mm=new MainMenu(user);
                     mm.setVisible(true);
                     dispose();
                     break;

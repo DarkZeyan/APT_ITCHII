@@ -31,15 +31,14 @@ public class App {
     
     public static void main(String[] args) {
         ArrayList<Usuario>  usuarios = getUsuarios();
-        usuarios.add(new Usuario("yoyi","nator"));
+        
         try {
             new LoginScreen(usuarios);    
             
         } catch (Exception e) {
 
         }  finally{
-            saveUsers(usuarios);
-            System.out.println(usuarios.size());
+            
         }
         
     }
@@ -72,7 +71,6 @@ public class App {
             return usuarios;
         } catch (FileNotFoundException e) {
             // No se pudieron encontrar usuarios.  -> Crear nuevos usuarios.
-            usuarios = new ArrayList<Usuario>();
         } catch (IOException | ClassNotFoundException e) {
         }
         return usuarios;

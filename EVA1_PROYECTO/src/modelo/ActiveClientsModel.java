@@ -24,7 +24,7 @@ public class ActiveClientsModel extends AbstractTableModel{
 
         switch(columnIndex){
             case 0: cliente.getCurp();
-            case 1: cliente.getTarjetasCliente().get(rowIndex);
+            case 1: cliente.getTarjetasCliente().get(rowIndex).getNumeroTarjeta();
         }
         return null;
     }

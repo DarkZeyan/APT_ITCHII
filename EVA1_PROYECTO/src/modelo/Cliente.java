@@ -6,22 +6,15 @@ public class Cliente {
     private String apPaterno;
     private String apMaterno;
     private Fecha fechaNacimiento;
-    private ArrayList<Credito> cuentasCredito;
+    private ArrayList<Tarjeta> tarjetasCliente;
 
-
-    
-
-    public String getCurp() {
-        return curp;
-    }
     public Cliente(String curp, String nombre, String apPaterno, String apMaterno, Fecha fechaNacimiento) {
         setCurp(curp);
         setNombre(nombre);
         setApPaterno(apPaterno);
         setApMaterno(apMaterno);
         setFechaNacimiento(fechaNacimiento);
-        setCuentasCredito();
-
+        setTarjetasCliente();
     }
     public void setCurp(String curp) {
         this.curp = curp;
@@ -50,14 +43,16 @@ public class Cliente {
     public void setFechaNacimiento(Fecha fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-    public ArrayList<Credito> getCuentasCredito() {
-        return cuentasCredito;
+    public ArrayList<Tarjeta> getTarjetasCliente() {
+        return tarjetasCliente;
     }
-    public void setCuentasCredito(ArrayList<Credito> cuentasCredito) {
-        this.cuentasCredito = cuentasCredito;
+    public void setTarjetasCliente(ArrayList<Tarjeta> tarjetasCliente) {
+        this.tarjetasCliente = tarjetasCliente;
     }
-    public void setCuentasCredito(){
-        cuentasCredito = new ArrayList<Credito>();
+    public void setTarjetasCliente(){
+        tarjetasCliente = new ArrayList<Tarjeta>();
     }
-        
+    public String getCurp() {
+        return curp;
+    }
 }

@@ -1,13 +1,10 @@
 package vistas;
 import javax.swing.*;
-
-import eva1_proyecto.App;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import modelo.Usuario;
-import eva1_proyecto.App;
+import static eva1_proyecto.App.saveUsers;
 public class LoginScreen extends JFrame{
     private JLabel title;
     private JLabel passwordLbl;
@@ -183,52 +180,43 @@ public class LoginScreen extends JFrame{
         gbc.gridy=4;
         gbc.insets = new Insets(100, 225, 220, 0);
         
-        signIn.addActionListener(new ActionListener(){
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int i=0;
+        signIn.addActionListener((ActionEvent e) -> {
+            int i=0;
+            
+            for(Usuario user: usuarios){
                 
-                for(Usuario user: usuarios){
-
-                    String psw = new String(passwordField.getPassword());
-                    if(userField.getText().equals(user.getUsername()) && psw.equals(user.getPassword())){
-                        JOptionPane.showMessageDialog(window, "Inicio de sesion exitoso");    
-                        window.dispose();
-                        App.saveUsers(usuarios);
-                        new MainMenu(user);
-                        break;
-                    }
-                    else{
-                        i++;
-                    }
+                String psw = new String(passwordField.getPassword());
+                if(userField.getText().equals(user.getUsername()) && psw.equals(user.getPassword())){
+                    JOptionPane.showMessageDialog(window, "Inicio de sesion exitoso");
+                    saveUsers(usuarios);
+                    MainMenu mm=new MainMenu(usuarios,user);
+                    mm.setVisible(true);
+                    dispose();
+                    break;
                 }
-                if(i==usuarios.size()){
-                    JOptionPane.showMessageDialog(window, "Usuario y/o contraseña incorrecto");
+                else{
+                    i++;
                 }
             }
-
+            if(i==usuarios.size()){
+                JOptionPane.showMessageDialog(window, "Usuario y/o contraseña incorrecto");
+            }
         });
 
-        createAccount.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e){
+        createAccount.addActionListener((ActionEvent e) -> {
+            try {
+                String username = JOptionPane.showInputDialog(window, "Introduce tu usuario");
+                String pw = JOptionPane.showInputDialog(window, "Introduce tu contraseña");
+                if(username == null || username.equalsIgnoreCase("")) throw new Exception("Nombre de usuario invalido");
+                if(pw == null || pw.equalsIgnoreCase("")) throw new Exception("Contraseña vacia intentalo nuevamente");
                 
                 
-                try {
-                    String username = JOptionPane.showInputDialog(window, "Introduce tu usuario");
-                    String pw = JOptionPane.showInputDialog(window, "Introduce tu contraseña");
-                    if(username == null || username.equalsIgnoreCase("")) throw new Exception("Nombre de usuario invalido");
-                    if(pw == null || pw.equalsIgnoreCase("")) throw new Exception("Contraseña vacia intentalo nuevamente"); 
-
-
-                    JOptionPane.showMessageDialog(window,"Usuario creado exitosamente","Exito",JOptionPane.INFORMATION_MESSAGE);
-                    usuarios.add(new Usuario(username,pw));
-                    App.saveUsers(usuarios);
-                    
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(window, ex.getMessage(), "Error al crear usuario",JOptionPane.ERROR_MESSAGE);
-                }
+                JOptionPane.showMessageDialog(window,"Usuario creado exitosamente","Exito",JOptionPane.INFORMATION_MESSAGE);
+                usuarios.add(new Usuario(username,pw));
+                saveUsers(usuarios);
+                
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(window, ex.getMessage(), "Error al crear usuario",JOptionPane.ERROR_MESSAGE);
             }
         });
     

@@ -1,11 +1,13 @@
 package vistas;
 
+import static eva1_proyecto.App.saveUsers;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import modelo.Usuario;
 public class MainMenu extends JFrame{
-    public MainMenu(Usuario usuario){
+    public MainMenu(ArrayList<Usuario> usuarios,Usuario usuario){
         
         
         super("BANCONY -  Menu principal");
@@ -17,7 +19,7 @@ public class MainMenu extends JFrame{
         // initComponents();
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        saveUsers(usuarios);
     }
 
     private void initComponets(){

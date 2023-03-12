@@ -33,45 +33,50 @@ public class App {
         ArrayList<Usuario>  usuarios = getUsuarios();
         
         try {
-            new LoginScreen(usuarios);    
-            
+           LoginScreen ls = new LoginScreen(usuarios);    
+           ls.setVisible(true);
         } catch (Exception e) {
 
         }  finally{
-            
+            saveUsers(usuarios);
         }
         
     }
     
-    public static void saveUsers(ArrayList<Usuario> usuarios) {
+    public static void saveUsers(Object usuarios) {
         try {
             //Crear el directorio en caso de que no exista (Caso poco probable ya que es entorno local)
-            String route = "src/resources";
+            String route = "src/resources/";
             File directory = new File(route);
             if (!directory.exists()) {
                 directory.mkdir();
             }
-            FileOutputStream openUsersFile = new FileOutputStream(route + "/users.bcny");
+            FileOutputStream openUsersFile = new FileOutputStream(route + "users.bancony");
             ObjectOutputStream saveUsersFile = new ObjectOutputStream(openUsersFile);
             saveUsersFile.writeObject(usuarios);
             saveUsersFile.flush();
+            saveUsersFile.close();
 
         } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+    @SuppressWarnings("unchecked")
     private static ArrayList<Usuario> getUsuarios(){
         ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
         
         try {
 
-            FileInputStream openUsersFile = new FileInputStream("src/resources/users.bcny");
+            FileInputStream openUsersFile = new FileInputStream("src/resources/users.bancony");
             ObjectInputStream readUsuarios = new ObjectInputStream(openUsersFile);
             usuarios = (ArrayList<Usuario>) readUsuarios.readObject();
 
             return usuarios;
         } catch (FileNotFoundException e) {
             // No se pudieron encontrar usuarios.  -> Crear nuevos usuarios.
+            e.printStackTrace();
         } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return usuarios;
     }

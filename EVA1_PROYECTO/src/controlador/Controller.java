@@ -1,23 +1,24 @@
 package controlador;
 
 import vistas.*;
-
+import javax.swing.JFrame;
 public class Controller {
     MainMenu menuPrincipalView;
     MovimientosMenu movementsView;
     RegistrarTarjetaMenu newCardView;
     UsuariosInactivosMenu inactiveClientView;
     NuevoClienteMenu newClientView;
-    ModificarClienteMenu modifyCLientView;
+    ModificarClienteMenu modifyClientView;
+  
     public Controller(MainMenu menuPrincipalView, MovimientosMenu movementsView, RegistrarTarjetaMenu newCardView,
             UsuariosInactivosMenu inactiveClientView, NuevoClienteMenu newClientView,
-            ModificarClienteMenu modifyCLientView) {
+            ModificarClienteMenu modifyClientView) {
         this.menuPrincipalView = menuPrincipalView;
         this.movementsView = movementsView;
         this.newCardView = newCardView;
         this.inactiveClientView = inactiveClientView;
         this.newClientView = newClientView;
-        this.modifyCLientView = modifyCLientView;
+        this.modifyClientView = modifyClientView;
     }
     public MainMenu getMenuPrincipalView() {
         return menuPrincipalView;
@@ -49,12 +50,17 @@ public class Controller {
     public void setNewClientView(NuevoClienteMenu newClientView) {
         this.newClientView = newClientView;
     }
-    public ModificarClienteMenu getModifyCLientView() {
-        return modifyCLientView;
+    public ModificarClienteMenu getModifyClientView() {
+        return modifyClientView;
     }
-    public void setModifyCLientView(ModificarClienteMenu modifyCLientView) {
-        this.modifyCLientView = modifyCLientView;
+    public void setModifyClientView(ModificarClienteMenu modifyClientView) {
+        this.modifyClientView = modifyClientView;
     }
-    
+
+    public void callNewWindow(JFrame previousWindow, JFrame newWindow){
+        previousWindow.setVisible(false);
+        newWindow.setVisible(true);
+    }
+
     
 }

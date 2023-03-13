@@ -121,7 +121,7 @@ public class registerCard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(130, 80, 253, 24);
+        jTextField1.setBounds(130, 80, 253, 22);
 
         jTextField3.setText("Ingrese el limite de credito");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -130,11 +130,11 @@ public class registerCard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField3);
-        jTextField3.setBounds(120, 120, 253, 24);
+        jTextField3.setBounds(120, 120, 253, 22);
 
         jTextField5.setText("DIA");
         getContentPane().add(jTextField5);
-        jTextField5.setBounds(130, 200, 40, 24);
+        jTextField5.setBounds(130, 200, 40, 22);
 
         jTextField6.setText("DIA");
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +143,7 @@ public class registerCard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField6);
-        jTextField6.setBounds(130, 250, 40, 24);
+        jTextField6.setBounds(130, 250, 40, 22);
 
         jTextField2.setText("Ingrese la tasa de interes");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -152,11 +152,11 @@ public class registerCard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField2);
-        jTextField2.setBounds(120, 290, 200, 24);
+        jTextField2.setBounds(120, 290, 200, 22);
 
         jTextField7.setText("Ingrese la tasa de anualidad");
         getContentPane().add(jTextField7);
-        jTextField7.setBounds(90, 330, 190, 24);
+        jTextField7.setBounds(90, 330, 190, 22);
 
         jTextField8.setText("DIA");
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
@@ -165,47 +165,47 @@ public class registerCard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField8);
-        jTextField8.setBounds(140, 160, 33, 24);
+        jTextField8.setBounds(140, 160, 40, 22);
 
         jTextField9.setText("MES");
         getContentPane().add(jTextField9);
-        jTextField9.setBounds(180, 160, 50, 24);
+        jTextField9.setBounds(180, 160, 50, 22);
 
         jTextField10.setText("AÑO");
         getContentPane().add(jTextField10);
-        jTextField10.setBounds(240, 160, 50, 24);
+        jTextField10.setBounds(240, 160, 50, 22);
 
         jTextField11.setText("MES");
         getContentPane().add(jTextField11);
-        jTextField11.setBounds(180, 200, 40, 24);
+        jTextField11.setBounds(180, 200, 40, 22);
 
         jTextField12.setText("AÑO");
         getContentPane().add(jTextField12);
-        jTextField12.setBounds(230, 200, 50, 24);
+        jTextField12.setBounds(230, 200, 50, 22);
 
         jTextField13.setText("MES");
         getContentPane().add(jTextField13);
-        jTextField13.setBounds(180, 250, 40, 24);
+        jTextField13.setBounds(180, 250, 40, 22);
 
         jTextField14.setText("AÑO");
         getContentPane().add(jTextField14);
-        jTextField14.setBounds(230, 250, 50, 24);
+        jTextField14.setBounds(230, 250, 50, 22);
 
         jTextField15.setText("DIA");
         getContentPane().add(jTextField15);
-        jTextField15.setBounds(150, 370, 40, 24);
+        jTextField15.setBounds(150, 370, 40, 22);
 
         jTextField16.setText("MES");
         getContentPane().add(jTextField16);
-        jTextField16.setBounds(200, 370, 50, 24);
+        jTextField16.setBounds(200, 370, 50, 22);
 
         jTextField17.setText("AÑO");
         getContentPane().add(jTextField17);
-        jTextField17.setBounds(260, 370, 50, 24);
+        jTextField17.setBounds(260, 370, 50, 22);
 
         jToggleButton1.setText("SI/NO");
         getContentPane().add(jToggleButton1);
-        jToggleButton1.setBounds(640, 80, 44, 24);
+        jToggleButton1.setBounds(640, 80, 44, 22);
 
         jButton2.setFont(new java.awt.Font("Dialog", 0, 30)); // NOI18N
         jButton2.setText("REGISTRAR");

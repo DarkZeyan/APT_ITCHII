@@ -41,7 +41,7 @@ public class movements extends javax.swing.JFrame {
         jButton1.setBounds(15, 6, 134, 39);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 36)); // NOI18N
-        jLabel1.setText("Movimientos");
+        jLabel1.setText("Nuevo movimiento");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(281, 6, 230, 50);
 

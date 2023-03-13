@@ -5,5 +5,14 @@ import java.awt.event.*;
 public class UsuariosInactivosMenu extends JFrame{
     public UsuariosInactivosMenu(){
         super("Clientes Inactivos");
+        this.setSize(1280,720);
+        this.setLayout(new GridBagLayout());
+        this.setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new Color(45,45,45));
+        //initComponents();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    private void initComponents(){
+        
     }
 }

@@ -25,7 +25,7 @@ public class CardMovementsModel extends AbstractTableModel{
 
         switch(columnIndex){
             case 0: movimiento.getClave();
-            case 1: movimiento.getFechaMovimiento();
+            case 1: movimiento.getFechaMovimiento().toString();
             case 2: movimiento.getTipoMovimiento();
             case 3: movimiento.getCantidad();
         }

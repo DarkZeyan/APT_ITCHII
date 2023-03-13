@@ -11,7 +11,8 @@ import modelo.ActiveClientsModel;
 public class MainMenu extends JFrame{
     Usuario usuario;
     ArrayList<Cliente> clientes;
-    Controller controlador;
+    JTable clientsTable;
+    static Controller controlador;
     public MainMenu(Usuario usuario){
 
         super("BANCONY -  Menu principal");
@@ -50,7 +51,7 @@ public class MainMenu extends JFrame{
         this.add(title,gbc);
         gbc.anchor=gbc.CENTER;
         gbc.insets=new Insets(50, 100, 100, 100);
-        JTable clientsTable = new JTable(new ActiveClientsModel(clientes));
+         clientsTable = new JTable(new ActiveClientsModel(clientes));
         gbc.gridheight=1;
         gbc.gridwidth=1;
         gbc.gridx=1;

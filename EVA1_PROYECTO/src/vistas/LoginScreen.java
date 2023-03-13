@@ -80,19 +80,19 @@ public class LoginScreen extends JFrame{
 
             @Override
             public void keyTyped(KeyEvent e) {
-                // TODO Auto-generated method stub
+                
                if(userField.getText().equals("Introduce tu usuario")) userField.setText("");
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-                // TODO Auto-generated method stub
+                
                
             }   
 
             @Override
             public void keyReleased(KeyEvent e) {
-                // TODO Auto-generated method stub
+              
                 
             }
 
@@ -102,7 +102,7 @@ public class LoginScreen extends JFrame{
             
             @Override
             public void keyTyped(KeyEvent e) {
-                // TODO Auto-generated method stub
+                
 
                 String psw = new String(passwordField.getPassword());
                 
@@ -114,13 +114,13 @@ public class LoginScreen extends JFrame{
 
             @Override
             public void keyPressed(KeyEvent e) {
-                // TODO Auto-generated method stub
+                
                
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-                // TODO Auto-generated method stub
+                
                 
             }
 

@@ -2,6 +2,7 @@ package vistas;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import static vistas.MainMenu.controlador;
 public class UsuariosInactivosMenu extends JFrame{
     public UsuariosInactivosMenu(){
         super("Clientes Inactivos");

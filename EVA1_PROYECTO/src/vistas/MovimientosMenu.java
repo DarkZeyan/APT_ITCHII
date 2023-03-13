@@ -1,6 +1,7 @@
 package vistas;
 import javax.swing.*;
 import java.awt.*;
+import static vistas.MainMenu.controlador;
 import java.awt.event.*;
 public class MovimientosMenu extends JFrame{
     public MovimientosMenu(){

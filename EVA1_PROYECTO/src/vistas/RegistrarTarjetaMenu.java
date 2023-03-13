@@ -9,9 +9,8 @@ import java.awt.*;
 import java.awt.event.*;
 import static vistas.MainMenu.controlador;
 
+public class RegistrarTarjetaMenu extends JFrame {
 
-public class RegistrarTarjetaMenu extends JFrame{
-   
     JTextField numTarjetaField, limiteCreditoField, diaCreacionField, mesCreacionField, yearCreacionField,
             diaCorteField, mesCorteField, yearCorteField, diaPagoField, mesPagoField, yearPagoField,
             tasaInteresField, anualidadField, diaAnualidadField, mesAnualidadField, yearAnualidadField;
@@ -19,6 +18,7 @@ public class RegistrarTarjetaMenu extends JFrame{
             tasaInteresLabel, anualidadLabel, fechaAnualidadLabel;
     JButton createCard;
     Tarjeta tarjeta;
+
     public RegistrarTarjetaMenu() {
         super("Registrar nueva tarjeta");
         this.setSize(1280, 720);
@@ -38,7 +38,7 @@ public class RegistrarTarjetaMenu extends JFrame{
 
         gbc.gridheight = 1;
         gbc.gridwidth = 1;
-        gbc.insets = new Insets(0, 100, 100, 50);
+        gbc.insets = new Insets(0, 100, 50, 100);
         //
         gbc.gridx = 1;
         gbc.gridy = 0;
@@ -82,9 +82,10 @@ public class RegistrarTarjetaMenu extends JFrame{
         gbc.fill = gbc.NONE;
         gbc.gridx = 2;
         gbc.gridy = 0;
+        gbc.insets = new Insets(0, 50, 50, 50);
         this.add(logo, gbc);
         gbc.gridheight = 1;
-        gbc.insets = new Insets(0, 50, 50, 50);
+        gbc.insets = new Insets(0, 30, 30, 30);
 
         numTarjetaLabel = new JLabel("Numero de tarjeta");
         gbc.gridx = 0;
@@ -205,13 +206,14 @@ public class RegistrarTarjetaMenu extends JFrame{
         gbc.gridy = 8;
         this.add(yearAnualidadField, gbc);
         createCard = new JButton("Registrar tarjeta");
+        gbc.insets = new Insets(20, 0, 40, 0);
         createCard.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 try {
-                   tarjeta  = new Tarjeta(String.valueOf(controlador.getMenuPrincipalView().clientes.size()),
+                    tarjeta = new Tarjeta(String.valueOf(controlador.getMenuPrincipalView().clientes.size()),
                             numTarjetaField.getText(), Double.parseDouble(limiteCreditoField.getText()),
                             new Fecha(Integer.parseInt(diaCreacionField.getText()),
                                     Integer.parseInt(mesCreacionField.getText()),
@@ -227,14 +229,13 @@ public class RegistrarTarjetaMenu extends JFrame{
                             new Fecha(Integer.parseInt(diaAnualidadField.getText()),
                                     Integer.parseInt(mesAnualidadField.getText()),
                                     Integer.parseInt(yearAnualidadField.getText())));
-                        controlador.getNewClientView().cliente.getTarjetasCliente().add(tarjeta);
-                  
-                        
-                        controlador.getMenuPrincipalView().revalidate();
-                        controlador.getMenuPrincipalView().repaint();
-                        controlador.getMenuPrincipalView().clientsTable.repaint();
-                        JOptionPane.showMessageDialog(createCard.getRootPane(), "Cliente registrado con exito");
-                        controlador.callNewWindow(controlador.getNewCardView(), controlador.getNewClientView());
+                    controlador.getNewClientView().cliente.getTarjetasCliente().add(tarjeta);
+
+                    controlador.getMenuPrincipalView().revalidate();
+                    controlador.getMenuPrincipalView().repaint();
+                    controlador.getMenuPrincipalView().clientsTable.repaint();
+                    JOptionPane.showMessageDialog(createCard.getRootPane(), "Cliente registrado con exito");
+                    controlador.callNewWindow(controlador.getNewCardView(), controlador.getNewClientView());
 
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(createCard.getRootPane(), ex.getMessage());
@@ -247,5 +248,350 @@ public class RegistrarTarjetaMenu extends JFrame{
         gbc.fill = gbc.HORIZONTAL;
         gbc.gridx = 1;
         this.add(createCard, gbc);
+        eventsAndStyles();
+    }
+
+    private void eventsAndStyles() {
+
+        numTarjetaField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                if (numTarjetaField.getText().equals("INGRESE NUMERO DE TARJETA"))
+                    numTarjetaField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
+        limiteCreditoField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                if (limiteCreditoField.getText().equals("INGRESE LIMITE DE CREDITO"))
+                    limiteCreditoField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
+        diaCreacionField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                if (diaCreacionField.getText().equals("DIA"))
+                    diaCreacionField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
+        mesCreacionField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                if (mesCreacionField.getText().equals("MES"))
+                    mesCreacionField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
+        yearCreacionField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                if (yearCreacionField.getText().equals("AÑO"))
+                    yearCreacionField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
+        diaCorteField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                if (diaCorteField.getText().equals("DIA"))
+                    diaCorteField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
+        mesCorteField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                if (mesCorteField.getText().equals("MES"))
+                    mesCorteField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
+        yearCorteField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                if (yearCorteField.getText().equals("AÑO"))
+                    yearCorteField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
+        diaPagoField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                if (diaPagoField.getText().equals("DIA"))
+                    diaPagoField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
+        mesPagoField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                if (mesPagoField.getText().equals("MES"))
+                    mesPagoField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
+        yearPagoField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                if (yearPagoField.getText().equals("AÑO"))
+                    yearPagoField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
+        tasaInteresField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                if (tasaInteresField.getText().equals("INGRESE TASA DE INTERES"))
+                    tasaInteresField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
+        anualidadField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                if (anualidadField.getText().equals("INGRESE ANUALIDAD"))
+                    anualidadField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
+        diaAnualidadField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                if (diaAnualidadField.getText().equals("DIA"))
+                    diaAnualidadField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
+        mesAnualidadField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                if (mesAnualidadField.getText().equals("MES"))
+                    mesAnualidadField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
+        yearAnualidadField.addKeyListener(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+                if (yearAnualidadField.getText().equals("AÑO"))
+                    yearAnualidadField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+
+        });
+
+        numTarjetaLabel.setForeground(Color.white);
+        limiteCreditoLabel.setForeground(Color.white);
+        fechaCreacionLabel.setForeground(Color.white);
+        fechaCorteLabel.setForeground(Color.white);
+        fechaPagoLabel.setForeground(Color.white);
+
+        tasaInteresLabel.setForeground(Color.white);
+        anualidadLabel.setForeground(Color.white);
+        fechaAnualidadLabel.setForeground(Color.white);
+
+        numTarjetaLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+        limiteCreditoLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+        fechaCreacionLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+        fechaCorteLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+        fechaPagoLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+        tasaInteresLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+        anualidadLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+        fechaAnualidadLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+
     }
 }

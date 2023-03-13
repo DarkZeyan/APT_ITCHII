@@ -69,6 +69,7 @@ public class NuevoClienteMenu extends JFrame{
         lblCurp= new JLabel("CURP");
         lblCurp.setFont(new Font("Verdana",Font.PLAIN,12));
         lblCurp.setForeground(Color.white);
+        
         gbc.gridx=0;
         gbc.gridy=1;
         this.add(lblCurp,gbc);
@@ -102,15 +103,15 @@ public class NuevoClienteMenu extends JFrame{
         gbc.gridx=1;
         gbc.gridy=1;
         this.add(curpField,gbc);
-        nombreField = new JTextField("INGRESE SU NOMBRE");
+        nombreField = new JTextField("INGRESE NOMBRE");
         gbc.gridx=1;
         gbc.gridy=2;
         this.add(nombreField,gbc);
-        apPaternoField = new JTextField("INGRESE SU APELLIDO PATERNO");
+        apPaternoField = new JTextField("INGRESE APELLIDO PATERNO");
         gbc.gridx=1;
         gbc.gridy=3;
         this.add(apPaternoField,gbc);
-        apMaternoField = new JTextField("INGRESE SU APELLIDO MATERNO");
+        apMaternoField = new JTextField("INGRESE APELLIDO MATERNO");
         gbc.gridx=1;
         gbc.gridy=4;
         this.add(apMaternoField,gbc);
@@ -159,6 +160,154 @@ public class NuevoClienteMenu extends JFrame{
         gbc.fill=gbc.HORIZONTAL;
         gbc.gridx=1;
         this.add(createClient,gbc);
+
+        curpField.addKeyListener(new KeyListener(){
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                
+               if(curpField.getText().equals("INGRESE CURP")) curpField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+               
+            }   
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+              
+                
+            }
+
+        });
+         nombreField.addKeyListener(new KeyListener(){
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                
+               if(nombreField.getText().equals("INGRESE NOMBRE")) nombreField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+               
+            }   
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+              
+                
+            }
+
+        });
+         apPaternoField.addKeyListener(new KeyListener(){
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                
+               if(apPaternoField.getText().equals("INGRESE APELLIDO PATERNO")) apPaternoField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+               
+            }   
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+              
+                
+            }
+
+        });
+         apMaternoField.addKeyListener(new KeyListener(){
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                
+               if(apMaternoField.getText().equals("INGRESE APELLIDO MATERNO")) apMaternoField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+               
+            }   
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+              
+                
+            }
+
+        });
+         diaField.addKeyListener(new KeyListener(){
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                
+               if(diaField.getText().equals("DIA")) diaField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+               
+            }   
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+              
+                
+            }
+
+        });
+         mesField.addKeyListener(new KeyListener(){
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                
+               if(mesField.getText().equals("MES")) mesField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+               
+            }   
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+              
+                
+            }
+
+        });
+         yearField.addKeyListener(new KeyListener(){
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                
+               if(yearField.getText().equals("AÑO")) yearField.setText("");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                
+               
+            }   
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+              
+                
+            }
+
+        });
 
 
 

@@ -166,7 +166,7 @@ public class NuevoClienteMenu extends JFrame{
             @Override
             public void keyTyped(KeyEvent e) {
                 
-               if(curpField.getText().equals("INGRESE CURP")) curpField.setText("");
+               if(curpField.getText().equals("INGRESE SU CURP")) curpField.setText("");
             }
 
             @Override

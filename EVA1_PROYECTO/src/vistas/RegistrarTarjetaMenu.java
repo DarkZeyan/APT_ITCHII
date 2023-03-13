@@ -1,12 +1,15 @@
 package vistas;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 import modelo.Fecha;
 import modelo.Tarjeta;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Vector;
+
 import static vistas.MainMenu.controlador;
 
 public class RegistrarTarjetaMenu extends JFrame {
@@ -233,7 +236,11 @@ public class RegistrarTarjetaMenu extends JFrame {
 
                     controlador.getMenuPrincipalView().revalidate();
                     controlador.getMenuPrincipalView().repaint();
-                    controlador.getMenuPrincipalView().clientsTable.repaint();
+                    DefaultTableModel dt = (DefaultTableModel)controlador.getMenuPrincipalView().clientsTable.getModel();
+                    Vector v = new Vector();
+                    v.add(controlador.getNewClientView().cliente.getCurp());
+                    v.add(tarjeta.getNumeroTarjeta());
+                    dt.addRow(v);
                     JOptionPane.showMessageDialog(createCard.getRootPane(), "Cliente registrado con exito");
                     controlador.callNewWindow(controlador.getNewCardView(), controlador.getNewClientView());
 

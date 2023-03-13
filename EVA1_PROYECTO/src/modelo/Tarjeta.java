@@ -26,6 +26,7 @@ public class Tarjeta {
         setAnualidad(anualidad);
         setFechaAplicacionAnualidad(fechaAplicacionAnualidad);
         setActiva(true);
+        setMovimientosTarjeta();
     }
 
 
@@ -119,8 +120,8 @@ public class Tarjeta {
     }
 
 
-    public void setMovimientosTarjeta(ArrayList<Movimiento> movimientosTarjeta) {
-        this.movimientosTarjeta = movimientosTarjeta;
+    public void setMovimientosTarjeta() {
+        movimientosTarjeta=new ArrayList<Movimiento>();
     }
     
 }

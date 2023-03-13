@@ -34,15 +34,15 @@ public class ActiveClientsModel extends AbstractTableModel{
     }
 
     
-    @Override
-    public Class<?> getColumnClass(int columnIndex) {
-        return getValueAt(0,columnIndex).getClass();
-    }
-
-    @Override
-    public boolean isCellEditable(int rowIndex, int columnIndex) {
-        return false;
-    }
+//    @Override
+//    public Class<?> getColumnClass(int columnIndex) {
+//        return getValueAt(0,columnIndex).getClass();
+//    }
+//
+//    @Override
+//    public boolean isCellEditable(int rowIndex, int columnIndex) {
+//        return false;
+//    }
 
     
 }

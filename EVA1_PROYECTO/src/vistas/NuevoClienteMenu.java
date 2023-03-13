@@ -8,7 +8,7 @@ import static vistas.MainMenu.controlador;
 import java.awt.*;
 import java.awt.event.*;
 public class NuevoClienteMenu extends JFrame{
-    boolean flag;
+    Cliente cliente;
     public NuevoClienteMenu(){
         super("Nuevo cliente");
         this.setSize(1280,720);
@@ -144,20 +144,11 @@ public class NuevoClienteMenu extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 
                 try{
-                    Cliente cliente = new Cliente(curpField.getText(), nombreField.getText(), apPaternoField.getText(),
+                    cliente = new Cliente(curpField.getText(), nombreField.getText(), apPaternoField.getText(),
                     apMaternoField.getText(), new 
                     Fecha(Integer.parseInt(diaField.getText()),Integer.parseInt(mesField.getText()),Integer.parseInt(yearField.getText())));
-                    controlador.getMenuPrincipalView().clientes.add(cliente);
-                    synchronized(controlador.getNewCardView()){
-                        controlador.callNewWindow(controlador.getNewClientView(), controlador.getNewCardView());
-                        controlador.getNewCardView().wait();
-                    }
-
-                 
-                    controlador.getMenuPrincipalView().revalidate();
-                    controlador.getMenuPrincipalView().repaint();
-                    controlador.getMenuPrincipalView().clientsTable.repaint();
-                    JOptionPane.showMessageDialog(createClient.getRootPane(), "Cliente registrado con exito");
+                    controlador.getMenuPrincipalView().clientes.add(cliente);  
+                    controlador.callNewWindow(controlador.getNewClientView(), controlador.getNewCardView());                 
                 }catch(Exception ex){
                     JOptionPane.showMessageDialog(createClient.getRootPane(), ex.getMessage());
                 }

@@ -33,11 +33,11 @@ public class MainMenu extends JFrame {
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ModificarClienteMenu mcm = new ModificarClienteMenu();
-        MovimientosMenu mm = new MovimientosMenu();
+
         NuevoClienteMenu ncm = new NuevoClienteMenu();
         UsuariosInactivosMenu uim = new UsuariosInactivosMenu();
         RegistrarTarjetaMenu rtm = new RegistrarTarjetaMenu();
-        controlador = new Controller(this, mm, rtm, uim, ncm, mcm);
+        controlador = new Controller(this, rtm, uim, ncm, mcm);
     }
 
     private void initComponents() {

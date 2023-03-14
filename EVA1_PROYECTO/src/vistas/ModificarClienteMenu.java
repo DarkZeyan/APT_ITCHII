@@ -106,6 +106,23 @@ public class ModificarClienteMenu extends JFrame{
         desactivarTarjeta =  new JButton("Desactivar tarjeta");
         gbc.anchor=gbc.EAST;
         this.add(desactivarTarjeta,gbc);
+        ingresarMovimientos.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+              
+            }
+            
+        });
+        desactivarTarjeta.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tarjeta.setActiva(false);
+            }
+            
+        });
     }
     void drawTitle(){
         if(tarjeta!=null){

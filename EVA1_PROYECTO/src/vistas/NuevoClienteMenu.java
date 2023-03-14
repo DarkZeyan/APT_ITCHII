@@ -9,6 +9,8 @@ import java.awt.*;
 import java.awt.event.*;
 public class NuevoClienteMenu extends JFrame{
     Cliente cliente;
+    JLabel lblCurp, lblNombre, lblApPaterno, lblApMaterno, lblFechaNacimiento;
+    JTextField curpField, nombreField, apPaternoField, apMaternoField, diaField, mesField, yearField;
     public NuevoClienteMenu(){
         super("Nuevo cliente");
         this.setSize(1280,720);
@@ -64,8 +66,7 @@ public class NuevoClienteMenu extends JFrame{
         this.add(logo,gbc);
         gbc.gridheight=1;
         gbc.insets=new Insets(0, 50, 50, 50);
-        JLabel lblCurp, lblNombre, lblApPaterno, lblApMaterno, lblFechaNacimiento;
-        JTextField curpField, nombreField, apPaternoField, apMaternoField, diaField, mesField, yearField;
+
         lblCurp= new JLabel("CURP");
         lblCurp.setFont(new Font("Verdana",Font.PLAIN,12));
         lblCurp.setForeground(Color.white);
@@ -149,7 +150,8 @@ public class NuevoClienteMenu extends JFrame{
                     apMaternoField.getText(), new 
                     Fecha(Integer.parseInt(diaField.getText()),Integer.parseInt(mesField.getText()),Integer.parseInt(yearField.getText())));
                     controlador.getMenuPrincipalView().clientes.add(cliente);  
-                    controlador.callNewWindow(controlador.getNewClientView(), controlador.getNewCardView());                 
+                    controlador.callNewWindow(controlador.getNewClientView(), controlador.getNewCardView());  
+                    cleanFields();               
                 }catch(Exception ex){
                     JOptionPane.showMessageDialog(createClient.getRootPane(), ex.getMessage());
                 }
@@ -311,5 +313,16 @@ public class NuevoClienteMenu extends JFrame{
 
 
 
+
+    }
+    void cleanFields(){
+        curpField.setText("");
+        nombreField.setText("");
+        apPaternoField.setText("");
+        apMaternoField.setText("");
+        diaField.setText("");
+        mesField.setText("");
+        yearField.setText("");
+           
     }
 }

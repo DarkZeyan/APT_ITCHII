@@ -86,7 +86,7 @@ public class MainMenu extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 2;
         this.add(registrarCliente, gbc);
-        JButton modificarCliente = new JButton("Modificar cliente seleccionado");
+        JButton modificarCliente = new JButton("Modificar tarjeta seleccionada");
         gbc.weightx = 0.2;
         gbc.weighty = 0.2;
         gbc.gridx = 1;

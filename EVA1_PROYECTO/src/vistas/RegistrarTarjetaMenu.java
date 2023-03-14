@@ -236,11 +236,13 @@ public class RegistrarTarjetaMenu extends JFrame {
 
                     controlador.getMenuPrincipalView().revalidate();
                     controlador.getMenuPrincipalView().repaint();
-                    DefaultTableModel dt = (DefaultTableModel)controlador.getMenuPrincipalView().clientsTable.getModel();
+                    DefaultTableModel dt = (DefaultTableModel) controlador.getMenuPrincipalView().clientsTable
+                            .getModel();
                     Vector v = new Vector();
                     v.add(controlador.getNewClientView().cliente.getCurp());
                     v.add(tarjeta.getNumeroTarjeta());
                     dt.addRow(v);
+                    cleanFields();
                     JOptionPane.showMessageDialog(createCard.getRootPane(), "Cliente registrado con exito");
                     controlador.callNewWindow(controlador.getNewCardView(), controlador.getNewClientView());
 
@@ -599,6 +601,28 @@ public class RegistrarTarjetaMenu extends JFrame {
         tasaInteresLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
         anualidadLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
         fechaAnualidadLabel.setFont(new Font("Verdana", Font.PLAIN, 12));
+
+    }
+
+    private void cleanFields() {
+        numTarjetaField.setText("");
+        limiteCreditoField.setText("");
+        diaCreacionField.setText("");
+        mesCreacionField.setText("");
+        yearCreacionField.setText("");
+
+        diaCorteField.setText("");
+        mesCorteField.setText("");
+        yearCorteField.setText("");
+        diaPagoField.setText("");
+        mesPagoField.setText("");
+        yearPagoField.setText("");
+
+        tasaInteresField.setText("");
+        anualidadField.setText("");
+        diaAnualidadField.setText("");
+        mesAnualidadField.setText("");
+        yearAnualidadField.setText("");
 
     }
 }

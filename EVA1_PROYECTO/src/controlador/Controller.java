@@ -4,17 +4,15 @@ import vistas.*;
 import javax.swing.JFrame;
 public class Controller {
     MainMenu menuPrincipalView;
-    MovimientosMenu movementsView;
     RegistrarTarjetaMenu newCardView;
     UsuariosInactivosMenu inactiveClientView;
     NuevoClienteMenu newClientView;
     ModificarClienteMenu modifyClientView;
   
-    public Controller(MainMenu menuPrincipalView, MovimientosMenu movementsView, RegistrarTarjetaMenu newCardView,
+    public Controller(MainMenu menuPrincipalView, RegistrarTarjetaMenu newCardView,
             UsuariosInactivosMenu inactiveClientView, NuevoClienteMenu newClientView,
             ModificarClienteMenu modifyClientView) {
         this.menuPrincipalView = menuPrincipalView;
-        this.movementsView = movementsView;
         this.newCardView = newCardView;
         this.inactiveClientView = inactiveClientView;
         this.newClientView = newClientView;
@@ -26,12 +24,7 @@ public class Controller {
     public void setMenuPrincipalView(MainMenu menuPrincipalView) {
         this.menuPrincipalView = menuPrincipalView;
     }
-    public MovimientosMenu getMovementsView() {
-        return movementsView;
-    }
-    public void setMovementsView(MovimientosMenu movementsView) {
-        this.movementsView = movementsView;
-    }
+
     public RegistrarTarjetaMenu getNewCardView() {
         return newCardView;
     }

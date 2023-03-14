@@ -28,21 +28,4 @@ public class Fecha {
         this.año = año;
     }
 
-    public boolean isBisiesto(){
-        return año%4==0;        
-    }
-    public void restarSumarDias(int x){
-
-    }
-    public void restarSumarMeses(int x){
-    }
-    public void restarSumarAños(int x){
-
-    }
-    public String toString(){
-        return ""+dia+"/"+mes+"/"+año;
-    }
-
-    
-
 }

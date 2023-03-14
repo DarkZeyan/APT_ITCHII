@@ -112,8 +112,12 @@ public class MainMenu extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+              
                 controlador.callNewWindow(controlador.getMenuPrincipalView(), controlador.getModifyClientView());
                 controlador.getModifyClientView().tarjeta=tarjetaSeleccionada();
+                controlador.getModifyClientView().drawTitle();
+
+                
             }
 
         });
@@ -153,7 +157,9 @@ public class MainMenu extends JFrame {
         if(fila>=0 && column>=0){
             try{
                 for(Cliente cliente : clientes){
+                 
                     for(Tarjeta tarjetaTemp : cliente.getTarjetasCliente()){
+                 
                         if(tarjetaTemp.getNumeroTarjeta().equals((clientsTable.getModel().getValueAt(fila, column)))){
                             
                             tarjeta=tarjetaTemp;

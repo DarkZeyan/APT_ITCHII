@@ -27,5 +27,8 @@ public class Fecha {
         this.mes = mes;
         this.año = año;
     }
+    public String toString(){
+        return ""+dia+"/"+mes+"/"+año;
+    }
 
 }

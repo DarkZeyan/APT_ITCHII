@@ -1,20 +1,29 @@
 package vistas;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Vector;
+
 import static vistas.MainMenu.controlador;
 import javax.swing.table.*;
-public class UsuariosInactivosMenu extends JFrame{
+
+import modelo.Cliente;
+import modelo.Tarjeta;
+
+public class UsuariosInactivosMenu extends JFrame {
     JTable inactivos;
-    public UsuariosInactivosMenu(){
+
+    public UsuariosInactivosMenu() {
         super("Clientes Inactivos");
-        this.setSize(1280,720);
+        this.setSize(1280, 720);
         this.setLayout(new GridBagLayout());
         this.setLocationRelativeTo(null);
-        this.getContentPane().setBackground(new Color(45,45,45));
+        this.getContentPane().setBackground(new Color(45, 45, 45));
         initComponents();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
  private void initComponents(){
         JLabel  title;
         JButton  reactivarTarjeta;
@@ -95,9 +104,53 @@ public class UsuariosInactivosMenu extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e) {            
-             
-            }
-            
+                try{
+                    if(tarjetaSeleccionada()==null) throw new Exception("No hay tarjetas seleccionadas");
+                    tarjetaSeleccionada().setActiva(true);
+                    DefaultTableModel mtm   = (DefaultTableModel) controlador.getMenuPrincipalView().clientsTable
+                               .getModel();
+                    for(int i=0; i<dt.getRowCount(); i++){
+                        if (((String)dt.getValueAt(i, 1)).equals(tarjetaSeleccionada().getNumeroTarjeta())) {
+                                Vector v = new Vector<>();
+                                v.add(dt.getValueAt(i, 0));
+                                v.add(tarjetaSeleccionada().getNumeroTarjeta());
+                                mtm.addRow(v);
+                                dt.removeRow(i);
+                            }       
+                    JOptionPane.showMessageDialog(null, "Tarjeta reactivada exitosamente");
+                    
+                }
+                }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, ex.getMessage());  
+                }
+               
+        }
         });
+    }
+
+    public Tarjeta tarjetaSeleccionada() {
+        int fila = inactivos.getSelectedRow();
+        int column = inactivos.getSelectedColumn();
+        Tarjeta tarjeta = null;
+        if (fila >= 0 && column >= 0) {
+            try {
+
+                for (Cliente cliente : controlador.getMenuPrincipalView().clientes) {
+
+                    for (Tarjeta tarjetaTemp : cliente.getTarjetasCliente()) {
+
+                        if (tarjetaTemp.getNumeroTarjeta().equals((inactivos.getModel().getValueAt(fila, column)))) {
+
+                            tarjeta = tarjetaTemp;
+                            return tarjeta;
+                        }
+                    }
+                }
+            } catch (Exception e) {
+
+            }
+
+        }
+        return tarjeta;
     }
 }

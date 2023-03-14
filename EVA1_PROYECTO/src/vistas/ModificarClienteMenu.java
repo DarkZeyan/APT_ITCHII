@@ -2,6 +2,8 @@ package vistas;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Vector;
+
 import static vistas.MainMenu.controlador;
 import javax.swing.table.*;
 import modelo.*;
@@ -110,8 +112,28 @@ public class ModificarClienteMenu extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-              
+
+              try {
+                if(tarjeta==null) throw new Exception("No se puede agregar movimientos ya que no hay una tarjeta seleccionada");
+                byte tipoMovimiento = Byte.parseByte(JOptionPane.showInputDialog(null, "Introduzca el tipo de movimiento (Numero del 1 al 3)"));
+                double cantidad = Double.parseDouble(JOptionPane.showInputDialog(null, "Introduzca la cantidad"));
+                int dia =  Integer.parseInt(JOptionPane.showInputDialog(null, "Introduzca el dia del movimiento"));
+                int mes =  Integer.parseInt(JOptionPane.showInputDialog(null, "Introduzca el mes del movimiento"));
+                int año =  Integer.parseInt(JOptionPane.showInputDialog(null, "Introduzca el año del movimiento"));
+                Movimiento m = new Movimiento(tarjeta.getMovimientosTarjeta().size()+1, tipoMovimiento, cantidad, new Fecha(dia,mes,año));
+                tarjeta.getMovimientosTarjeta().add(m);
+                Vector v = new Vector<>();
+                v.add(m.getClave());
+                v.add(m.getFechaMovimiento().toString());                
+                v.add(m.tipoString());
+                v.add(m.getCantidad());
+                dt.addRow(v);
+
+
+              } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+              }
+       
             }
             
         });
@@ -119,7 +141,29 @@ public class ModificarClienteMenu extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                tarjeta.setActiva(false);
+                try {
+                 
+                    if(tarjeta==null) throw new Exception("No hay una tarjeta seleccionada que desactivar");
+                    tarjeta.setActiva(false);
+                 DefaultTableModel mtm   = (DefaultTableModel) controlador.getMenuPrincipalView().clientsTable
+                            .getModel();
+                DefaultTableModel dt = (DefaultTableModel) controlador.getInactiveClientView().inactivos
+                            .getModel();
+                   
+                    for(int i=0; i<mtm.getRowCount(); i++){
+                        if (((String)mtm.getValueAt(i, 1)).equals(tarjeta.getNumeroTarjeta())) {
+                            Vector v = new Vector();
+                            v.add(mtm.getValueAt(i, 0));
+                            v.add(tarjeta.getNumeroTarjeta());
+                            dt.addRow(v);
+                            mtm.removeRow(i);
+                            
+                    }
+                    JOptionPane.showMessageDialog(null, "Tarjeta desactivada exitosamente");
+                }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
             }
             
         });

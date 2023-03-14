@@ -36,5 +36,13 @@ public class Movimiento {
     public void setFechaMovimiento(Fecha fechaMovimiento) {
         this.fechaMovimiento = fechaMovimiento;
     }   
+    public String tipoString(){
+        switch(tipoMovimiento){
+            case 1:return "Ingreso";
+            case 2: return "Retiro";
+            case 3: return "Cargo";
+            default: return "Indefinido";
+        }
+    }
     
 }

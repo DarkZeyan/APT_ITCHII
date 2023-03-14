@@ -113,6 +113,7 @@ public class MainMenu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controlador.callNewWindow(controlador.getMenuPrincipalView(), controlador.getModifyClientView());
+                controlador.getModifyClientView().tarjeta=tarjetaSeleccionada();
             }
 
         });
@@ -145,5 +146,26 @@ public class MainMenu extends JFrame {
             }
         }
     }
+    public Tarjeta tarjetaSeleccionada(){
+        int fila = clientsTable.getSelectedRow();
+        int column = clientsTable.getSelectedColumn();
+        Tarjeta tarjeta=null;
+        if(fila>=0 && column>=0){
+            try{
+                for(Cliente cliente : clientes){
+                    for(Tarjeta tarjetaTemp : cliente.getTarjetasCliente()){
+                        if(tarjetaTemp.getNumeroTarjeta().equals((clientsTable.getModel().getValueAt(fila, column)))){
+                            
+                            tarjeta=tarjetaTemp;
+                            return tarjeta;
+                        }
+                    }
+                }
+            }catch(Exception e){
 
+            }
+            
+        }
+        return tarjeta;
+    }
 }

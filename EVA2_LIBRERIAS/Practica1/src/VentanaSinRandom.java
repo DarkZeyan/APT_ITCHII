@@ -9,18 +9,57 @@
  */
 
 import LibreriaGraficos.*;
-import java.util.Random;
-public class Ventana extends javax.swing.JFrame {
+
+import java.awt.HeadlessException;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class VentanaSinRandom extends javax.swing.JFrame{
 
     /**
-     * Creates new form Ventana
+     * Creates new form VentanaSinRandom
      */
-    Random r;
-    public Ventana() {
+    int x,y;
+
+
+    public VentanaSinRandom() {
+        super("Ventana y figuras sin random");
         initComponents();
-        r = new Random();
+        JPaneDrawing.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                x=e.getX();
+                y=e.getY();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+               
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+               
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+             
+            }
+        });
     }
     
+    
+    
+
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -100,7 +139,7 @@ public class Ventana extends javax.swing.JFrame {
     private void btnRectanguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRectanguloActionPerformed
         Rectangulo rect = new Rectangulo();
         rect.setSize(50,60);
-        rect.setLocation((int)(r.nextFloat()*getWidth()),(int)(r.nextFloat()*getHeight()));
+        rect.setLocation(x,y);
         JPaneDrawing.add(rect);
         JPaneDrawing.repaint();
     }//GEN-LAST:event_btnRectanguloActionPerformed
@@ -108,7 +147,7 @@ public class Ventana extends javax.swing.JFrame {
     private void btnCirculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCirculoActionPerformed
         Circulo circle = new Circulo();
         circle.setSize(50,50);
-        circle.setLocation((int)(r.nextFloat()*getWidth()),(int)(r.nextFloat()*getHeight()));
+        circle.setLocation(x,y);
         JPaneDrawing.add(circle);
         JPaneDrawing.repaint();
     }//GEN-LAST:event_btnCirculoActionPerformed
@@ -116,7 +155,7 @@ public class Ventana extends javax.swing.JFrame {
     private void btnTrianguloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrianguloActionPerformed
         Triangulo triangle = new Triangulo();
         triangle.setSize(50,50);
-        triangle.setLocation((int)(r.nextFloat()*getWidth()),(int)(r.nextFloat()*getHeight()));
+        triangle.setLocation(x,y);
         JPaneDrawing.add(triangle);
         JPaneDrawing.repaint();
     }//GEN-LAST:event_btnTrianguloActionPerformed
@@ -151,7 +190,7 @@ public class Ventana extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ventana().setVisible(true);
+                new VentanaSinRandom().setVisible(true);
             }
         });
     }
@@ -163,4 +202,7 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JButton btnRectangulo;
     private javax.swing.JButton btnTriangulo;
     // End of variables declaration//GEN-END:variables
+
+
+    
 }

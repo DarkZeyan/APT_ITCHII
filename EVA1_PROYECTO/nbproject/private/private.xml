@@ -5,8 +5,8 @@
         <group>
             <file>file:/C:/Users/Esoni/Documents/ITCHII/APT_Practices_ITCHII/EVA1_PROYECTO/src/eva1_proyecto/App.java</file>
             <file>file:/C:/Users/Esoni/Documents/ITCHII/APT_Practices_ITCHII/EVA1_PROYECTO/src/vistas/MainMenu.java</file>
-            <file>file:/C:/Users/Esoni/Documents/ITCHII/APT_Practices_ITCHII/EVA1_PROYECTO/src/vistas/LoginScreen.java</file>
-            <file>file:/C:/Users/Esoni/Documents/ITCHII/APT_Practices_ITCHII/EVA1_PROYECTO/src/vistas/ModificarClienteMenu.java</file>
+            <file>file:/C:/Users/Esoni/Documents/ITCHII/APT_Practices_ITCHII/EVA1_PROYECTO/src/modelo/Cliente.java</file>
+            <file>file:/C:/Users/Esoni/Documents/ITCHII/APT_Practices_ITCHII/EVA1_PROYECTO/src/controlador/Controller.java</file>
         </group>
     </open-files>
 </project-private>

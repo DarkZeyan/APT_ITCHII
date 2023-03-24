@@ -1,7 +1,6 @@
 package LibreriaPersona;
 
 import java.util.Arrays;
-
 import LibreriaFecha.*;
 
 public class Persona {
@@ -19,15 +18,17 @@ public class Persona {
     }
 
     public Persona(String curp, String paterno, String materno, String nombre, String celular, Fecha fechadeNacimiento,
-            String estadoDeNacimiento, char sexo) {
-        this.curp = curp;
-        this.paterno = paterno;
-        this.materno = materno;
-        this.nombre = nombre;
-        this.celular = celular;
-        this.fechadeNacimiento = fechadeNacimiento;
-        this.estadoDeNacimiento = estadoDeNacimiento;
-        this.sexo = sexo;
+            String estadoDeNacimiento, char sexo) throws CurpInvalida {
+
+        setPaterno(paterno);
+        setMaterno(materno);
+        setNombre(nombre);
+        setCelular(celular);
+        setFechadeNacimiento(fechadeNacimiento);
+        setEstadoDeNacimiento(estadoDeNacimiento);
+        setSexo(sexo);
+        setCurp(curp);
+
     }
 
     public String getCurp() {
@@ -93,10 +94,10 @@ public class Persona {
 
     private boolean curpValida(String curp) {
         final char[] vocales = { 'A', 'E', 'I', 'O', 'U' };
-        final char[] consonantes = { 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'P', 'Q', 'R', 'S',
+        final char[] consonantes = { 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', '\u00d1', 'P', 'Q', 'R', 'S',
                 'T', 'V', 'X', 'Z', 'W', 'Y' };
         final String[] preposiciones = { "DA", "DAS", "DE", "DEL", "DER", "DI", "DIE", "DD", "EL", "LA", "LOS", "LAS",
-                    "LE", "LES", "MAC", "MC", "VAN", "VON", "Y" };
+                "LE", "LES", "MAC", "MC", "VAN", "VON", "Y" };
         final String[] estados = {
                 "AGUASCALIENTES",
                 "BAJA CALIFORNIA",
@@ -133,8 +134,169 @@ public class Persona {
                 "SERV. EXTERIOR MEXICANO",
                 "EXTRANJERO"
         };
+        final String[] nombresVetados = { "MARIA", "MA.", "MA", "JOSE", "J.", "J" };
+        final String[] palabrasAltisonantes = { "BACA",
 
-        String claveEstado;
+                "BAKA",
+
+                "BUEI",
+
+                "BUEY",
+
+                "CACA",
+
+                "CACO",
+
+                "CAGA",
+
+                "CAGO",
+
+                "CAKA",
+
+                "CAKO",
+
+                "COGE",
+
+                "COGI",
+
+                "COJA",
+
+                "COJE",
+
+                "COJI",
+
+                "COJO",
+
+                "COLA",
+
+                "CULO",
+
+                "FALO",
+
+                "FETO",
+
+                "GETA",
+
+                "GUEI",
+
+                "GUEY",
+
+                "JETA",
+
+                "JOTO",
+
+                "KACA",
+
+                "KACO",
+
+                "KAGA",
+
+                "KAGO",
+
+                "KAKA",
+
+                "KAKO",
+
+                "KOGE",
+
+                "KOGI",
+
+                "KOJA",
+
+                "KOJE",
+
+                "KOJI",
+
+                "KOJO",
+
+                "KOLA",
+
+                "KULO",
+
+                "LILO",
+
+                "LOCA",
+
+                "LOCO",
+
+                "LOKA",
+
+                "LOKO",
+
+                "MAME",
+
+                "MAMO",
+
+                "MEAR",
+
+                "MEAS",
+
+                "MEON",
+
+                "MIAR",
+
+                "MION",
+
+                "MOCO",
+
+                "MOKO",
+
+                "MULA",
+
+                "MULO",
+
+                "NACA",
+
+                "NACO",
+
+                "PEDA",
+
+                "PEDO",
+
+                "PENE",
+
+                "PIPI",
+
+                "PITO",
+
+                "POPO",
+
+                "PUTA",
+
+                "PUTO",
+
+                "QULO",
+
+                "RATA",
+
+                "ROBA",
+
+                "ROBE",
+
+                "ROBO",
+
+                "RUIN",
+
+                "SENO",
+
+                "TETA",
+
+                "VACA",
+
+                "VAGA",
+
+                "VAGO",
+
+                "VAKA",
+
+                "VUEI",
+
+                "VUEY",
+
+                "WUEI",
+
+                "WUEY"};
+        String claveEstado = "";
 
         // Evaluar si el estado capturado es perteneciente a los estados registrados, si
         // es asi, capturar la clave del estado, si no retornar falso
@@ -142,72 +304,109 @@ public class Persona {
             switch (estadoDeNacimiento.toUpperCase()) {
                 case "AGUASCALIENTES":
                     claveEstado = "AS";
+                    break;
                 case "BAJA CALIFORNIA":
                     claveEstado = "BC";
+                    break;
                 case "BAJA CALIFORNIA SUR":
                     claveEstado = "BS";
+                    break;
                 case "CAMPECHE":
                     claveEstado = "CC";
+                    break;
                 case "COAHUILA":
                     claveEstado = "CL";
+                    break;
                 case "COLIMA":
                     claveEstado = "CM";
+                    break;
                 case "CHIAPAS":
                     claveEstado = "CS";
+                    break;
                 case "CHIHUAHUA":
                     claveEstado = "CH";
+                    break;
                 case "DISTRITO FEDERAL":
                     claveEstado = "DF";
+                    break;
                 case "DURANGO":
                     claveEstado = "DG";
+                    break;
                 case "GUANAJUATO":
                     claveEstado = "GT";
+                    break;
                 case "GUERRERO":
                     claveEstado = "GR";
+                    break;
                 case "HIDALGO":
                     claveEstado = "HG";
+                    break;
                 case "JALISCO":
                     claveEstado = "JC";
+                    break;
                 case "MEXICO":
                     claveEstado = "MC";
+                    break;
                 case "MICHOACAN":
                     claveEstado = "MN";
+                    break;
                 case "MORELOS":
                     claveEstado = "MS";
+                    break;
                 case "NAYARIT":
                     claveEstado = "NT";
+                    break;
                 case "NUEVO LEON":
                     claveEstado = "NL";
+                    break;
                 case "OAXACA":
                     claveEstado = "OC";
+                    break;
                 case "PUEBLA":
                     claveEstado = "PL";
+                    break;
                 case "QUERETARO":
                     claveEstado = "QT";
+                    break;
                 case "QUINTANA ROO":
                     claveEstado = "QR";
+                    break;
                 case "SAN LUIS POTOSI":
                     claveEstado = "SP";
+                    break;
                 case "SINALOA":
                     claveEstado = "SL";
+                    break;
                 case "SONORA":
                     claveEstado = "SR";
+                    break;
                 case "TABASCO":
                     claveEstado = "TC";
+                    break;
                 case "TAMAULIPAS":
                     claveEstado = "TS";
+                    break;
                 case "TLAXCALA":
                     claveEstado = "TL";
+                    break;
                 case "VERACRUZ":
                     claveEstado = "VZ";
+                    break;
                 case "YUCATAN":
                     claveEstado = "YN";
+                    break;
                 case "ZACATECAS":
                     claveEstado = "ZS";
+                    break;
                 case "SERV. EXTERIOR MEXICANO":
                     claveEstado = "NA";
+                    break;
                 case "EXTRANJERO":
                     claveEstado = "SI";
+                    break;
+                default:
+                    claveEstado = "NA";
+                    break;
             }
         } else {
             return false;
@@ -227,32 +426,38 @@ public class Persona {
         }
 
         // Extraer primer letra del apellido paterno
-        char primerLetra = paterno.toUpperCase().charAt(0);
-        char segundaLetra;
+        char primerLetra='-';
+
+        char segundaLetra = 'x';
 
         // Extraer primer letra del apellido materno
-        char tercerLetra;
+        char tercerLetra = 'X';
 
-        //Evaluar si hay apellido materno, si lo hay, entonces extraer primer letra, sino asignar X;
-        if(!materno.equals("")){
-            tercerLetra= materno.toUpperCase().charAt(0);
-        }else{
+        // Evaluar si hay apellido materno, si lo hay, entonces extraer primer letra,
+        // sino asignar X;
+        if (!materno.equals("")) {
+            tercerLetra = materno.toUpperCase().charAt(0);
+        } else {
             tercerLetra = 'X';
         }
-        
-        // Asignar segunda letra, vocal interna de apellido paterno
-        
 
-        String[] paternoDiv =  paterno.toUpperCase().split(" ");
-        if(paternoDiv.length>1){
-            
-            for(String paternoTemp:paternoDiv){
-                if (Arrays.asList(preposiciones).contains(paternoTemp)) {
-                    continue;
-                for (int i = 1; i < paterno.length(); i++) {
-                  if (Arrays.asList(vocales).contains(paternoTemp.toUpperCase().charAt(i))) {
-                    segundaLetra = paternoTemp.toUpperCase().charAt(i);
-                    break;
+        // Asignar segunda letra, vocal interna de apellido paterno
+
+        String[] paternoDiv = paterno.toUpperCase().split(" ");
+        if (paternoDiv.length > 1) {
+            boolean bandera=false;
+            for (String paternoTemp : paternoDiv) {
+                if (containsString(preposiciones, paternoTemp)) {
+                   continue;
+                }
+                primerLetra=paternoTemp.charAt(0);
+                for (int i = 1; i < paternoTemp.length(); i++) {
+                   
+                    if (containsChar(vocales, paternoTemp.charAt(i))) {
+                    
+                        segundaLetra = paternoTemp.toUpperCase().charAt(i);
+                        bandera=true;
+                        break;
                     } else {
                         // Si ya fueron recorridas todas las letras y no hay vocal interna, entonces
                         // asignar la vocal como X
@@ -262,113 +467,162 @@ public class Persona {
                             continue;
                     }
                 }
+                if(bandera=true) break;
+
             }
-        }
-        }else{
+        } else {
+            
+            primerLetra=paterno.charAt(0);
             for (int i = 1; i < paterno.length(); i++) {
-            if (Arrays.asList(vocales).contains(paterno.toUpperCase().charAt(i))) {
-                segundaLetra = paterno.toUpperCase().charAt(i);
-                break;
-            } else {
-                // Si ya fueron recorridas todas las letras y no hay vocal interna, entonces
-                // asignar la vocal como X
-                if (i == paterno.length() - 1)
-                    segundaLetra = 'X';
-                else
-                    continue;
+                if (containsChar(vocales, paterno.charAt(i))) {
+                    segundaLetra = paterno.toUpperCase().charAt(i);
+                    break;
+                } else {
+                    // Si ya fueron recorridas todas las letras y no hay vocal interna, entonces
+                    // asignar la vocal como X
+                    if (i == paterno.length() - 1)
+                        segundaLetra = 'X';
+                    else
+                        continue;
+                }
             }
         }
-        }
-        
 
         // Si la primer letra de uno de los apellidos y/o del nombre es ñ cambiar a X
         if (primerLetra == 'Ñ')
             primerLetra = 'X';
         if (tercerLetra == 'Ñ')
             tercerLetra = 'X';
-
-        char primerLetraNombre;
-
+        char primerLetraNombre = 'X';
+        char consonanteNombre = 'X';
         // Verificar si el nombre es compuesto
         String[] nombres = nombre.toUpperCase().split(" ");
-
         // Validar si la cantidad de nombres es mayor 1
+
         if (nombres.length > 1) {
-            String[] nombresVetados = { "MARIA", "MA.", "MA", "JOSE", "J.", "J" };
+            boolean bandera=false;
+            for (String nombreTemp : nombres) {
 
-            for (String nom : nombres) {
-                // Si el nombre es compuesto y es uno de los vetados, entonces considerar el
-                // segundo nombre
-                // si la siguiente cadena es preposicion, saltar.
-                if (Arrays.asList(nombresVetados).contains(nom) || Arrays.asList(preposiciones).contains(nom)) {
-                    continue;
-                } else {
-                    primerLetraNombre = nom.charAt(0);
-                    if (primerLetraNombre == 'Ñ')
+                if (Arrays.asList(nombresVetados).contains(nombreTemp)|| Arrays.asList(preposiciones).contains(nombreTemp))
+                    continue;      
+                
+                primerLetraNombre = nombreTemp.charAt(0);
+                if (primerLetraNombre == 'Ñ')
                     primerLetraNombre = 'X';
-                    break;
-                }
 
-            }
+                // Extraer consonante.
+                for (int i = 1; i < nombreTemp.length(); i++) {
+                    if (containsChar(consonantes, nombreTemp.charAt(i))) {
+                        
+                        consonanteNombre = nombreTemp.toUpperCase().charAt(i);
+                        bandera=true;
+                        break;
+                    }
+                }
+                if(bandera) break;
+                }
+            
 
         } else {
             // sino, se evalua con el nombre normal.
             primerLetraNombre = nombre.toUpperCase().charAt(0);
+            for (int i = 1; i < nombre.length(); i++) {
+                if (containsChar(consonantes, nombre.charAt(i))) {
+
+                    consonanteNombre = nombre.toUpperCase().charAt(i);
+                    break;
+                }
+            }
         }
 
-       
         // apartado de las consonantes
-
         // Consonante 1, apellido paterno.
 
-        char consonante1='-';
+        char consonantePaterno = 'X';
 
-        if(paternoDiv.length>1){
-            
-            for(String paternoTemp:paternoDiv){
-                if (Arrays.asList(preposiciones).contains(paternoTemp)) {
+        if (paternoDiv.length > 1) {
+
+            for (String paternoTemp : paternoDiv) {
+                if (containsString(preposiciones, paternoTemp)) {
                     continue;
-                for (int i = 1; i < paterno.length(); i++) {
-                  if (Arrays.asList(consonantes).contains(paternoTemp.toUpperCase().charAt(i))) {
-                    consonante1 = paternoTemp.toUpperCase().charAt(i);
-                    break;
+                }
+                for (int i = 1; i < paternoTemp.length(); i++) {
+                    if (containsChar(consonantes, paternoTemp.toUpperCase().charAt(i))) {
+                        
+                        consonantePaterno = paternoTemp.toUpperCase().charAt(i);
+                        if(consonantePaterno=='\u00d1') consonantePaterno='X';
+                        break;
                     } else {
                         // Si ya fueron recorridas todas las letras y no hay vocal interna, entonces
                         // asignar la vocal como X
                         if (i == paternoTemp.length() - 1)
-                            consonante1 = 'X';
+                            consonantePaterno = 'X';
                         else
                             continue;
                     }
                 }
             }
-        }
-        }else{
+        } else {
             for (int i = 1; i < paterno.length(); i++) {
-            if (Arrays.asList(consonantes).contains(paterno.toUpperCase().charAt(i))) {
-                consonante1 = paterno.toUpperCase().charAt(i);
-                break;
-            } else {
-                // Si ya fueron recorridas todas las letras y no hay vocal interna, entonces
-                // asignar la vocal como X
-                if (i == paterno.length() - 1)
-                    consonante1 = 'X';
-                else
-                    continue;
+                if (containsChar(consonantes, paterno.toUpperCase().charAt(i))) {
+                    
+                    consonantePaterno = paterno.toUpperCase().charAt(i);
+                       if(consonantePaterno=='\u00d1') consonantePaterno='X';
+                    break;
+                } else {
+                    // Si ya fueron recorridas todas las letras y no hay vocal interna, entonces
+                    // asignar la vocal como X
+                    if (i == paterno.length() - 1)
+                        consonantePaterno = 'X';
+                    else
+                        continue;
+                }
             }
         }
+
+        // Consonante 2, Consonante del apellido materno.
+        char consonanteMaterno = 'X';
+        if (materno.equals("")) {
+            consonanteMaterno = 'X';
+        } else {
+            String[] apMaterno = materno.toUpperCase().split(" ");
+            for (String materno1 : apMaterno) {
+
+                if (containsString(preposiciones, materno1))
+                    continue;
+                else {
+                    for (int i = 1; i < materno1.length(); i++) {
+
+                        if (containsChar(consonantes, materno1.charAt(i))) {
+                            consonanteMaterno = materno1.toUpperCase().charAt(i);
+                            break;
+                        }
+                    }
+                }
+            }
         }
-        
 
-
-        //Si el sexo es digitado con otra cosa, retornar falso.
-        if (!(sexo == 'H' || sexo == 'M'))
+        // Si el sexo es digitado con otra cosa, retornar falso.
+        if (!(getSexo() == 'H' || getSexo() == 'M'))
             return false;
 
         if (curp.length() != 18)
             return false;
 
-        return true;
+
+        String discriminante=""+primerLetra+""+segundaLetra+""+tercerLetra+""+primerLetraNombre+"";
+        System.out.println(discriminante);
+        if(containsString(palabrasAltisonantes, discriminante)) segundaLetra='X';
+
+        String cuttedCurp = curp.substring(0, curp.length() - 2);
+        System.out.println("Curp digitada sin homoclave: " + cuttedCurp);
+        String curpVerifier = primerLetra + "" + segundaLetra + "" + tercerLetra + "" + primerLetraNombre
+                + añoNacimiento + mesNacimiento + diaNacimiento + getSexo() + claveEstado + consonantePaterno
+                + consonanteMaterno + consonanteNombre;
+        System.out.println("Curp con datos introducidos: " + curpVerifier);
+        if (curpVerifier.equals(cuttedCurp))
+            return true;
+        return false;
     }
 
     public Fecha getFechadeNacimiento() {
@@ -379,6 +633,21 @@ public class Persona {
         this.fechadeNacimiento = fechadeNacimiento;
     }
 
+    private static boolean containsChar(char[] charArray, char c) {
+        for (char x : charArray) {
+            if (x == c)
+                return true;
+        }
+        return false;
+    }
+
+    private static boolean containsString(String[] arr, String s) {
+        for (String x : arr) {
+            if (x.equals(s))
+                return true;
+        }
+        return false;
+    }
 }
 
 class CurpInvalida extends Exception {

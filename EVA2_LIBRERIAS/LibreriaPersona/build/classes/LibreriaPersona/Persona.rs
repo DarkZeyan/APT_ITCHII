@@ -1,2 +1,0 @@
-LibreriaPersona.Persona
-LibreriaPersona.CurpInvalida

@@ -249,12 +249,12 @@ public class Ventana extends javax.swing.JFrame {
 
     private void btnRegistrarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarPersonaActionPerformed
         try{
-            String nombre = nombreTxt.getText();
-            String paterno=paternoTxt.getText();
-            String materno=maternoTxt.getText();
-            String celular=celularTxt.getText();
-            String curp=curpTxt.getText();
-            String edo=edoTxt.getText();
+            String nombre = nombreTxt.getText().toUpperCase();
+            String paterno=paternoTxt.getText().toUpperCase();
+            String materno=maternoTxt.getText().toUpperCase();
+            String celular=celularTxt.getText().toUpperCase();
+            String curp=curpTxt.getText().toUpperCase();
+            String edo=edoTxt.getText().toUpperCase();
             char sexo=sexoTxt.getText().toUpperCase().charAt(0);
             int dia = Integer.parseInt(diaTxt.getText());
             int mes = Integer.parseInt(mesTxt.getText());

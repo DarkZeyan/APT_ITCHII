@@ -92,7 +92,7 @@ public class Persona {
         this.sexo = sexo;
     }
 
-    private boolean curpValida(String curp) {
+    private boolean curpValida(String curp) throws CurpInvalida{
         final char[] vocales = { 'A', 'E', 'I', 'O', 'U' };
         final char[] consonantes = { 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', '\u00d1', 'P', 'Q', 'R', 'S',
                 'T', 'V', 'X', 'Z', 'W', 'Y' };
@@ -409,7 +409,7 @@ public class Persona {
                     break;
             }
         } else {
-            return false;
+            throw new CurpInvalida("El estado de nacimiento especificado no es el correcto");
         }
 
         String añoNacimiento = Integer.toString(fechadeNacimiento.getAño());
@@ -419,7 +419,9 @@ public class Persona {
         if (fechadeNacimiento.getDia() < 10) {
             diaNacimiento = "0" + diaNacimiento;
         }
-
+        
+        
+        
         String mesNacimiento = Integer.toString(fechadeNacimiento.getMes());
         if (fechadeNacimiento.getMes() < 10) {
             mesNacimiento = "0" + mesNacimiento;
@@ -501,9 +503,10 @@ public class Persona {
 
         if (nombres.length > 1) {
             boolean bandera=false;
+            int c=0;
             for (String nombreTemp : nombres) {
-
-                if (Arrays.asList(nombresVetados).contains(nombreTemp)|| Arrays.asList(preposiciones).contains(nombreTemp))
+                c++;
+                if ((Arrays.asList(nombresVetados).contains(nombreTemp)|| Arrays.asList(preposiciones).contains(nombreTemp)) && c<nombres.length)
                     continue;      
                 
                 primerLetraNombre = nombreTemp.charAt(0);
@@ -603,12 +606,24 @@ public class Persona {
         }
 
         // Si el sexo es digitado con otra cosa, retornar falso.
-        if (!(getSexo() == 'H' || getSexo() == 'M'))
-            return false;
-
+        if (!(getSexo() == 'H' || getSexo() == 'M')){
+            throw new CurpInvalida("El sexo debe ser digitado con H o M");
+        }
         if (curp.length() != 18)
-            return false;
+            throw new CurpInvalida("La longitud de la curp debe ser de 18 caracteres");
 
+        
+        if(curp.charAt(0)!=primerLetra) throw new CurpInvalida("La curp introducida no es correcta para el apellido paterno especificado");
+        if(curp.charAt(1)!=segundaLetra) throw new CurpInvalida("La curp introducida no es correcta en la segunda posicion");
+        if(curp.charAt(2)!=tercerLetra) throw new CurpInvalida("La curp introducida no es correcta para el apellido materno");
+        if(curp.charAt(3)!=primerLetraNombre) throw new CurpInvalida("La curp introducida no es valida para el  nombre especificado ");
+       
+        if(!curp.substring(4,6).equals(añoNacimiento)) throw new CurpInvalida("El año de nacimiento introducido en la curp es incorrecto");
+        if(!curp.substring(6,8).equals(mesNacimiento)) throw new CurpInvalida("El mes de nacimiento introducido en la curp es incorrecto");
+        if(!curp.substring(8,10).equals(diaNacimiento)) throw new CurpInvalida("El dia de nacimiento introducido en la curp es incorrecto");
+        if(curp.charAt(13)!=consonantePaterno) throw new CurpInvalida("Consonante paterna incorrecta");
+        if(curp.charAt(14)!=consonanteMaterno) throw new CurpInvalida("Consonante materna incorrecta");
+        if(curp.charAt(15)!=consonanteNombre) throw new CurpInvalida("Consonante del nombre incorrecta");
 
         String discriminante=""+primerLetra+""+segundaLetra+""+tercerLetra+""+primerLetraNombre+"";
         System.out.println(discriminante);
@@ -651,6 +666,11 @@ public class Persona {
 }
 
 class CurpInvalida extends Exception {
+   
+    public CurpInvalida(String msg){
+        super(msg);
+    }
+    
     public CurpInvalida() {
         super("La CURP insertada no es valida para esta persona");
     }

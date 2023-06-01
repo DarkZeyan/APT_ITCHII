@@ -4,4 +4,32 @@
 /EVA2_LIBRERIAS/Boton3D/nbproject/private/
 /EVA2_LIBRERIAS/Boton3D/dist/
 /EVA2_LIBRERIAS/Boton3D/build/
+<<<<<<< HEAD
 /EVA4_PROYECTO_FINAL/JavaApplication58/nbproject/private/
+=======
+/EVA2_LIBRERIAS/Practica_LigaPrograma/nbproject/private/
+
+
+
+/EVA2_LIBRERIAS/Practica_LigaPrograma/build/
+/EVA2_LIBRERIAS/Practica_LigaPrograma/dist/
+/EVA2_LIBRERIAS/ComponenteFecha/nbproject/private/
+/EVA2_LIBRERIAS/ComponenteFecha/build/
+/EVA2_LIBRERIAS/ComponenteFecha/dist/
+/EVA3_HILOS/Practica1_CurrentThread/nbproject/private/
+/EVA3_HILOS/Practica1_CurrentThread/build/
+/EVA3_HILOS/Practica1_ThreadRunnable/nbproject/private/
+/EVA3_HILOS/Practica1_ThreadClass/nbproject/private/
+/EVA3_HILOS/Practica2_ComparandoHilos/nbproject/private/
+/EVA3_HILOS/Practica2_ComparandoHilos/build/
+/EVA3_HILOS/Practica2_ComparandoHilos/dist/
+/EVA3_HILOS/Practica3_ComunicacionEntreHilos/nbproject/private/
+/EVA3_HILOS/Practica3_ComunicacionEntreHilos/build/
+/EVA3_HILOS/Practica4_1_Genericos/nbproject/private/
+/EVA3_HILOS/Practica4_1_GenericosDos/nbproject/private/
+/EVA3_HILOS/Practica4_2_ArrayList/nbproject/private/
+/EVA3_HILOS/Practica4_2_ArrayListToArray/nbproject/private/
+/EVA3_HILOS/Practica4_2_LinkedList/nbproject/private/
+/EVA3_HILOS/Practica4_3_BouncingBalls/nbproject/private/
+/EVA3_HILOS/Practica4_3_BouncingBalls/build/
+>>>>>>> c61cc5c2f98787a4becf9d4598f6ed17aa5381fb

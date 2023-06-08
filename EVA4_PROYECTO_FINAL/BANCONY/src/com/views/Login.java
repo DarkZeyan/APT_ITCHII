@@ -1,29 +1,19 @@
-package com.views;
-
-
-import java.awt.Toolkit;
-import javax.swing.ImageIcon;
-
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+JORGE EDUARDO ESCOBAR BUGARINI - ISC - 21550317
  */
+package com.views;
 
 /**
  *
  * @author user
  */
-
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JPanel {
 
     /**
-     * Creates new form Login
+     * Creates new form Login1
      */
     public Login() {
-        
         initComponents();
-        setIconImage(new ImageIcon("src/com/img/Bancony.png").getImage());
-        setLocationRelativeTo(null);
     }
 
     /**
@@ -46,10 +36,6 @@ public class Login extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         signInBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("BANCONY - Inicio de sesión");
-        setIconImages(null);
-
         PanelPrincipal.setBackground(new java.awt.Color(255, 255, 255));
         PanelPrincipal.setMinimumSize(new java.awt.Dimension(835, 518));
         PanelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,9 +47,9 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Inicio de sesión");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 31, 194, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, 194, -1));
 
-        PanelPrincipal.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 90));
+        PanelPrincipal.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 90));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/Bancony.png"))); // NOI18N
@@ -72,31 +58,31 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/usuario-de-perfil.png"))); // NOI18N
         jLabel3.setToolTipText("");
-        PanelPrincipal.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 130, -1, -1));
+        PanelPrincipal.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 130, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Usuario");
-        PanelPrincipal.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 80, 40));
+        PanelPrincipal.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 290, 80, 40));
 
         txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuario.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(0, 0, 0));
         txtUsuario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
-        PanelPrincipal.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 190, -1));
+        PanelPrincipal.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 190, -1));
 
         lblPassword.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(0, 0, 0));
         lblPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPassword.setText("Contraseña");
-        PanelPrincipal.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 80, 40));
+        PanelPrincipal.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 340, 80, 40));
 
         passwordField.setBackground(new java.awt.Color(255, 255, 255));
         passwordField.setForeground(new java.awt.Color(0, 0, 0));
         passwordField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 0), 2));
-        PanelPrincipal.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 350, 190, -1));
+        PanelPrincipal.add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 350, 190, -1));
 
         signInBtn.setBackground(new java.awt.Color(255, 0, 0));
         signInBtn.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
@@ -104,56 +90,20 @@ public class Login extends javax.swing.JFrame {
         signInBtn.setText("Iniciar sesión");
         signInBtn.setBorder(null);
         signInBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        PanelPrincipal.add(signInBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 420, 120, 40));
+        PanelPrincipal.add(signInBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 120, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 835, Short.MAX_VALUE)
+            .addComponent(PanelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+            .addComponent(PanelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelPrincipal;
@@ -167,6 +117,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton signInBtn;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
-
-
 }

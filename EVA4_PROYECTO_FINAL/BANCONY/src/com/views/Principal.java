@@ -14,6 +14,7 @@ public class Principal extends javax.swing.JPanel {
      */
     public Principal() {
         initComponents();
+        setSize(970, 548);
     }
 
     /**
@@ -93,6 +94,11 @@ public class Principal extends javax.swing.JPanel {
         jButton4.setText("Añadir un nuevo cliente");
         jButton4.setBorder(null);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(255, 0, 0));
         jButton5.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
@@ -173,6 +179,10 @@ public class Principal extends javax.swing.JPanel {
 
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 460, 340));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

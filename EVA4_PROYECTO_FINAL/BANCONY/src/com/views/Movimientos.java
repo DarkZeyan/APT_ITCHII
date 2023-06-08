@@ -53,9 +53,9 @@ public class Movimientos extends javax.swing.JPanel {
             .addGroup(bannerLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel3)
-                .addGap(341, 341, 341)
+                .addGap(374, 374, 374)
                 .addComponent(jLabel1)
-                .addContainerGap(345, Short.MAX_VALUE))
+                .addContainerGap(422, Short.MAX_VALUE))
         );
         bannerLayout.setVerticalGroup(
             bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -67,7 +67,7 @@ public class Movimientos extends javax.swing.JPanel {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 90));
+        add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 90));
 
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
@@ -101,7 +101,7 @@ public class Movimientos extends javax.swing.JPanel {
         jTable1.setSelectionBackground(new java.awt.Color(255, 102, 102));
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 560, 350));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 560, 350));
 
         jButton3.setBackground(new java.awt.Color(255, 0, 0));
         jButton3.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
@@ -110,7 +110,7 @@ public class Movimientos extends javax.swing.JPanel {
         jButton3.setToolTipText("");
         jButton3.setBorder(null);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, 133, 40));
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 133, 40));
 
         jButton4.setBackground(new java.awt.Color(255, 0, 0));
         jButton4.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
@@ -119,7 +119,7 @@ public class Movimientos extends javax.swing.JPanel {
         jButton4.setToolTipText("");
         jButton4.setBorder(null);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, 133, 40));
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 480, 133, 40));
     }// </editor-fold>//GEN-END:initComponents
 
 

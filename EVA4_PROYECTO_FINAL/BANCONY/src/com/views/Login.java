@@ -2,7 +2,7 @@
 JORGE EDUARDO ESCOBAR BUGARINI - ISC - 21550317
  */
 package com.views;
-
+import com.controller.*;
 /**
  *
  * @author user
@@ -14,6 +14,7 @@ public class Login extends javax.swing.JPanel {
      */
     public Login() {
         initComponents();
+        setSize(970, 548);
     }
 
     /**
@@ -90,6 +91,11 @@ public class Login extends javax.swing.JPanel {
         signInBtn.setText("Iniciar sesión");
         signInBtn.setBorder(null);
         signInBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signInBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signInBtnActionPerformed(evt);
+            }
+        });
         PanelPrincipal.add(signInBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 420, 120, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -103,6 +109,10 @@ public class Login extends javax.swing.JPanel {
             .addComponent(PanelPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void signInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInBtnActionPerformed
+       Screen.controller.mostrarPrincipal(this);
+    }//GEN-LAST:event_signInBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

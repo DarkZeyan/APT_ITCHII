@@ -7,12 +7,12 @@ package com.views;
  *
  * @author user
  */
-public class ClientesActivos extends javax.swing.JPanel {
+public class ClientesInactivos extends javax.swing.JPanel {
 
     /**
      * Creates new form ClientesActivos1
      */
-    public ClientesActivos() {
+    public ClientesInactivos() {
         initComponents();
         setSize(970, 548);
     }
@@ -46,7 +46,7 @@ public class ClientesActivos extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Clientes activos");
+        jLabel1.setText("Clientes inactivos");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"))); // NOI18N
@@ -60,7 +60,7 @@ public class ClientesActivos extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addGap(371, 371, 371)
                 .addComponent(jLabel1)
-                .addContainerGap(400, Short.MAX_VALUE))
+                .addContainerGap(383, Short.MAX_VALUE))
         );
         bannerLayout.setVerticalGroup(
             bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,14 +111,14 @@ public class ClientesActivos extends javax.swing.JPanel {
         jButton3.setBackground(new java.awt.Color(255, 0, 0));
         jButton3.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Dar de baja cliente");
+        jButton3.setText("Reactivar cliente");
         jButton3.setToolTipText("");
         jButton3.setBorder(null);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, 133, 40));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/eliminar-amigo.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/agregar-contacto.png"))); // NOI18N
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, -1, -1));
 
         jButton4.setBackground(new java.awt.Color(255, 0, 0));

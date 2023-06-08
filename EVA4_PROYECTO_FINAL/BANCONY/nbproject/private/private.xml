@@ -5,11 +5,18 @@
         <group>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/Principal.java</file>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/ClientesActivos.java</file>
-            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/Login.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/model/Movimiento.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/controller/Controller.java</file>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/RegistrarCliente.java</file>
-            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/Tarjetas.java</file>
-            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/Movimientos.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/TablaTarjetas.java</file>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/CuentasCliente.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/controller/Screen.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/model/Tarjeta.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/RegistrarTarjeta.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/Login.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/ClientesInactivos.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/Movimientos.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/RegistrarCuenta.java</file>
         </group>
     </open-files>
 </project-private>

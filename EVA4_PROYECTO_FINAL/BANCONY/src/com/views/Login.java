@@ -12,6 +12,14 @@ public class Login extends javax.swing.JPanel {
     /**
      * Creates new form Login1
      */
+    
+    private Controller controller;
+
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+    
+    
     public Login() {
         initComponents();
         setSize(970, 548);
@@ -111,7 +119,7 @@ public class Login extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInBtnActionPerformed
-       Screen.controller.mostrarPrincipal(Screen.dashboard);
+       controller.mostrarPrincipal();
     }//GEN-LAST:event_signInBtnActionPerformed
 
 

@@ -3,6 +3,7 @@ JORGE EDUARDO ESCOBAR BUGARINI - ISC - 21550317
  */
 package com.views;
 
+import com.controller.Controller;
 import com.controller.Screen;
 
 /**
@@ -14,6 +15,12 @@ public class Principal extends javax.swing.JPanel {
     /**
      * Creates new form Principal1
      */
+        private Controller controller;
+
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+    
     public Principal() {
         initComponents();
         setSize(970, 548);
@@ -217,11 +224,11 @@ public class Principal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddClientActionPerformed
-        Screen.controller.mostrarRegistrarCliente(this);
+       controller.mostrarRegistrarCliente();
     }//GEN-LAST:event_btnAddClientActionPerformed
 
     private void btnActiveClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActiveClientsActionPerformed
-        Screen.controller.mostrarClientesActivos(this);
+      controller.mostrarClientesActivos();
     }//GEN-LAST:event_btnActiveClientsActionPerformed
 
 

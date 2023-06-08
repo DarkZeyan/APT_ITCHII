@@ -3,6 +3,8 @@ JORGE EDUARDO ESCOBAR BUGARINI - ISC - 21550317
  */
 package com.views;
 
+import com.controller.Controller;
+
 /**
  *
  * @author user
@@ -12,6 +14,11 @@ public class RegistrarTarjeta extends javax.swing.JPanel {
     /**
      * Creates new form RegistrarTarjeta1
      */
+    private Controller controller;
+
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
     public RegistrarTarjeta() {
         initComponents();
         setSize(970, 548);

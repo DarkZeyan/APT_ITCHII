@@ -3,6 +3,8 @@ JORGE EDUARDO ESCOBAR BUGARINI - ISC - 21550317
  */
 package com.views;
 
+import com.controller.Controller;
+
 /**
  *
  * @author user
@@ -12,9 +14,17 @@ public class Movimientos extends javax.swing.JPanel {
     /**
      * Creates new form Movimientos1
      */
+    
+    private Controller controller;
+
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+    
     public Movimientos() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -3,6 +3,7 @@ JORGE EDUARDO ESCOBAR BUGARINI - ISC - 21550317
  */
 package com.views;
 
+import com.controller.Controller;
 import com.controller.Screen;
 
 /**
@@ -14,6 +15,12 @@ public class RegistrarCliente extends javax.swing.JPanel {
     /**
      * Creates new form RegistrarCliente1
      */
+        private Controller controller;
+
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+    
     public RegistrarCliente() {
         initComponents();
         setSize(970, 548);
@@ -27,6 +34,7 @@ public class RegistrarCliente extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         banner = new javax.swing.JPanel();
         title = new javax.swing.JLabel();
@@ -59,7 +67,7 @@ public class RegistrarCliente extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setLayout(null);
+        setLayout(new java.awt.GridBagLayout());
 
         banner.setBackground(new java.awt.Color(255, 0, 0));
 
@@ -70,13 +78,18 @@ public class RegistrarCliente extends javax.swing.JPanel {
         goBackBtn.setBackground(new java.awt.Color(255, 0, 0));
         goBackBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"))); // NOI18N
         goBackBtn.setBorder(null);
+        goBackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bannerLayout = new javax.swing.GroupLayout(banner);
         banner.setLayout(bannerLayout);
         bannerLayout.setHorizontalGroup(
             bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bannerLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(38, 38, 38)
                 .addComponent(goBackBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 360, Short.MAX_VALUE)
                 .addComponent(title)
@@ -92,8 +105,14 @@ public class RegistrarCliente extends javax.swing.JPanel {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        add(banner);
-        banner.setBounds(0, 0, 970, 80);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 354;
+        gridBagConstraints.ipady = 23;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        add(banner, gridBagConstraints);
 
         Container.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -358,8 +377,14 @@ public class RegistrarCliente extends javax.swing.JPanel {
                 .addGap(15, 15, 15))
         );
 
-        add(Container);
-        Container.setBounds(30, 75, 730, 450);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 178;
+        gridBagConstraints.ipady = -2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 30, 0, 0);
+        add(Container, gridBagConstraints);
 
         ImgBanner.setBackground(new java.awt.Color(255, 255, 255));
         ImgBanner.setToolTipText("");
@@ -380,8 +405,16 @@ public class RegistrarCliente extends javax.swing.JPanel {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
         );
 
-        add(ImgBanner);
-        ImgBanner.setBounds(730, 75, 240, 470);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 60;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 730, 0, 0);
+        add(ImgBanner, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -403,6 +436,12 @@ public class RegistrarCliente extends javax.swing.JPanel {
     private void jComboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
+
+        controller.mostrarPrincipal();
+      
+    }//GEN-LAST:event_goBackBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

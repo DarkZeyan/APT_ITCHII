@@ -13,14 +13,13 @@ public class Controller {
     private RegistrarCliente registrarCliente;
     private RegistrarTarjeta registrarTarjeta;
     private TablaTarjetas tablaTarjetas;
-
-
-    
+    private Screen pantalla;
 
     public Controller(ClientesActivos clientesActivos, CuentasCliente cuentasCliente, Login login,
             Movimientos movimientos, Principal principal, RegistrarCliente registrarCliente,
-            RegistrarTarjeta registrarTarjeta, TablaTarjetas tablaTarjetas) {
-
+            RegistrarTarjeta registrarTarjeta, TablaTarjetas tablaTarjetas, Screen pantalla) {
+        
+        this.pantalla = pantalla;
         this.clientesActivos = clientesActivos;
         this.cuentasCliente = cuentasCliente;
         this.login = login;
@@ -95,60 +94,75 @@ public class Controller {
         this.tablaTarjetas = tablaTarjetas;
     }
 
-    // Metodos para mostrar
-    public void mostrarClientesActivos(JPanel dashboard) {
+    public void mostrarClientesActivos() {
+        JPanel dashboard = pantalla.getDashboard();
         dashboard.removeAll();
         dashboard.add(clientesActivos);
         dashboard.revalidate();
         dashboard.repaint();
     }
 
-    public void mostrarCuentasCliente(JPanel dashboard) {
+    public void mostrarCuentasCliente() {
+        JPanel dashboard = pantalla.getDashboard();
         dashboard.removeAll();
         dashboard.add(cuentasCliente);
         dashboard.revalidate();
         dashboard.repaint();
     }
 
-    public void mostrarLogin(JPanel dashboard) {
+    public void mostrarLogin() {
+        JPanel dashboard = pantalla.getDashboard();
         dashboard.removeAll();
         dashboard.add(login);
         dashboard.revalidate();
         dashboard.repaint();
     }
 
-    public void mostrarMovimientos(JPanel dashboard) {
+    public void mostrarMovimientos() {
+        JPanel dashboard = pantalla.getDashboard();
         dashboard.removeAll();
         dashboard.add(movimientos);
         dashboard.revalidate();
         dashboard.repaint();
     }
 
-    public void mostrarPrincipal(JPanel dashboard) {
+    public void mostrarPrincipal() {
+        JPanel dashboard = pantalla.getDashboard();
         dashboard.removeAll();
         dashboard.add(principal);
         dashboard.revalidate();
         dashboard.repaint();
     }
 
-    public void mostrarRegistrarCliente(JPanel dashboard) {
+    public void mostrarRegistrarCliente() {
+        JPanel dashboard = pantalla.getDashboard();
         dashboard.removeAll();
         dashboard.add(registrarCliente);
         dashboard.revalidate();
         dashboard.repaint();
     }
 
-    public void mostrarRegistrarTarjeta(JPanel dashboard) {
+    public void mostrarRegistrarTarjeta() {
+        JPanel dashboard = pantalla.getDashboard();
         dashboard.removeAll();
         dashboard.add(registrarTarjeta);
         dashboard.revalidate();
         dashboard.repaint();
     }
 
-    public void mostrarTablaTarjetas(JPanel dashboard) {
+    public void mostrarTablaTarjetas() {
+        JPanel dashboard = pantalla.getDashboard();
         dashboard.removeAll();
         dashboard.add(tablaTarjetas);
         dashboard.revalidate();
         dashboard.repaint();
+    }
+
+    public Screen getPantalla() {
+        return pantalla;
+    }
+
+    public void setPantalla(Screen pantalla) {
+        this.pantalla = pantalla;
     }
 }

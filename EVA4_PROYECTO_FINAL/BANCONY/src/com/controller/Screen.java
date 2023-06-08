@@ -16,34 +16,25 @@ public class Screen extends javax.swing.JFrame {
     /**
      * Creates new form Screen
      */
-    public static Controller controller;
-    public static JPanel dashboard;
+    private JPanel dashboard;
 
-    public Controller getController() {
-        return controller;
+    public JPanel getDashboard() {
+        return dashboard;
+    }
+
+    public void setDashboard(JPanel dashboard) {
+        this.dashboard = dashboard;
     }
     
+    
     public Screen() {
-
+        dashboard = new JPanel();
+        dashboard.setSize(970, 548);
         initComponents();
         setIconImage(new ImageIcon("src/com/img/Bancony.png").getImage());
         setLocationRelativeTo(null);
         setTitle("Bancony");
-        ClientesActivos clientesActivos = new ClientesActivos();
-        CuentasCliente cuentasCliente = new CuentasCliente();
-        Login login = new Login();
-        Movimientos movimientos = new Movimientos();
-        Principal principal = new Principal();
-        RegistrarCliente registrarCliente = new RegistrarCliente();
-        RegistrarTarjeta registrarTarjeta = new RegistrarTarjeta();
-        TablaTarjetas tablaTarjetas = new TablaTarjetas();
-
-         controller = new Controller(clientesActivos, cuentasCliente, login, movimientos,
-                principal, registrarCliente, registrarTarjeta, tablaTarjetas);
-        dashboard = (JPanel) this.getContentPane();
-        dashboard.setLayout(null);
-        controller.getLogin().setSize(970, 548);
-        dashboard.add(controller.getLogin());
+        this.add(dashboard);
         setResizable(false);
     }
 
@@ -102,8 +93,32 @@ public class Screen extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-
                 Screen screen = new Screen();
+                JPanel dashboard = screen.getDashboard();
+
+                ClientesActivos clientesActivos = new ClientesActivos();
+                CuentasCliente cuentasCliente = new CuentasCliente();
+                Login login = new Login();
+                Movimientos movimientos = new Movimientos();
+                Principal principal = new Principal();
+                RegistrarCliente registrarCliente = new RegistrarCliente();
+                RegistrarTarjeta registrarTarjeta = new RegistrarTarjeta();
+                TablaTarjetas tablaTarjetas = new TablaTarjetas();
+
+                Controller controller = new Controller(clientesActivos, cuentasCliente, login, movimientos,
+                        principal, registrarCliente, registrarTarjeta, tablaTarjetas, screen);
+                clientesActivos.setController(controller);
+                cuentasCliente.setController(controller);
+                login.setController(controller);
+                movimientos.setController(controller);
+                principal.setController(controller);
+                registrarCliente.setController(controller);
+                registrarTarjeta.setController(controller);
+                tablaTarjetas.setController(controller);
+                
+                dashboard.setLayout(null);
+                controller.mostrarLogin();
+
                 screen.setVisible(true);
             }
         });

@@ -92,7 +92,7 @@ public class Persona {
         this.sexo = sexo;
     }
 
-    private boolean curpValida(String curp) throws CurpInvalida{
+    public boolean curpValida(String curp) throws CurpInvalida{
         final char[] vocales = { 'A', 'E', 'I', 'O', 'U' };
         final char[] consonantes = { 'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', '\u00d1', 'P', 'Q', 'R', 'S',
                 'T', 'V', 'X', 'Z', 'W', 'Y' };
@@ -662,16 +662,5 @@ public class Persona {
                 return true;
         }
         return false;
-    }
-}
-
-class CurpInvalida extends Exception {
-   
-    public CurpInvalida(String msg){
-        super(msg);
-    }
-    
-    public CurpInvalida() {
-        super("La CURP insertada no es valida para esta persona");
     }
 }

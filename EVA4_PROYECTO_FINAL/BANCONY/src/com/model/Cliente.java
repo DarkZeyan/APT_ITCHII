@@ -24,6 +24,10 @@ public class Cliente extends Persona{
         setC_cliente(c_cliente);
     }
 
+    @Override
+    public String toString(){
+        return getCurp()+" "+getNombre()+" "+getPaterno()+" "+getMaterno();
+    }
     
     
 }

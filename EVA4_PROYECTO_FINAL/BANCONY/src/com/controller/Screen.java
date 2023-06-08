@@ -17,6 +17,7 @@ public class Screen extends javax.swing.JFrame {
      * Creates new form Screen
      */
     public static Controller controller;
+    public static JPanel dashboard;
 
     public Controller getController() {
         return controller;
@@ -39,9 +40,10 @@ public class Screen extends javax.swing.JFrame {
 
          controller = new Controller(clientesActivos, cuentasCliente, login, movimientos,
                 principal, registrarCliente, registrarTarjeta, tablaTarjetas);
-        getContentPane().setLayout(null);
+        dashboard = (JPanel) this.getContentPane();
+        dashboard.setLayout(null);
         controller.getLogin().setSize(970, 548);
-        getContentPane().add(controller.getLogin());
+        dashboard.add(controller.getLogin());
         setResizable(false);
     }
 

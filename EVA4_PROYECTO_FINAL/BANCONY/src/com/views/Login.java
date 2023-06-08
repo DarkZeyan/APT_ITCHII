@@ -111,7 +111,7 @@ public class Login extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInBtnActionPerformed
-       Screen.controller.mostrarPrincipal(this);
+       Screen.controller.mostrarPrincipal(Screen.dashboard);
     }//GEN-LAST:event_signInBtnActionPerformed
 
 

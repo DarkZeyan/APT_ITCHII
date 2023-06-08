@@ -28,7 +28,7 @@ public class RegistrarTarjeta extends javax.swing.JPanel {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        goBackBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
@@ -49,7 +49,7 @@ public class RegistrarTarjeta extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(255, 0, 0));
 
@@ -57,17 +57,18 @@ public class RegistrarTarjeta extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Registrar nueva tarjeta");
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"))); // NOI18N
+        goBackBtn.setBackground(new java.awt.Color(255, 0, 0));
+        goBackBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"))); // NOI18N
+        goBackBtn.setBorder(null);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel3)
-                .addGap(338, 338, 338)
+                .addGap(37, 37, 37)
+                .addComponent(goBackBtn)
+                .addGap(333, 333, 333)
                 .addComponent(jLabel1)
                 .addContainerGap(369, Short.MAX_VALUE))
         );
@@ -76,12 +77,13 @@ public class RegistrarTarjeta extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(goBackBtn)
                     .addComponent(jLabel1))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 80));
+        add(jPanel2);
+        jPanel2.setBounds(0, 0, 970, 80);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -264,7 +266,8 @@ public class RegistrarTarjeta extends javax.swing.JPanel {
                 .addContainerGap(122, Short.MAX_VALUE))
         );
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 730, 450));
+        add(jPanel3);
+        jPanel3.setBounds(20, 80, 730, 450);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setToolTipText("");
@@ -286,7 +289,8 @@ public class RegistrarTarjeta extends javax.swing.JPanel {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 80, 240, 450));
+        add(jPanel4);
+        jPanel4.setBounds(730, 80, 240, 450);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -303,6 +307,7 @@ public class RegistrarTarjeta extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton goBackBtn;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
@@ -313,7 +318,6 @@ public class RegistrarTarjeta extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

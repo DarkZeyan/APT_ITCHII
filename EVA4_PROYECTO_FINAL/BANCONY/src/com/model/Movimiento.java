@@ -10,16 +10,26 @@ public class Movimiento {
     private Fecha fechaMovimiento;
     private byte tipoMovimiento;
     private double cantidad;
-    
-    public Movimiento(int clave, byte tipoMovimiento, double cantidad,Fecha fechaMovimiento) {
+    private Tarjeta tarjeta;
+    public Movimiento(int clave, byte tipoMovimiento, double cantidad,Fecha fechaMovimiento,Tarjeta tarjeta) {
         setClave(clave);
         setCantidad(cantidad);
         setTipoMovimiento(tipoMovimiento);
         setFechaMovimiento(fechaMovimiento);
+        setTarjeta(tarjeta);
     }
     public int getClave() {
         return clave;
     }
+
+    public Tarjeta getTarjeta() {
+        return tarjeta;
+    }
+
+    public void setTarjeta(Tarjeta tarjeta) {
+        this.tarjeta = tarjeta;
+    }
+    
     public void setClave(int clave) {
         this.clave = clave;
     }

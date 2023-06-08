@@ -78,7 +78,7 @@ public class Fecha {
     }
     
     public String toString() {
-        return ""+dia+"/"+mes+"/"+año;
+        return "año"+"-"+mes+"-"+dia;
     }
     
 }

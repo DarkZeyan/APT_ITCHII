@@ -37,9 +37,17 @@ public class ClienteDAO {
             ps.setString(7, cliente.getCurp());
             ps.setString(8, cliente.getFechadeNacimiento().toString());
             ps.executeUpdate();
+            ResultSet query;
+            query = conexion.prepareStatement("SELECT LAST_INSERT_ID()").executeQuery();
+            if(query.next()){
+                cliente.setC_cliente(query.getInt(1));
+            }else{
+                cliente = null;
+            }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se pudo añadir al cliente");
-            return null;
+            cliente = null;
+            return cliente;
         }
         return cliente;
     }
@@ -77,7 +85,7 @@ public class ClienteDAO {
         return numRegistrosMod;
     }
 
-    public Cliente consultarDAO(int c_cliente) {
+    public Cliente consultarClienteDAO(int c_cliente) {
         String qrySelect;
         qrySelect = "SELECT * from clientes WHERE c_cliente = ?";
         PreparedStatement ps;
@@ -115,14 +123,37 @@ public class ClienteDAO {
         return null;
     }
 
-    public int eliminarDAO(Cliente cliente) {
+    public int eliminarCuentaDAO(Cliente cliente) {
         int numRegistrosEliminados=0;
         try {
+            
+
             String qryDelete = "DELETE FROM clientes WHERE c_cliente = ?";
             PreparedStatement ps;
+            String qryInsert = "INSERT INTO clientesInactivos(nombre, apellido_paterno, apellido_materno, celular, estadoNacimiento, " +
+                    "sexo, curp, fechaNacimiento) "
+                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+            ps = conexion.prepareStatement(qryInsert);
+            ps.setString(1, cliente.getNombre());
+            ps.setString(2, cliente.getPaterno());
+            ps.setString(3, cliente.getMaterno());
+            ps.setString(4, cliente.getCelular());
+            ps.setString(5, cliente.getEstadoDeNacimiento());
+            ps.setString(6, String.valueOf(cliente.getSexo()));
+            ps.setString(7, cliente.getCurp());
+            ps.setString(8, cliente.getFechadeNacimiento().toString());
+            ps.executeUpdate();
+            ResultSet query;
+            query = conexion.prepareStatement("SELECT LAST_INSERT_ID()").executeQuery();
+            if(query.next()){
+                cliente.setC_cliente(query.getInt(1));
+            }else{
+                cliente = null;
+            }
             ps = conexion.prepareStatement(qryDelete);
             ps.setInt(1, cliente.getC_cliente());
             numRegistrosEliminados =ps.executeUpdate();
+            
         } catch (SQLException e) {
             // TODO: handle exception
 

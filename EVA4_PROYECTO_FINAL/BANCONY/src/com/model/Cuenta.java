@@ -16,7 +16,7 @@ public class Cuenta {
    private Fecha fechaCorte;
    private Fecha fechaCreacion;
 
-    public Cuenta(Cliente cliente, int c_cuenta, String numerocuenta, double tasainteres, Fecha fechaPago, Fecha fechaCorte, Fecha fechaCreacion, List<Tarjeta> tarjetas) {
+    public Cuenta(Cliente cliente, int c_cuenta, String numerocuenta, double tasainteres, Fecha fechaPago, Fecha fechaCorte, Fecha fechaCreacion) {
         setCliente(cliente);
         setC_cuenta(c_cuenta);
         setNumerocuenta(numerocuenta);
@@ -25,8 +25,7 @@ public class Cuenta {
         setFechaCorte(fechaCorte);
         setFechaCreacion(fechaCreacion);
     }
-    public Cuenta(Cliente cliente, String numerocuenta, double tasainteres, Fecha fechaPago, Fecha fechaCorte, Fecha fechaCreacion, List<Tarjeta> tarjetas) {
-        setCliente(cliente);
+    public Cuenta(int c_cuenta, String numerocuenta, double tasainteres, Fecha fechaPago, Fecha fechaCorte, Fecha fechaCreacion) {
         setNumerocuenta(numerocuenta);
         setTasainteres(tasainteres);
         setFechaPago(fechaPago);

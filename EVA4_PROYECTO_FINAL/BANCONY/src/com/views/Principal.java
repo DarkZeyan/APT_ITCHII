@@ -5,6 +5,7 @@ package com.views;
 
 import com.controller.Controller;
 import com.controller.Screen;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,12 +16,12 @@ public class Principal extends javax.swing.JPanel {
     /**
      * Creates new form Principal1
      */
-        private Controller controller;
+    private Controller controller;
 
     public void setController(Controller controller) {
         this.controller = controller;
     }
-    
+
     public Principal() {
         initComponents();
         setSize(970, 548);
@@ -141,6 +142,11 @@ public class Principal extends javax.swing.JPanel {
         btnClientHistory.setText("Historial de clientes");
         btnClientHistory.setBorder(null);
         btnClientHistory.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClientHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientHistoryActionPerformed(evt);
+            }
+        });
 
         iconAddClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/agregar-contacto.png"))); // NOI18N
 
@@ -158,6 +164,11 @@ public class Principal extends javax.swing.JPanel {
         btnLogout.setText("Cerrar sesión");
         btnLogout.setBorder(null);
         btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -224,12 +235,23 @@ public class Principal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddClientActionPerformed
-       controller.mostrarRegistrarCliente();
+        controller.mostrarRegistrarCliente();
     }//GEN-LAST:event_btnAddClientActionPerformed
 
     private void btnActiveClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActiveClientsActionPerformed
-      controller.mostrarClientesActivos();
+        controller.mostrarClientesActivos();
     }//GEN-LAST:event_btnActiveClientsActionPerformed
+
+    private void btnClientHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientHistoryActionPerformed
+        controller.mostrarClientesInactivos();
+    }//GEN-LAST:event_btnClientHistoryActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "¿Deseas salir de la aplicación?", "ADVERTENCIA",
+                JOptionPane.YES_NO_OPTION,JOptionPane.CANCEL_OPTION) == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -127,10 +127,10 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel12" min="-2" pref="71" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField1" min="-2" pref="92" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="222" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -588,6 +588,9 @@
                   <Color PropertyName="color" blue="0" green="0" red="ff" type="rgb"/>
                 </LineBorder>
               </Border>
+            </Property>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[64, 21]"/>
             </Property>
           </Properties>
         </Component>

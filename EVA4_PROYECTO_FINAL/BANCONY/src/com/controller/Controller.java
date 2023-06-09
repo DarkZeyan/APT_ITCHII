@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 public class Controller {
 
     private ClientesActivos clientesActivos;
+    private ClientesInactivos clientesInactivos;
     private CuentasCliente cuentasCliente;
     private Login login;
     private Movimientos movimientos;
@@ -15,11 +16,12 @@ public class Controller {
     private TablaTarjetas tablaTarjetas;
     private Screen pantalla;
 
-    public Controller(ClientesActivos clientesActivos, CuentasCliente cuentasCliente, Login login,
+    public Controller(ClientesActivos clientesActivos, ClientesInactivos clientesInactivos, CuentasCliente cuentasCliente, Login login,
             Movimientos movimientos, Principal principal, RegistrarCliente registrarCliente,
             RegistrarTarjeta registrarTarjeta, TablaTarjetas tablaTarjetas, Screen pantalla) {
         
         this.pantalla = pantalla;
+        this.clientesInactivos=clientesInactivos;
         this.clientesActivos = clientesActivos;
         this.cuentasCliente = cuentasCliente;
         this.login = login;
@@ -29,7 +31,7 @@ public class Controller {
         this.registrarTarjeta = registrarTarjeta;
         this.tablaTarjetas = tablaTarjetas;
     }
-
+    
     public ClientesActivos getClientesActivos() {
         return clientesActivos;
     }
@@ -101,6 +103,13 @@ public class Controller {
         dashboard.revalidate();
         dashboard.repaint();
     }
+    public void mostrarClientesInactivos() {
+        JPanel dashboard = pantalla.getDashboard();
+        dashboard.removeAll();
+        dashboard.add(clientesInactivos);
+        dashboard.revalidate();
+        dashboard.repaint();
+    }
 
     public void mostrarCuentasCliente() {
         JPanel dashboard = pantalla.getDashboard();
@@ -164,5 +173,13 @@ public class Controller {
 
     public void setPantalla(Screen pantalla) {
         this.pantalla = pantalla;
+    }
+
+    public ClientesInactivos getClientesInactivos() {
+        return clientesInactivos;
+    }
+
+    public void setClientesInactivos(ClientesInactivos clientesInactivos) {
+        this.clientesInactivos = clientesInactivos;
     }
 }

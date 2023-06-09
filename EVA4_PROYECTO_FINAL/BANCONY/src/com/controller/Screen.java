@@ -97,6 +97,7 @@ public class Screen extends javax.swing.JFrame {
                 JPanel dashboard = screen.getDashboard();
 
                 ClientesActivos clientesActivos = new ClientesActivos();
+                ClientesInactivos clientesInactivos = new ClientesInactivos();
                 CuentasCliente cuentasCliente = new CuentasCliente();
                 Login login = new Login();
                 Movimientos movimientos = new Movimientos();
@@ -105,9 +106,10 @@ public class Screen extends javax.swing.JFrame {
                 RegistrarTarjeta registrarTarjeta = new RegistrarTarjeta();
                 TablaTarjetas tablaTarjetas = new TablaTarjetas();
 
-                Controller controller = new Controller(clientesActivos, cuentasCliente, login, movimientos,
+                Controller controller = new Controller(clientesActivos, clientesInactivos, cuentasCliente, login, movimientos,
                         principal, registrarCliente, registrarTarjeta, tablaTarjetas, screen);
                 clientesActivos.setController(controller);
+                clientesInactivos.setController(controller);
                 cuentasCliente.setController(controller);
                 login.setController(controller);
                 movimientos.setController(controller);

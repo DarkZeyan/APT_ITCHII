@@ -67,6 +67,11 @@ public class RegistrarTarjeta extends javax.swing.JPanel {
         goBackBtn.setBackground(new java.awt.Color(255, 0, 0));
         goBackBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"))); // NOI18N
         goBackBtn.setBorder(null);
+        goBackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -311,6 +316,11 @@ public class RegistrarTarjeta extends javax.swing.JPanel {
     private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox5ActionPerformed
+
+    private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
+    controller.mostrarPrincipal();
+      
+    }//GEN-LAST:event_goBackBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

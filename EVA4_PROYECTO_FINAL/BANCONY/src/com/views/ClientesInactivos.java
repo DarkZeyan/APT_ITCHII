@@ -43,8 +43,6 @@ public class ClientesInactivos extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(null);
@@ -59,6 +57,11 @@ public class ClientesInactivos extends javax.swing.JPanel {
         goBackBtn.setBackground(new java.awt.Color(255, 0, 0));
         goBackBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"))); // NOI18N
         goBackBtn.setBorder(null);
+        goBackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bannerLayout = new javax.swing.GroupLayout(banner);
         banner.setLayout(bannerLayout);
@@ -127,12 +130,12 @@ public class ClientesInactivos extends javax.swing.JPanel {
         jButton3.setBorder(null);
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(jButton3);
-        jButton3.setBounds(760, 200, 133, 40);
+        jButton3.setBounds(720, 250, 133, 40);
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/agregar-contacto.png"))); // NOI18N
         add(jLabel6);
-        jLabel6.setBounds(800, 130, 64, 64);
+        jLabel6.setBounds(760, 180, 64, 64);
 
         jButton4.setBackground(new java.awt.Color(255, 0, 0));
         jButton4.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
@@ -142,28 +145,18 @@ public class ClientesInactivos extends javax.swing.JPanel {
         jButton4.setBorder(null);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(jButton4);
-        jButton4.setBounds(760, 340, 133, 40);
+        jButton4.setBounds(720, 390, 133, 40);
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/modificar.png"))); // NOI18N
         add(jLabel7);
-        jLabel7.setBounds(800, 270, 64, 64);
-
-        jButton5.setBackground(new java.awt.Color(255, 0, 0));
-        jButton5.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Ver cuentas");
-        jButton5.setToolTipText("");
-        jButton5.setBorder(null);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton5);
-        jButton5.setBounds(760, 470, 133, 40);
-
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/cuentas-cliente.png"))); // NOI18N
-        add(jLabel8);
-        jLabel8.setBounds(800, 400, 64, 64);
+        jLabel7.setBounds(760, 320, 64, 64);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
+         controller.mostrarPrincipal();
+      
+    }//GEN-LAST:event_goBackBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -171,11 +164,9 @@ public class ClientesInactivos extends javax.swing.JPanel {
     private javax.swing.JButton goBackBtn;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

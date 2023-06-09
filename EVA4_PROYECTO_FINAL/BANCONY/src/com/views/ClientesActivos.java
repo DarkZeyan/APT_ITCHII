@@ -14,13 +14,12 @@ public class ClientesActivos extends javax.swing.JPanel {
     /**
      * Creates new form ClientesActivos1
      */
-    
-      private Controller controller;
+    private Controller controller;
 
     public void setController(Controller controller) {
         this.controller = controller;
     }
-    
+
     public ClientesActivos() {
         initComponents();
         setSize(970, 548);
@@ -60,6 +59,11 @@ public class ClientesActivos extends javax.swing.JPanel {
         goBackBtn.setBackground(new java.awt.Color(255, 0, 0));
         goBackBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"))); // NOI18N
         goBackBtn.setBorder(null);
+        goBackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bannerLayout = new javax.swing.GroupLayout(banner);
         banner.setLayout(bannerLayout);
@@ -165,6 +169,11 @@ public class ClientesActivos extends javax.swing.JPanel {
         add(jLabel8);
         jLabel8.setBounds(800, 400, 64, 64);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
+        controller.mostrarPrincipal();
+
+    }//GEN-LAST:event_goBackBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -222,6 +222,7 @@ public class RegistrarCliente extends javax.swing.JPanel {
         jTextField1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(0, 0, 0));
         jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
+        jTextField1.setMaximumSize(new java.awt.Dimension(64, 21));
 
         jLabel13.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
@@ -291,8 +292,8 @@ public class RegistrarCliente extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(222, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContainerLayout.createSequentialGroup()
                 .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ContainerLayout.createSequentialGroup()

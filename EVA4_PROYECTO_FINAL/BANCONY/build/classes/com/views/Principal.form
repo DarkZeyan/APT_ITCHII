@@ -244,6 +244,9 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClientHistoryActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="iconAddClient">
           <Properties>
@@ -294,6 +297,9 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

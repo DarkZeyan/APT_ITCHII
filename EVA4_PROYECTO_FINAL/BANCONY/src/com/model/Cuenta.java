@@ -25,6 +25,15 @@ public class Cuenta {
         setFechaCorte(fechaCorte);
         setFechaCreacion(fechaCreacion);
     }
+    public Cuenta(Cliente cliente, String numerocuenta, double tasainteres, Fecha fechaPago, Fecha fechaCorte, Fecha fechaCreacion, List<Tarjeta> tarjetas) {
+        setCliente(cliente);
+        setNumerocuenta(numerocuenta);
+        setTasainteres(tasainteres);
+        setFechaPago(fechaPago);
+        setFechaCorte(fechaCorte);
+        setFechaCreacion(fechaCreacion);
+    }
+    
 
     public Cliente getCliente() {
         return cliente;

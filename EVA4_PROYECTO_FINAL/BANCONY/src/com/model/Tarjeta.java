@@ -26,6 +26,15 @@ public class Tarjeta {
         setLimite_credito(limite_credito);
     }
 
+    public Tarjeta(String numero_tarjeta, Cuenta cuenta, Fecha fecha_anualidad, double anualidad, List<Movimiento> movimientos, double limite_credito) {
+        setNumero_tarjeta(numero_tarjeta);
+        setCuenta(cuenta);
+        setFecha_anualidad(fecha_anualidad);
+        setAnualidad(anualidad);
+        setMovimientos(movimientos);
+        setLimite_credito(limite_credito);
+    }
+
     public int getClave_tarjeta() {
         return clave_tarjeta;
     }

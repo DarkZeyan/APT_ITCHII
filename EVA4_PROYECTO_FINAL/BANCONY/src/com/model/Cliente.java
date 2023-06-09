@@ -26,6 +26,11 @@ public class Cliente extends Persona{
         setC_cliente(c_cliente);
     }
 
+    
+    public Cliente(String curp, String paterno, String materno, String nombre, String celular,
+            Fecha fechadeNacimiento, String estadoDeNacimiento, char sexo) throws CurpInvalida {
+        super(curp, paterno, materno, nombre, celular, fechadeNacimiento, estadoDeNacimiento, sexo);
+    }
     @Override
     public String toString(){
         return getCurp()+" "+getNombre()+" "+getPaterno()+" "+getMaterno();

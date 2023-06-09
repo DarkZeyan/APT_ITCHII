@@ -35,24 +35,24 @@ public class ClientesInactivos extends javax.swing.JPanel {
     private void initComponents() {
 
         banner = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         goBackBtn = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        tableContainer = new javax.swing.JScrollPane();
+        tableInactive = new javax.swing.JTable();
+        reactivarCliente = new javax.swing.JButton();
+        lblReactivar = new javax.swing.JLabel();
+        btnModifyCliente = new javax.swing.JButton();
+        lblModify = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(null);
 
         banner.setBackground(new java.awt.Color(255, 0, 0));
 
-        jLabel1.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Clientes inactivos");
+        title.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        title.setForeground(new java.awt.Color(255, 255, 255));
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("Clientes inactivos");
 
         goBackBtn.setBackground(new java.awt.Color(255, 0, 0));
         goBackBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"))); // NOI18N
@@ -71,7 +71,7 @@ public class ClientesInactivos extends javax.swing.JPanel {
                 .addGap(27, 27, 27)
                 .addComponent(goBackBtn)
                 .addGap(374, 374, 374)
-                .addComponent(jLabel1)
+                .addComponent(title)
                 .addContainerGap(383, Short.MAX_VALUE))
         );
         bannerLayout.setVerticalGroup(
@@ -80,18 +80,18 @@ public class ClientesInactivos extends javax.swing.JPanel {
                 .addGap(19, 19, 19)
                 .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(goBackBtn)
-                    .addComponent(jLabel1))
+                    .addComponent(title))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
         add(banner);
         banner.setBounds(0, 0, 970, 90);
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
-        jTable1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableInactive.setBackground(new java.awt.Color(255, 255, 255));
+        tableInactive.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
+        tableInactive.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        tableInactive.setForeground(new java.awt.Color(255, 255, 255));
+        tableInactive.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -114,43 +114,43 @@ public class ClientesInactivos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jTable1.setGridColor(new java.awt.Color(255, 0, 0));
-        jTable1.setSelectionBackground(new java.awt.Color(255, 102, 102));
-        jScrollPane1.setViewportView(jTable1);
+        tableInactive.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tableInactive.setGridColor(new java.awt.Color(255, 0, 0));
+        tableInactive.setSelectionBackground(new java.awt.Color(255, 102, 102));
+        tableContainer.setViewportView(tableInactive);
 
-        add(jScrollPane1);
-        jScrollPane1.setBounds(110, 110, 430, 410);
+        add(tableContainer);
+        tableContainer.setBounds(110, 110, 430, 410);
 
-        jButton3.setBackground(new java.awt.Color(255, 0, 0));
-        jButton3.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Reactivar cliente");
-        jButton3.setToolTipText("");
-        jButton3.setBorder(null);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton3);
-        jButton3.setBounds(720, 250, 133, 40);
+        reactivarCliente.setBackground(new java.awt.Color(255, 0, 0));
+        reactivarCliente.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
+        reactivarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        reactivarCliente.setText("Reactivar cliente");
+        reactivarCliente.setToolTipText("");
+        reactivarCliente.setBorder(null);
+        reactivarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(reactivarCliente);
+        reactivarCliente.setBounds(720, 250, 133, 40);
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/agregar-contacto.png"))); // NOI18N
-        add(jLabel6);
-        jLabel6.setBounds(760, 180, 64, 64);
+        lblReactivar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblReactivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/agregar-contacto.png"))); // NOI18N
+        add(lblReactivar);
+        lblReactivar.setBounds(760, 180, 64, 64);
 
-        jButton4.setBackground(new java.awt.Color(255, 0, 0));
-        jButton4.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Modificar cliente");
-        jButton4.setToolTipText("");
-        jButton4.setBorder(null);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton4);
-        jButton4.setBounds(720, 390, 133, 40);
+        btnModifyCliente.setBackground(new java.awt.Color(255, 0, 0));
+        btnModifyCliente.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
+        btnModifyCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnModifyCliente.setText("Modificar cliente");
+        btnModifyCliente.setToolTipText("");
+        btnModifyCliente.setBorder(null);
+        btnModifyCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(btnModifyCliente);
+        btnModifyCliente.setBounds(720, 390, 133, 40);
 
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/modificar.png"))); // NOI18N
-        add(jLabel7);
-        jLabel7.setBounds(760, 320, 64, 64);
+        lblModify.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblModify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/modificar.png"))); // NOI18N
+        add(lblModify);
+        lblModify.setBounds(760, 320, 64, 64);
     }// </editor-fold>//GEN-END:initComponents
 
     private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
@@ -161,13 +161,13 @@ public class ClientesInactivos extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel banner;
+    private javax.swing.JButton btnModifyCliente;
     private javax.swing.JButton goBackBtn;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblModify;
+    private javax.swing.JLabel lblReactivar;
+    private javax.swing.JButton reactivarCliente;
+    private javax.swing.JScrollPane tableContainer;
+    private javax.swing.JTable tableInactive;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

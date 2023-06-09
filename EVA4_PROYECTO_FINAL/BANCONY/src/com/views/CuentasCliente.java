@@ -37,23 +37,23 @@ public class CuentasCliente extends javax.swing.JPanel {
     private void initComponents() {
 
         banner = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         goBackBtn = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        tableContainer = new javax.swing.JScrollPane();
+        tableCuentas = new javax.swing.JTable();
+        addAccountBtn = new javax.swing.JButton();
+        deleteAccBtn = new javax.swing.JButton();
+        verTarjetasBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         banner.setBackground(new java.awt.Color(255, 0, 0));
 
-        jLabel1.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Cuentas del cliente");
+        title.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        title.setForeground(new java.awt.Color(255, 255, 255));
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("Cuentas del cliente");
 
         goBackBtn.setBackground(new java.awt.Color(255, 0, 0));
         goBackBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"))); // NOI18N
@@ -67,7 +67,7 @@ public class CuentasCliente extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addComponent(goBackBtn)
                 .addGap(359, 359, 359)
-                .addComponent(jLabel1)
+                .addComponent(title)
                 .addContainerGap(388, Short.MAX_VALUE))
         );
         bannerLayout.setVerticalGroup(
@@ -76,17 +76,17 @@ public class CuentasCliente extends javax.swing.JPanel {
                 .addGap(29, 29, 29)
                 .addGroup(bannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(goBackBtn)
-                    .addComponent(jLabel1))
+                    .addComponent(title))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
         add(banner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 90));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
-        jTable1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableCuentas.setBackground(new java.awt.Color(255, 255, 255));
+        tableCuentas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
+        tableCuentas.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        tableCuentas.setForeground(new java.awt.Color(255, 255, 255));
+        tableCuentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -109,50 +109,50 @@ public class CuentasCliente extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jTable1.setGridColor(new java.awt.Color(255, 0, 0));
-        jTable1.setSelectionBackground(new java.awt.Color(255, 102, 102));
-        jScrollPane1.setViewportView(jTable1);
+        tableCuentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tableCuentas.setGridColor(new java.awt.Color(255, 0, 0));
+        tableCuentas.setSelectionBackground(new java.awt.Color(255, 102, 102));
+        tableContainer.setViewportView(tableCuentas);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 430, 350));
+        add(tableContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 430, 350));
 
-        jButton3.setBackground(new java.awt.Color(255, 0, 0));
-        jButton3.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Añadir cuenta");
-        jButton3.setToolTipText("");
-        jButton3.setBorder(null);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 133, 40));
+        addAccountBtn.setBackground(new java.awt.Color(255, 0, 0));
+        addAccountBtn.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
+        addAccountBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addAccountBtn.setText("Añadir cuenta");
+        addAccountBtn.setToolTipText("");
+        addAccountBtn.setBorder(null);
+        addAccountBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(addAccountBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 133, 40));
 
-        jButton4.setBackground(new java.awt.Color(255, 0, 0));
-        jButton4.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Eliminar cuenta");
-        jButton4.setToolTipText("");
-        jButton4.setBorder(null);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 460, 133, 40));
+        deleteAccBtn.setBackground(new java.awt.Color(255, 0, 0));
+        deleteAccBtn.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
+        deleteAccBtn.setForeground(new java.awt.Color(255, 255, 255));
+        deleteAccBtn.setText("Eliminar cuenta");
+        deleteAccBtn.setToolTipText("");
+        deleteAccBtn.setBorder(null);
+        deleteAccBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(deleteAccBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 460, 133, 40));
 
-        jButton5.setBackground(new java.awt.Color(255, 0, 0));
-        jButton5.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Ver tarjetas");
-        jButton5.setToolTipText("");
-        jButton5.setBorder(null);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, 133, 40));
+        verTarjetasBtn.setBackground(new java.awt.Color(255, 0, 0));
+        verTarjetasBtn.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
+        verTarjetasBtn.setForeground(new java.awt.Color(255, 255, 255));
+        verTarjetasBtn.setText("Ver tarjetas");
+        verTarjetasBtn.setToolTipText("");
+        verTarjetasBtn.setBorder(null);
+        verTarjetasBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(verTarjetasBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, 133, 40));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addAccountBtn;
     private javax.swing.JPanel banner;
+    private javax.swing.JButton deleteAccBtn;
     private javax.swing.JButton goBackBtn;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane tableContainer;
+    private javax.swing.JTable tableCuentas;
+    private javax.swing.JLabel title;
+    private javax.swing.JButton verTarjetasBtn;
     // End of variables declaration//GEN-END:variables
 }

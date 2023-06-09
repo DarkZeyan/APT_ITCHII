@@ -36,11 +36,11 @@ public class TablaTarjetas extends javax.swing.JPanel {
         banner = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         goBackBtn = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        cardsContainer = new javax.swing.JScrollPane();
+        cardsTable = new javax.swing.JTable();
+        addCardBtn = new javax.swing.JButton();
+        deleteCardBtn = new javax.swing.JButton();
+        movBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(null);
@@ -80,11 +80,11 @@ public class TablaTarjetas extends javax.swing.JPanel {
         add(banner);
         banner.setBounds(0, 0, 970, 90);
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
-        jTable1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        cardsTable.setBackground(new java.awt.Color(255, 255, 255));
+        cardsTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
+        cardsTable.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        cardsTable.setForeground(new java.awt.Color(255, 255, 255));
+        cardsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -107,54 +107,63 @@ public class TablaTarjetas extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jTable1.setGridColor(new java.awt.Color(255, 0, 0));
-        jTable1.setSelectionBackground(new java.awt.Color(255, 102, 102));
-        jScrollPane1.setViewportView(jTable1);
+        cardsTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cardsTable.setGridColor(new java.awt.Color(255, 0, 0));
+        cardsTable.setSelectionBackground(new java.awt.Color(255, 102, 102));
+        cardsContainer.setViewportView(cardsTable);
 
-        add(jScrollPane1);
-        jScrollPane1.setBounds(150, 110, 700, 350);
+        add(cardsContainer);
+        cardsContainer.setBounds(150, 110, 700, 350);
 
-        jButton3.setBackground(new java.awt.Color(255, 0, 0));
-        jButton3.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Añadir tarjeta");
-        jButton3.setToolTipText("");
-        jButton3.setBorder(null);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton3);
-        jButton3.setBounds(270, 470, 133, 40);
+        addCardBtn.setBackground(new java.awt.Color(255, 0, 0));
+        addCardBtn.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
+        addCardBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addCardBtn.setText("Añadir tarjeta");
+        addCardBtn.setToolTipText("");
+        addCardBtn.setBorder(null);
+        addCardBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(addCardBtn);
+        addCardBtn.setBounds(270, 470, 133, 40);
 
-        jButton4.setBackground(new java.awt.Color(255, 0, 0));
-        jButton4.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Eliminar tarjeta");
-        jButton4.setToolTipText("");
-        jButton4.setBorder(null);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton4);
-        jButton4.setBounds(570, 470, 133, 40);
+        deleteCardBtn.setBackground(new java.awt.Color(255, 0, 0));
+        deleteCardBtn.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
+        deleteCardBtn.setForeground(new java.awt.Color(255, 255, 255));
+        deleteCardBtn.setText("Eliminar tarjeta");
+        deleteCardBtn.setToolTipText("");
+        deleteCardBtn.setBorder(null);
+        deleteCardBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add(deleteCardBtn);
+        deleteCardBtn.setBounds(570, 470, 133, 40);
 
-        jButton5.setBackground(new java.awt.Color(255, 0, 0));
-        jButton5.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Ver movimientos");
-        jButton5.setToolTipText("");
-        jButton5.setBorder(null);
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton5);
-        jButton5.setBounds(420, 470, 133, 40);
+        movBtn.setBackground(new java.awt.Color(255, 0, 0));
+        movBtn.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
+        movBtn.setForeground(new java.awt.Color(255, 255, 255));
+        movBtn.setText("Ver movimientos");
+        movBtn.setToolTipText("");
+        movBtn.setBorder(null);
+        movBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        movBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                movBtnActionPerformed(evt);
+            }
+        });
+        add(movBtn);
+        movBtn.setBounds(420, 470, 133, 40);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void movBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_movBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addCardBtn;
     private javax.swing.JPanel banner;
+    private javax.swing.JScrollPane cardsContainer;
+    private javax.swing.JTable cardsTable;
+    private javax.swing.JButton deleteCardBtn;
     private javax.swing.JButton goBackBtn;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton movBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -56,6 +56,11 @@ public class Movimientos extends javax.swing.JPanel {
         goBackBtn.setBackground(new java.awt.Color(255, 0, 0));
         goBackBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"))); // NOI18N
         goBackBtn.setBorder(null);
+        goBackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bannerLayout = new javax.swing.GroupLayout(banner);
         banner.setLayout(bannerLayout);
@@ -136,6 +141,10 @@ public class Movimientos extends javax.swing.JPanel {
         add(jButton4);
         jButton4.setBounds(520, 480, 133, 40);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
+        controller.mostrarTablaTarjetas();
+    }//GEN-LAST:event_goBackBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -7,6 +7,7 @@ import com.controller.Controller;
 import com.model.Cliente;
 import com.model.ClienteDAO;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,38 +28,37 @@ public class ClientesActivos extends javax.swing.JPanel {
     public ClientesActivos() {
         initComponents();
         setSize(970, 548);
-        
+
     }
 
-    
-    private void cargarClientes(Controller controller){
+    private void cargarClientes(Controller controller) {
         DefaultTableModel dt = (DefaultTableModel) TablaClientes.getModel();
-        List<Cliente> clientes = controller.getLogicaCliente().getListaClientes(); 
-        
-         int i=0;
-        while(dt.getRowCount()!=clientes.size()){
-           
+        List<Cliente> clientes = controller.getLogicaCliente().getListaClientes();
+
+        int i = 0;
+        while (dt.getRowCount() != clientes.size()) {
+
             dt.addRow(new Object[]{
                 clientes.get(i).getC_cliente(),
                 clientes.get(i).getCurp(),
                 clientes.get(i).getNombre()
             });
-            System.out.println("Entro "+ clientes.get(i).getNombre());
+            System.out.println("Entro " + clientes.get(i).getNombre());
             i++;
         }
         TablaClientes.setModel(dt);
     }
-    
-    public void limpiarTabla(){
+
+    public void limpiarTabla() {
         DefaultTableModel dt = (DefaultTableModel) TablaClientes.getModel();
         dt.setRowCount(0);
         TablaClientes.setModel(dt);
     }
-    
-    public void llenarTabla(){
+
+    public void llenarTabla() {
         cargarClientes(controller);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -165,6 +165,11 @@ public class ClientesActivos extends javax.swing.JPanel {
         removeClientBtn.setToolTipText("");
         removeClientBtn.setBorder(null);
         removeClientBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        removeClientBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeClientBtnActionPerformed(evt);
+            }
+        });
         add(removeClientBtn);
         removeClientBtn.setBounds(760, 200, 133, 40);
 
@@ -195,6 +200,11 @@ public class ClientesActivos extends javax.swing.JPanel {
         accountsBtn.setToolTipText("");
         accountsBtn.setBorder(null);
         accountsBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        accountsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accountsBtnActionPerformed(evt);
+            }
+        });
         add(accountsBtn);
         accountsBtn.setBounds(760, 470, 133, 40);
 
@@ -208,6 +218,28 @@ public class ClientesActivos extends javax.swing.JPanel {
         controller.mostrarPrincipal();
 
     }//GEN-LAST:event_goBackBtnActionPerformed
+
+    private void accountsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountsBtnActionPerformed
+
+        try {
+            int idCliente = Integer.parseInt(TablaClientes.getValueAt(TablaClientes.getSelectedRow(), 0).toString());
+
+            Cliente cliente = controller.getLogicaCliente().consultar(idCliente);
+
+            if (cliente != null) {
+                controller.getCuentasCliente().llenarTabla(cliente);
+                controller.mostrarCuentasCliente();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Por favor selecciona un cliente");
+        }
+
+
+    }//GEN-LAST:event_accountsBtnActionPerformed
+
+    private void removeClientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeClientBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removeClientBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -3,6 +3,8 @@ JORGE EDUARDO ESCOBAR BUGARINI - ISC - 21550317
  */
 package com.views;
 
+import com.controller.Controller;
+
 /**
  *
  * @author user
@@ -16,6 +18,13 @@ public class RegistrarCuenta extends javax.swing.JPanel {
         initComponents();
         setSize(970, 548);
     }
+    
+    private Controller controller;
+
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

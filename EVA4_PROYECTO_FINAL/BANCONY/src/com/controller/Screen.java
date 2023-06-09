@@ -109,13 +109,15 @@ public class Screen extends javax.swing.JFrame {
                 Movimientos movimientos = new Movimientos();
                 Principal principal = new Principal();
                 RegistrarCliente registrarCliente = new RegistrarCliente();
+                RegistrarCuenta registrarCuenta = new RegistrarCuenta();
                 RegistrarTarjeta registrarTarjeta = new RegistrarTarjeta();
                 TablaTarjetas tablaTarjetas = new TablaTarjetas();
                 LogicaCliente logicaCliente = new LogicaCliente();
                 LogicaTarjeta logicaTarjeta = new LogicaTarjeta();
                 LogicaMovimiento logicaMovimiento = new LogicaMovimiento();
                 LogicaCuenta logicaCuenta = new LogicaCuenta();
-                Controller controller = new Controller(clientesActivos, clientesInactivos, cuentasCliente, login, movimientos, principal, registrarCliente, registrarTarjeta, tablaTarjetas, screen, logicaCliente, logicaTarjeta, logicaMovimiento, logicaCuenta);
+                
+                Controller controller = new Controller(clientesActivos, clientesInactivos, cuentasCliente, login, movimientos, principal, registrarCliente, registrarTarjeta, tablaTarjetas, screen, logicaCliente, logicaTarjeta, logicaMovimiento, logicaCuenta, registrarCuenta);
 
                 clientesActivos.setController(controller);
                 clientesInactivos.setController(controller);
@@ -124,6 +126,7 @@ public class Screen extends javax.swing.JFrame {
                 movimientos.setController(controller);
                 principal.setController(controller);
                 registrarCliente.setController(controller);
+                registrarCuenta.setController(controller);
                 registrarTarjeta.setController(controller);
                 tablaTarjetas.setController(controller);
                 logicaCliente.setController(controller);

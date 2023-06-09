@@ -35,8 +35,8 @@ public class LogicaCliente {
         return cDAO.eliminarCuentaDAO(cliente);
     }
     
-    public Cliente consultar(Cliente cliente){
-        return cDAO.consultarClienteDAO(cliente.getC_cliente());
+    public Cliente consultar(int c_cliente){
+        return cDAO.consultarClienteDAO(c_cliente);
     }
     
     public List<Cliente> getListaClientes(){

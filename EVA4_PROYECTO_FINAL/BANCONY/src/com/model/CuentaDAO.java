@@ -54,7 +54,7 @@ public class CuentaDAO {
                 cuenta = null;
             }
 
-        } catch (SQLException e) {
+        } catch (SQLException | ParseException e) {
             JOptionPane.showMessageDialog(null, "No se pudo llevar a cabo la creacion de la cuenta");
             cuenta = null;
             return cuenta;
@@ -75,6 +75,7 @@ public class CuentaDAO {
             ps = conexion.prepareStatement(qryUpdate);
 
             ps.setDouble(1, numRegistrosMod);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             java.sql.Date fecha1 = new java.sql.Date(sdf.parse(cuenta.getFechaPago().toString()).getTime());
             java.sql.Date fecha2 = new java.sql.Date(sdf.parse(cuenta.getFechaCorte().toString()).getTime());
             ps.setDate(2, fecha1);

@@ -4,6 +4,10 @@ JORGE EDUARDO ESCOBAR BUGARINI - ISC - 21550317
 package com.views;
 
 import com.controller.Controller;
+import com.model.Cliente;
+import com.model.Cuenta;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,6 +19,8 @@ public class CuentasCliente extends javax.swing.JPanel {
      * Creates new form CuentasCliente1
      */
 
+       Cliente clienteActivo;
+    
      private Controller controller;
 
      public void setController(Controller controller) {
@@ -26,7 +32,31 @@ public class CuentasCliente extends javax.swing.JPanel {
         initComponents();
         setSize(970, 548);
     }
-
+    
+    public void llenarTabla(Cliente cliente){
+     clienteActivo = cliente;
+    DefaultTableModel dt = (DefaultTableModel) tableCuentas.getModel();
+        List<Cuenta> cuentas = controller.getLogicaCuenta().getListaCuentas(cliente); 
+        
+         int i=0;
+        while(dt.getRowCount()!=cuentas.size()){
+           
+            dt.addRow(new Object[]{
+                
+                cuentas.get(i).getCliente().getCurp(),
+                cuentas.get(i).getNumerocuenta()
+            });
+            System.out.println("Entro cuenta" +i);
+            i++;
+        }
+        tableCuentas.setModel(dt);
+    }
+    
+    public void limpiarTabla(){
+        DefaultTableModel dt = (DefaultTableModel) tableCuentas.getModel();
+        dt.setRowCount(0);
+        tableCuentas.setModel(dt);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,6 +88,11 @@ public class CuentasCliente extends javax.swing.JPanel {
         goBackBtn.setBackground(new java.awt.Color(255, 0, 0));
         goBackBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"))); // NOI18N
         goBackBtn.setBorder(null);
+        goBackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bannerLayout = new javax.swing.GroupLayout(banner);
         banner.setLayout(bannerLayout);
@@ -123,6 +158,11 @@ public class CuentasCliente extends javax.swing.JPanel {
         addAccountBtn.setToolTipText("");
         addAccountBtn.setBorder(null);
         addAccountBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addAccountBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAccountBtnActionPerformed(evt);
+            }
+        });
         add(addAccountBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 133, 40));
 
         deleteAccBtn.setBackground(new java.awt.Color(255, 0, 0));
@@ -144,6 +184,16 @@ public class CuentasCliente extends javax.swing.JPanel {
         add(verTarjetasBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, 133, 40));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
+        controller.mostrarClientesActivos();
+        limpiarTabla();
+       
+    }//GEN-LAST:event_goBackBtnActionPerformed
+
+    private void addAccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAccountBtnActionPerformed
+        controller.mostrarRegistrarCuenta();
+    }//GEN-LAST:event_addAccountBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addAccountBtn;
@@ -151,7 +201,7 @@ public class CuentasCliente extends javax.swing.JPanel {
     private javax.swing.JButton deleteAccBtn;
     private javax.swing.JButton goBackBtn;
     private javax.swing.JScrollPane tableContainer;
-    private javax.swing.JTable tableCuentas;
+    public javax.swing.JTable tableCuentas;
     private javax.swing.JLabel title;
     private javax.swing.JButton verTarjetasBtn;
     // End of variables declaration//GEN-END:variables

@@ -13,6 +13,7 @@ public class Controller {
     private Movimientos movimientos;
     private Principal principal;
     private RegistrarCliente registrarCliente;
+    private RegistrarCuenta registrarCuenta;
     private RegistrarTarjeta registrarTarjeta;
     private TablaTarjetas tablaTarjetas;
     private Screen pantalla;
@@ -41,7 +42,7 @@ public class Controller {
             CuentasCliente cuentasCliente, Login login, Movimientos movimientos, Principal principal,
             RegistrarCliente registrarCliente, RegistrarTarjeta registrarTarjeta, TablaTarjetas tablaTarjetas,
             Screen pantalla, LogicaCliente logicaCliente, LogicaTarjeta logicaTarjeta,
-            LogicaMovimiento logicaMovimiento, LogicaCuenta logicaCuenta) {
+            LogicaMovimiento logicaMovimiento, LogicaCuenta logicaCuenta,RegistrarCuenta registrarCuenta) {
         this.clientesActivos = clientesActivos;
         this.clientesInactivos = clientesInactivos;
         this.cuentasCliente = cuentasCliente;
@@ -56,12 +57,18 @@ public class Controller {
         this.logicaTarjeta = logicaTarjeta;
         this.logicaMovimiento = logicaMovimiento;
         this.logicaCuenta = logicaCuenta;
+        this.registrarCuenta=registrarCuenta;
     }
 
     public ClientesActivos getClientesActivos() {
         return clientesActivos;
     }
 
+    public RegistrarCuenta getRegistrarCuenta() {
+        return registrarCuenta;
+    }
+
+    
     public void setClientesActivos(ClientesActivos clientesActivos) {
         this.clientesActivos = clientesActivos;
     }
@@ -176,6 +183,15 @@ public class Controller {
         dashboard.revalidate();
         dashboard.repaint();
     }
+    
+       public void mostrarRegistrarCuenta() {
+        JPanel dashboard = pantalla.getDashboard();
+        dashboard.removeAll();
+        dashboard.add(registrarCuenta);
+        dashboard.revalidate();
+        dashboard.repaint();
+    }
+
 
     public void mostrarRegistrarTarjeta() {
         JPanel dashboard = pantalla.getDashboard();

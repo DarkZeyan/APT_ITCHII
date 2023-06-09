@@ -6,9 +6,14 @@ import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
 import LibreriaFecha.Fecha;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import com.controller.Controller;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
@@ -30,7 +35,7 @@ public class ClienteDAO {
 
             PreparedStatement ps;
 
-            qryInsert = "INSERT INTO clientes(nombre, apellido_paterno, apellido_materno, celular, estadoNacimiento, " +
+            qryInsert = "INSERT INTO clientes(nombre, apellido_paterno, apellido_materno, telefono, estadoNacimiento, " +
                     "sexo, curp, fechaNacimiento) "
                     + "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
             ps = conexion.prepareStatement(qryInsert);
@@ -41,8 +46,12 @@ public class ClienteDAO {
             ps.setString(5, cliente.getEstadoDeNacimiento());
             ps.setString(6, String.valueOf(cliente.getSexo()));
             ps.setString(7, cliente.getCurp());
-            ps.setString(8, cliente.getFechadeNacimiento().toString());
+            System.out.println(cliente.getFechadeNacimiento().toString());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            java.sql.Date fecha = new java.sql.Date(sdf.parse(cliente.getFechadeNacimiento().toString()).getTime());
+            ps.setDate(8, fecha);
             ps.executeUpdate();
+            System.out.println();
             ResultSet query;
             query = conexion.prepareStatement("SELECT LAST_INSERT_ID()").executeQuery();
             if(query.next()){
@@ -51,9 +60,11 @@ public class ClienteDAO {
                 cliente = null;
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo añadir al cliente");
+            JOptionPane.showMessageDialog(null, e.getErrorCode());
             cliente = null;
             return cliente;
+        } catch (ParseException ex) {
+           JOptionPane.showMessageDialog(null, ex.getMessage());
         }
         return cliente;
     }
@@ -67,7 +78,7 @@ public class ClienteDAO {
                     + "nombre = ?, "
                     + "apellido_paterno = ?, "
                     + "apellido_materno = ?, "
-                    + "celular = ?, "
+                    + "telefono = ?, "
                     + "estadoNacimiento = ?, "
                     + "sexo = ?, "
                     + "fechaNacimiento = ?, "
@@ -80,11 +91,13 @@ public class ClienteDAO {
             ps.setString(4, cliente.getCelular());
             ps.setString(5, cliente.getEstadoDeNacimiento());
             ps.setString(6, String.valueOf(cliente.getSexo()));
-            ps.setString(7, cliente.getFechadeNacimiento().toString());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            java.sql.Date fecha = new java.sql.Date(sdf.parse(cliente.getFechadeNacimiento().toString()).getTime());
+            ps.setDate(7, fecha);
             ps.setInt(8, cliente.getC_cliente());
             numRegistrosMod = ps.executeUpdate();
 
-        } catch (SQLException e) {
+        } catch (SQLException | ParseException e) {
             JOptionPane.showMessageDialog(null, "No se pudo llevar a cabo la modificacion");
             numRegistrosMod = 0;
         }
@@ -147,7 +160,9 @@ public class ClienteDAO {
             ps.setString(5, cliente.getEstadoDeNacimiento());
             ps.setString(6, String.valueOf(cliente.getSexo()));
             ps.setString(7, cliente.getCurp());
-            ps.setString(8, cliente.getFechadeNacimiento().toString());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            java.sql.Date fecha = new java.sql.Date(sdf.parse(cliente.getFechadeNacimiento().toString()).getTime());
+            ps.setDate(8, fecha);
             ps.executeUpdate();
             ResultSet query;
             query = conexion.prepareStatement("SELECT LAST_INSERT_ID()").executeQuery();

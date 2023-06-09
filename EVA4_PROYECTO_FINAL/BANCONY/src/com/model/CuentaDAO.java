@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import LibreriaFecha.Fecha;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,9 +36,14 @@ public class CuentaDAO {
             ps.setInt(1, cuenta.getCliente().getC_cliente());
             ps.setString(2, cuenta.getNumerocuenta());
             ps.setDouble(3, cuenta.getTasainteres());
-            ps.setString(4, cuenta.getFechaPago().toString());
-            ps.setString(5, cuenta.getFechaCorte().toString());
-            ps.setString(6, cuenta.getFechaCreacion().toString());
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            java.sql.Date fecha1 = new java.sql.Date(sdf.parse(cuenta.getFechaPago().toString()).getTime());
+            java.sql.Date fecha2 = new java.sql.Date(sdf.parse(cuenta.getFechaCorte().toString()).getTime());
+            java.sql.Date fecha3 = new java.sql.Date(sdf.parse(cuenta.getFechaCreacion().toString()).getTime());
+            ps.setDate(4, fecha1);
+            ps.setDate(5, fecha2);
+            ps.setDate(6, fecha3);
             ps.executeUpdate();
 
             ResultSet query;
@@ -68,12 +75,14 @@ public class CuentaDAO {
             ps = conexion.prepareStatement(qryUpdate);
 
             ps.setDouble(1, numRegistrosMod);
-            ps.setString(2, cuenta.getFechaPago().toString());
-            ps.setString(3, cuenta.getFechaCorte().toString());
+            java.sql.Date fecha1 = new java.sql.Date(sdf.parse(cuenta.getFechaPago().toString()).getTime());
+            java.sql.Date fecha2 = new java.sql.Date(sdf.parse(cuenta.getFechaCorte().toString()).getTime());
+            ps.setDate(2, fecha1);
+            ps.setDate(3, fecha2);
             ps.setInt(4, cuenta.getCliente().getC_cliente());
             numRegistrosMod = ps.executeUpdate();
 
-        } catch (SQLException e) {
+        } catch (SQLException | ParseException e) {
             JOptionPane.showMessageDialog(null, "No se pudo llevar a cabo la modificacion");
             numRegistrosMod = 0;
         }
@@ -167,7 +176,8 @@ public class CuentaDAO {
     private List<Cuenta> getListaCuentasCliente(Cliente cliente) {
         List<Cuenta> cuentas = new ArrayList<>();
 
-        String qrySelect = "SELECT * FROM cuentas WHERE clientes_c_cliente="+cliente.getC_cliente()+" ORDER BY c_cuenta";
+        String qrySelect = "SELECT * FROM cuentas WHERE clientes_c_cliente=" + cliente.getC_cliente()
+                + " ORDER BY c_cuenta";
 
         PreparedStatement ps;
         ResultSet query;
@@ -203,14 +213,14 @@ public class CuentaDAO {
             }
             return cuentas;
         } catch (SQLException e) {
-            return null;
+            JOptionPane.showMessageDialog(null, "No se pudo traer las cuentas del cliente");
         } catch (Exception e) {
-
+            JOptionPane.showMessageDialog(null, "No se pudo traer las cuentas del cliente");
         }
         return null;
     }
 
-    public List<Cuenta> getListaCuentasClienteDAO(Cliente cliente){
+    public List<Cuenta> getListaCuentasClienteDAO(Cliente cliente) {
         List<Cuenta> cuentas = new ArrayList<>();
         cuentas = getListaCuentasCliente(cliente);
         return cuentas;

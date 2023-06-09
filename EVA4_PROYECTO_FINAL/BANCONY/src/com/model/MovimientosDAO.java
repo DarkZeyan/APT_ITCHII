@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
 import LibreriaFecha.Fecha;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +30,9 @@ public class MovimientosDAO {
             ps = conexion.prepareStatement(qryInsert);
             ps.setInt(1, movimiento.getTarjeta().getClave_tarjeta());
             ps.setInt(2, movimiento.getTipoMovimiento());
-            ps.setString(3, movimiento.getFechaMovimiento().toString());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            java.sql.Date fecha = new java.sql.Date(sdf.parse(movimiento.getFechaMovimiento().toString()).getTime());
+            ps.setDate(3, fecha);
             ps.setDouble(4, movimiento.getCantidad());
             ps.execute();
             ResultSet query;
@@ -38,7 +42,7 @@ public class MovimientosDAO {
             } else {
                 movimiento = null;
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ParseException e) {
             JOptionPane.showMessageDialog(null, "No se pudo añadir el movimiento");
             movimiento = null;
             return movimiento;

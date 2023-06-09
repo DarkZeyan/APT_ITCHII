@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
 import LibreriaFecha.Fecha;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +34,10 @@ public class TarjetaDAO {
             ps.setString(2, tarjeta.getNumero_tarjeta());
             ps.setDouble(3, tarjeta.getLimite_credito());
             ps.setDouble(4, tarjeta.getAnualidad());
-            ps.setString(5, tarjeta.getFecha_anualidad().toString());
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            java.sql.Date fecha = new java.sql.Date(sdf.parse(tarjeta.getFecha_anualidad().toString()).getTime());
+            ps.setDate(5, fecha);
+          
             ps.execute();
             ResultSet query;
             query = conexion.prepareStatement("SELECT LAST_INSERT_ID()").executeQuery();
@@ -41,7 +46,7 @@ public class TarjetaDAO {
             } else {
                 tarjeta = null;
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ParseException e)  {
             JOptionPane.showMessageDialog(null, "No se pudo añadir la tarjeta");
             tarjeta = null;
             return tarjeta;

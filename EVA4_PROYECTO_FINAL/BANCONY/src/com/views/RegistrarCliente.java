@@ -3,8 +3,11 @@ JORGE EDUARDO ESCOBAR BUGARINI - ISC - 21550317
  */
 package com.views;
 
+import LibreriaFecha.Fecha;
 import com.controller.Controller;
 import com.controller.Screen;
+import com.model.Cliente;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -431,7 +434,28 @@ public class RegistrarCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_comboMesActionPerformed
 
     private void btnRegClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegClienteActionPerformed
-        // TODO add your handling code here:
+        String nombre = txtName.getText().toUpperCase();
+        String paterno = txtPaterno.getText().toUpperCase();
+        String materno = txtMaterno.getText().toUpperCase();
+        String curp = txtCurp.getText().toUpperCase();
+        String celular = txtCelular.getText();
+        int dia = Integer.parseInt(comboDia.getSelectedItem().toString());
+        int mes =  Integer.parseInt(comboMes.getSelectedItem().toString());
+        String estadoNacimiento = comboEstado.getSelectedItem().toString();
+        char sexo = comboSexo.getSelectedItem().toString().charAt(0);
+        Integer  anio = Integer.parseInt(txtAño.getText());
+        
+        try{
+            Fecha fechadeNacimiento = new Fecha(dia,mes,anio);
+           Cliente cliente = new Cliente(curp, paterno, materno, nombre, celular, fechadeNacimiento, estadoNacimiento, sexo);
+           controller.getLogicaCliente().agregar(cliente);
+           controller.getClientesActivos().limpiarTabla();
+           controller.getClientesActivos().llenarTabla();
+           JOptionPane.showMessageDialog(null, "Cliente registrado con exito");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        
     }//GEN-LAST:event_btnRegClienteActionPerformed
 
     private void comboEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEstadoActionPerformed

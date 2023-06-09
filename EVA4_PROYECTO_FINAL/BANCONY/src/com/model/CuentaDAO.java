@@ -26,7 +26,7 @@ public class CuentaDAO {
             String qryInsert;
             PreparedStatement ps;
 
-            qryInsert = "INSERTO INTO cuentas(c_cliente, numerocuenta, tasainteres, fecha_pago, fecha_corte, fecha_creacion) "
+            qryInsert = "INSERTO INTO cuentas(clientes_c_cliente, numerocuenta, tasainteres, fecha_pago, fecha_corte, fecha_creacion) "
                     +
                     " VALUES(?,?,?,?,?,?)";
 
@@ -60,11 +60,11 @@ public class CuentaDAO {
         try {
             String qryUpdate;
             PreparedStatement ps;
-            qryUpdate = "UPDATE clientes SET "
+            qryUpdate = "UPDATE cuentas SET "
                     + "tasainteres = ?, "
                     + "fecha_pago = ?, "
                     + "fecha_corte = ?, "
-                    + "WHERE c_cliente = ? ";
+                    + "WHERE clientes_c_cliente = ? ";
             ps = conexion.prepareStatement(qryUpdate);
 
             ps.setDouble(1, numRegistrosMod);
@@ -82,7 +82,7 @@ public class CuentaDAO {
 
     private Cliente consultarClienteDAO(int c_cliente) {
         String qrySelect;
-        qrySelect = "SELECT * from clientes WHERE c_cliente = ?";
+        qrySelect = "SELECT * from cuentas WHERE clientes_c_cliente = ?";
         PreparedStatement ps;
         ResultSet query;
         try {
@@ -130,7 +130,7 @@ public class CuentaDAO {
             query = ps.executeQuery();
 
             if (query.next()) {
-                int c_cliente = query.getInt("c_cliente");
+                int c_cliente = query.getInt("clientes_c_cliente");
                 double tasainteres = query.getDouble("tasainteres");
                 String numerocuenta = query.getString("tasainteres");
                 String fechaCreacionStr = query.getString("fecha_creacion");
@@ -167,7 +167,7 @@ public class CuentaDAO {
     private List<Cuenta> getListaCuentasCliente(Cliente cliente) {
         List<Cuenta> cuentas = new ArrayList<>();
 
-        String qrySelect = "SELECT * FROM cuentas WHERE c_cliente="+cliente.getC_cliente()+" ORDER BY c_cuenta";
+        String qrySelect = "SELECT * FROM cuentas WHERE clientes_c_cliente="+cliente.getC_cliente()+" ORDER BY c_cuenta";
 
         PreparedStatement ps;
         ResultSet query;
@@ -178,7 +178,7 @@ public class CuentaDAO {
             while (query.next()) {
                 int c_cuenta = query.getInt("c_cuenta");
                 double tasainteres = query.getDouble("tasainteres");
-                String numerocuenta = query.getString("tasainteres");
+                String numerocuenta = query.getString("numerocuenta");
                 String fechaCreacionStr = query.getString("fecha_creacion");
                 String fechaCorteStr = query.getString("fecha_corte");
                 String fechaPagoStr = query.getString("fecha_pago");

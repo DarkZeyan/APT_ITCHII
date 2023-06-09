@@ -13,25 +13,37 @@ public class Tarjeta {
     private Cuenta cuenta;
     private Fecha fecha_anualidad;
     private double anualidad;
-    private List<Movimiento> movimientos;
     private double limite_credito;
 
-    public Tarjeta(int clave_tarjeta, String numero_tarjeta, Cuenta cuenta, Fecha fecha_anualidad, double anualidad, List<Movimiento> movimientos, double limite_credito) {
+
+
+    public Tarjeta(int clave_tarjeta, String numero_tarjeta, Cuenta cuenta, Fecha fecha_anualidad, double anualidad, double limite_credito) {
         setClave_tarjeta(clave_tarjeta);
         setNumero_tarjeta(numero_tarjeta);
         setCuenta(cuenta);
         setFecha_anualidad(fecha_anualidad);
         setAnualidad(anualidad);
-        setMovimientos(movimientos);
         setLimite_credito(limite_credito);
     }
 
-    public Tarjeta(String numero_tarjeta, Cuenta cuenta, Fecha fecha_anualidad, double anualidad, List<Movimiento> movimientos, double limite_credito) {
+    
+
+    public Tarjeta(int clave_tarjeta, String numero_tarjeta, Fecha fecha_anualidad, double anualidad,
+            double limite_credito) {
+        setClave_tarjeta(clave_tarjeta);
+        setNumero_tarjeta(numero_tarjeta);
+        setFecha_anualidad(fecha_anualidad);
+        setAnualidad(anualidad);
+        setLimite_credito(limite_credito);
+    }
+
+
+
+    public Tarjeta(String numero_tarjeta, Cuenta cuenta, Fecha fecha_anualidad, double anualidad, double limite_credito) {
         setNumero_tarjeta(numero_tarjeta);
         setCuenta(cuenta);
         setFecha_anualidad(fecha_anualidad);
         setAnualidad(anualidad);
-        setMovimientos(movimientos);
         setLimite_credito(limite_credito);
     }
 
@@ -73,18 +85,6 @@ public class Tarjeta {
 
     public void setAnualidad(double anualidad) {
         this.anualidad = anualidad;
-    }
-
-    public List<Movimiento> getMovimientos() {
-        return movimientos;
-    }
-
-    public void setMovimientos(List<Movimiento> movimientos) {
-       if(movimientos == null){
-           this.movimientos  = new ArrayList<>();
-       }else{
-           this.movimientos = movimientos;
-       }
     }
 
     public double getLimite_credito() {

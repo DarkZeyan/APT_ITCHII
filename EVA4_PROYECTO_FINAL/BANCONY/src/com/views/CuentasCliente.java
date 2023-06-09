@@ -192,6 +192,7 @@ public class CuentasCliente extends javax.swing.JPanel {
 
     private void addAccountBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAccountBtnActionPerformed
         controller.mostrarRegistrarCuenta();
+        
     }//GEN-LAST:event_addAccountBtnActionPerformed
 
 

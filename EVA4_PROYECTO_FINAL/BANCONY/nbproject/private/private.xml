@@ -5,18 +5,27 @@
         <group>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/Principal.java</file>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/ClientesActivos.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/model/LogicaCuenta.java</file>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/model/Movimiento.java</file>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/controller/Controller.java</file>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/RegistrarCliente.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/model/LogicaCliente.java</file>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/TablaTarjetas.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/model/Cuenta.java</file>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/CuentasCliente.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/model/TarjetaDAO.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/model/ClienteDAO.java</file>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/controller/Screen.java</file>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/model/Tarjeta.java</file>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/RegistrarTarjeta.java</file>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/Login.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/model/LogicaTarjeta.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/model/Cliente.java</file>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/ClientesInactivos.java</file>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/Movimientos.java</file>
             <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/views/RegistrarCuenta.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/model/CuentaDAO.java</file>
+            <file>file:/C:/Users/user/Documents/ITCH/APT_ITCHII/EVA4_PROYECTO_FINAL/BANCONY/src/com/model/LogicaMovimiento.java</file>
         </group>
     </open-files>
 </project-private>

@@ -3,7 +3,11 @@ JORGE EDUARDO ESCOBAR BUGARINI - ISC - 21550317
  */
 package com.views;
 
+import LibreriaFecha.Fecha;
 import com.controller.Controller;
+import com.model.Cliente;
+import com.model.Cuenta;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -62,7 +66,7 @@ public class RegistrarCuenta extends javax.swing.JPanel {
         txtAñoCorte = new javax.swing.JTextField();
         lblFechaCreacion = new javax.swing.JLabel();
         txtAñoCreacion = new javax.swing.JTextField();
-        comboAñoCreacion = new javax.swing.JComboBox<>();
+        comboMesCreacion = new javax.swing.JComboBox<>();
         comboDiaCreacion = new javax.swing.JComboBox<>();
         lblDiaCreacion = new javax.swing.JLabel();
         lblMesCreacion = new javax.swing.JLabel();
@@ -82,6 +86,11 @@ public class RegistrarCuenta extends javax.swing.JPanel {
         goBackBtn.setBackground(new java.awt.Color(255, 0, 0));
         goBackBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"))); // NOI18N
         goBackBtn.setBorder(null);
+        goBackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bannerLayout = new javax.swing.GroupLayout(banner);
         banner.setLayout(bannerLayout);
@@ -256,16 +265,11 @@ public class RegistrarCuenta extends javax.swing.JPanel {
         txtAñoCreacion.setForeground(new java.awt.Color(0, 0, 0));
         txtAñoCreacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
 
-        comboAñoCreacion.setBackground(new java.awt.Color(255, 255, 255));
-        comboAñoCreacion.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        comboAñoCreacion.setForeground(new java.awt.Color(0, 0, 0));
-        comboAñoCreacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
-        comboAñoCreacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
-        comboAñoCreacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboAñoCreacionActionPerformed(evt);
-            }
-        });
+        comboMesCreacion.setBackground(new java.awt.Color(255, 255, 255));
+        comboMesCreacion.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        comboMesCreacion.setForeground(new java.awt.Color(0, 0, 0));
+        comboMesCreacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
+        comboMesCreacion.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
 
         comboDiaCreacion.setBackground(new java.awt.Color(255, 255, 255));
         comboDiaCreacion.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -304,20 +308,6 @@ public class RegistrarCuenta extends javax.swing.JPanel {
                 .addComponent(btnRegAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67))
             .addGroup(ContainerLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(lblDiaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboDiaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblMesPago, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboMesPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblAñoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtAñoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(ContainerLayout.createSequentialGroup()
                 .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ContainerLayout.createSequentialGroup()
                         .addComponent(lblNumC, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -330,7 +320,7 @@ public class RegistrarCuenta extends javax.swing.JPanel {
                             .addComponent(txtTasa, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(ContainerLayout.createSequentialGroup()
                                 .addComponent(lblFechaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
                                 .addComponent(lblRegC))))
                     .addGroup(ContainerLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -349,11 +339,11 @@ public class RegistrarCuenta extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lblMesCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(12, 12, 12)
-                                        .addComponent(comboAñoCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(comboMesCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(lblAñoCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(12, 12, 12)
-                                        .addComponent(txtAñoCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(txtAñoCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(ContainerLayout.createSequentialGroup()
                                 .addComponent(lblDiaCorte, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -363,10 +353,27 @@ public class RegistrarCuenta extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(comboMesCorte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblAñoCorte, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtAñoCorte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(lblAñoCorte, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(86, 86, 86))
+            .addGroup(ContainerLayout.createSequentialGroup()
+                .addGroup(ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(ContainerLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtAñoCorte, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ContainerLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(lblDiaPago, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboDiaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMesPago, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboMesPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblAñoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtAñoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ContainerLayout.setVerticalGroup(
             ContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -416,7 +423,7 @@ public class RegistrarCuenta extends javax.swing.JPanel {
                     .addComponent(lblDiaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboDiaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblMesCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboAñoCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboMesCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAñoCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblAñoCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(36, Short.MAX_VALUE))
@@ -475,7 +482,33 @@ public class RegistrarCuenta extends javax.swing.JPanel {
     }//GEN-LAST:event_comboMesPagoActionPerformed
 
     private void btnRegAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegAccActionPerformed
-        // TODO add your handling code here:
+        try{
+         String numeroCuenta = txtNumC.getText();
+        double tasaInteres = Double.parseDouble(txtTasa.getText());
+        int anioCreacion = Integer.parseInt(txtAñoCreacion.getText());
+        int anioCorte = Integer.parseInt(txtAñoCorte.getText());
+        int anioPago = Integer.parseInt(txtAñoPago.getText());
+        int diaCreacion = Integer.parseInt(comboDiaCreacion.getSelectedItem().toString());
+        int diaCorte = Integer.parseInt(comboDiaCorte.getSelectedItem().toString());
+        int diaPago = Integer.parseInt(comboDiaCorte.getSelectedItem().toString());
+        int mesCreacion = Integer.parseInt(comboMesCreacion.getSelectedItem().toString());
+        int mesCorte = Integer.parseInt(comboMesCorte.getSelectedItem().toString());
+        int mesPago = Integer.parseInt(comboMesPago.getSelectedItem().toString());
+        Cliente cliente  = controller.getCuentasCliente().clienteActivo;
+        int idCliente = cliente.getC_cliente();
+        Fecha fechaCorte = new Fecha(diaCorte,mesCorte,anioCorte);
+        Fecha fechaPago =new Fecha(diaPago,mesPago,anioPago);
+        Fecha creacion = new Fecha(diaCreacion, mesCreacion, anioCreacion);
+        Cuenta cuenta = new Cuenta(cliente, numeroCuenta, tasaInteres, fechaPago, fechaCorte, creacion);
+        controller.getLogicaCuenta().agregar(cuenta);
+        controller.getCuentasCliente().limpiarTabla();
+        controller.getCuentasCliente().llenarTabla(cliente);
+        JOptionPane.showMessageDialog(null,"Cuenta registrada exitosamente");
+        controller.mostrarCuentasCliente();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Por favor revisa los campos");
+        }
+        
     }//GEN-LAST:event_btnRegAccActionPerformed
 
     private void comboDiaCorteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDiaCorteActionPerformed
@@ -494,16 +527,20 @@ public class RegistrarCuenta extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboDiaCreacionActionPerformed
 
+    private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
+        controller.mostrarCuentasCliente();
+    }//GEN-LAST:event_goBackBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Container;
     private javax.swing.JPanel banner;
     private javax.swing.JButton btnRegAcc;
-    private javax.swing.JComboBox<String> comboAñoCreacion;
     private javax.swing.JComboBox<String> comboDiaCorte;
     private javax.swing.JComboBox<String> comboDiaCreacion;
     private javax.swing.JComboBox<String> comboDiaPago;
     private javax.swing.JComboBox<String> comboMesCorte;
+    private javax.swing.JComboBox<String> comboMesCreacion;
     private javax.swing.JComboBox<String> comboMesPago;
     private javax.swing.JButton goBackBtn;
     private javax.swing.JLabel jLabel2;

@@ -28,7 +28,7 @@ public class CuentaDAO {
             String qryInsert;
             PreparedStatement ps;
 
-            qryInsert = "INSERTO INTO cuentas(clientes_c_cliente, numerocuenta, tasainteres, fecha_pago, fecha_corte, fecha_creacion) "
+            qryInsert = "INSERT INTO cuentas(clientes_c_cliente, numerocuenta, tasainteres, fecha_pago, fecha_corte, fecha_creacion) "
                     +
                     " VALUES(?,?,?,?,?,?)";
 
@@ -55,7 +55,8 @@ public class CuentaDAO {
             }
 
         } catch (SQLException | ParseException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo llevar a cabo la creacion de la cuenta");
+            // JOptionPane.showMessageDialog(null, "No se pudo llevar a cabo la creacion de la cuenta");
+            JOptionPane.showMessageDialog(null, e.getMessage());
             cuenta = null;
             return cuenta;
         }

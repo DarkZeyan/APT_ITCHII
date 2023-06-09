@@ -10,7 +10,7 @@ public class Movimiento {
     private Fecha fechaMovimiento;
     private byte tipoMovimiento;
     private double cantidad;
-    public Movimiento(int clave, byte tipoMovimiento, double cantidad,Fecha fechaMovimiento) {
+    public Movimiento(int clave, byte tipoMovimiento, double cantidad, Fecha fechaMovimiento) {
         setClave(clave);
         setCantidad(cantidad);
         setTipoMovimiento(tipoMovimiento);

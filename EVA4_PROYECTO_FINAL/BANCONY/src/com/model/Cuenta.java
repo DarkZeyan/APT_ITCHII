@@ -15,7 +15,6 @@ public class Cuenta {
    private Fecha fechaPago;
    private Fecha fechaCorte;
    private Fecha fechaCreacion;
-   private List<Tarjeta> tarjetas;
 
     public Cuenta(Cliente cliente, int c_cuenta, String numerocuenta, double tasainteres, Fecha fechaPago, Fecha fechaCorte, Fecha fechaCreacion, List<Tarjeta> tarjetas) {
         setCliente(cliente);
@@ -25,7 +24,6 @@ public class Cuenta {
         setFechaPago(fechaPago);
         setFechaCorte(fechaCorte);
         setFechaCreacion(fechaCreacion);
-        setTarjetas(tarjetas);
     }
 
     public Cliente getCliente() {
@@ -83,20 +81,4 @@ public class Cuenta {
     public void setFechaCreacion(Fecha fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
-
-    public List<Tarjeta> getTarjetas() {
-        return tarjetas;
-    }
-
-    public void setTarjetas(List<Tarjeta> tarjetas) {
-        if(tarjetas==null){
-            this.tarjetas = new ArrayList<Tarjeta>();
-        }else{
-            this.tarjetas=tarjetas;
-        }
-    }
-    
-    
-   
-   
 }

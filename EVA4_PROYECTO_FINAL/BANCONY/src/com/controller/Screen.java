@@ -120,7 +120,7 @@ public class Screen extends javax.swing.JFrame {
                 
                 dashboard.setLayout(null);
                 controller.mostrarLogin();
-
+                
                 screen.setVisible(true);
             }
         });

@@ -83,7 +83,7 @@ public class TablaTarjetas extends javax.swing.JPanel {
         cardsTable.setBackground(new java.awt.Color(255, 255, 255));
         cardsTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
         cardsTable.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        cardsTable.setForeground(new java.awt.Color(255, 255, 255));
+        cardsTable.setForeground(new java.awt.Color(0, 0, 0));
         cardsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

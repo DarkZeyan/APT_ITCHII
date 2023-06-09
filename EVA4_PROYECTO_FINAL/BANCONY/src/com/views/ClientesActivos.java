@@ -4,6 +4,10 @@ JORGE EDUARDO ESCOBAR BUGARINI - ISC - 21550317
 package com.views;
 
 import com.controller.Controller;
+import com.model.Cliente;
+import com.model.ClienteDAO;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,8 +27,38 @@ public class ClientesActivos extends javax.swing.JPanel {
     public ClientesActivos() {
         initComponents();
         setSize(970, 548);
+        
     }
 
+    
+    private void cargarClientes(Controller controller){
+        DefaultTableModel dt = (DefaultTableModel) TablaClientes.getModel();
+        List<Cliente> clientes = controller.getLogicaCliente().getListaClientes(); 
+        
+         int i=0;
+        while(dt.getRowCount()!=clientes.size()){
+           
+            dt.addRow(new Object[]{
+                clientes.get(i).getC_cliente(),
+                clientes.get(i).getCurp(),
+                clientes.get(i).getNombre()
+            });
+            System.out.println("Entro "+ clientes.get(i).getNombre());
+            i++;
+        }
+        TablaClientes.setModel(dt);
+    }
+    
+    public void limpiarTabla(){
+        DefaultTableModel dt = (DefaultTableModel) TablaClientes.getModel();
+        dt.setRowCount(0);
+        TablaClientes.setModel(dt);
+    }
+    
+    public void llenarTabla(){
+        cargarClientes(controller);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,7 +126,7 @@ public class ClientesActivos extends javax.swing.JPanel {
         TablaClientes.setBackground(new java.awt.Color(255, 255, 255));
         TablaClientes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
         TablaClientes.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        TablaClientes.setForeground(new java.awt.Color(255, 255, 255));
+        TablaClientes.setForeground(new java.awt.Color(0, 0, 0));
         TablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -178,7 +212,7 @@ public class ClientesActivos extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ClientesScrollPane;
-    private javax.swing.JTable TablaClientes;
+    public javax.swing.JTable TablaClientes;
     private javax.swing.JLabel accLbl;
     private javax.swing.JButton accountsBtn;
     private javax.swing.JPanel banner;

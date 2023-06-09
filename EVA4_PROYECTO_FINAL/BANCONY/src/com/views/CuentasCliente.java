@@ -85,7 +85,7 @@ public class CuentasCliente extends javax.swing.JPanel {
         tableCuentas.setBackground(new java.awt.Color(255, 255, 255));
         tableCuentas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
         tableCuentas.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        tableCuentas.setForeground(new java.awt.Color(255, 255, 255));
+        tableCuentas.setForeground(new java.awt.Color(0, 0, 0));
         tableCuentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

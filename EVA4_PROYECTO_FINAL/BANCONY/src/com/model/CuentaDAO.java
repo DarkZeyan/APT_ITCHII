@@ -100,9 +100,9 @@ public class CuentaDAO {
                 String fechaNacimientoStr = query.getString("fechaNacimiento");
                 char sexo = query.getString("sexo").charAt(0);
 
-                int diaNacimiento = Integer.parseInt(fechaNacimientoStr.substring(0, 4));
+                int anioNacimiento = Integer.parseInt(fechaNacimientoStr.substring(0, 4));
                 int mesNacimiento = Integer.parseInt(fechaNacimientoStr.substring(5, 7));
-                int anioNacimiento = Integer.parseInt(fechaNacimientoStr.substring(8, 10));
+                int diaNacimiento = Integer.parseInt(fechaNacimientoStr.substring(8, 10));
 
                 Fecha fechadeNacimiento = new Fecha(diaNacimiento, mesNacimiento, anioNacimiento);
                 return new Cliente(c_cliente, curp, paterno, materno, nombre, celular, fechadeNacimiento,
@@ -132,20 +132,20 @@ public class CuentaDAO {
             if (query.next()) {
                 int c_cliente = query.getInt("clientes_c_cliente");
                 double tasainteres = query.getDouble("tasainteres");
-                String numerocuenta = query.getString("tasainteres");
+                String numerocuenta = query.getString("numerocuenta");
                 String fechaCreacionStr = query.getString("fecha_creacion");
                 String fechaCorteStr = query.getString("fecha_corte");
                 String fechaPagoStr = query.getString("fecha_pago");
 
-                int diaCreacion = Integer.parseInt(fechaCreacionStr.substring(0, 4));
+                int anioCreacion = Integer.parseInt(fechaCreacionStr.substring(0, 4));
                 int mesCreacion = Integer.parseInt(fechaCreacionStr.substring(5, 7));
-                int anioCreacion = Integer.parseInt(fechaCreacionStr.substring(8, 10));
-                int diaCorte = Integer.parseInt(fechaCorteStr.substring(0, 4));
+                int diaCreacion = Integer.parseInt(fechaCreacionStr.substring(8, 10));
+                int anioCorte = Integer.parseInt(fechaCorteStr.substring(0, 4));
                 int mesCorte = Integer.parseInt(fechaCorteStr.substring(5, 7));
-                int anioCorte = Integer.parseInt(fechaCorteStr.substring(8, 10));
-                int diaPago = Integer.parseInt(fechaPagoStr.substring(0, 4));
+                int diaCorte = Integer.parseInt(fechaCorteStr.substring(8, 10));
+                int anioPago = Integer.parseInt(fechaPagoStr.substring(0, 4));
                 int mesPago = Integer.parseInt(fechaPagoStr.substring(5, 7));
-                int anioPago = Integer.parseInt(fechaPagoStr.substring(8, 10));
+                int diaPago = Integer.parseInt(fechaPagoStr.substring(8, 10));
 
                 Fecha fechaCorte = new Fecha(diaCorte, mesCorte, anioCorte);
                 Fecha fechaCreacion = new Fecha(diaCreacion, mesCreacion, anioCreacion);
@@ -183,15 +183,15 @@ public class CuentaDAO {
                 String fechaCorteStr = query.getString("fecha_corte");
                 String fechaPagoStr = query.getString("fecha_pago");
 
-                int diaCreacion = Integer.parseInt(fechaCreacionStr.substring(0, 4));
+                int anioCreacion = Integer.parseInt(fechaCreacionStr.substring(0, 4));
                 int mesCreacion = Integer.parseInt(fechaCreacionStr.substring(5, 7));
-                int anioCreacion = Integer.parseInt(fechaCreacionStr.substring(8, 10));
-                int diaCorte = Integer.parseInt(fechaCorteStr.substring(0, 4));
+                int diaCreacion = Integer.parseInt(fechaCreacionStr.substring(8, 10));
+                int anioCorte = Integer.parseInt(fechaCorteStr.substring(0, 4));
                 int mesCorte = Integer.parseInt(fechaCorteStr.substring(5, 7));
-                int anioCorte = Integer.parseInt(fechaCorteStr.substring(8, 10));
-                int diaPago = Integer.parseInt(fechaPagoStr.substring(0, 4));
+                int diaCorte = Integer.parseInt(fechaCorteStr.substring(8, 10));
+                int anioPago = Integer.parseInt(fechaPagoStr.substring(0, 4));
                 int mesPago = Integer.parseInt(fechaPagoStr.substring(5, 7));
-                int anioPago = Integer.parseInt(fechaPagoStr.substring(8, 10));
+                int diaPago = Integer.parseInt(fechaPagoStr.substring(8, 10));
 
                 Fecha fechaCorte = new Fecha(diaCorte, mesCorte, anioCorte);
                 Fecha fechaCreacion = new Fecha(diaCreacion, mesCreacion, anioCreacion);

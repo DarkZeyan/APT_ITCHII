@@ -63,9 +63,9 @@ public class MovimientosDAO {
                 int tipoMovimiento = query.getInt("tipo_movimiento");
                 double cantidad = query.getDouble("cantidad");
                 String fechaMovimientoStr = query.getString("fecha_movimiento");
-                int diaMovimiento = Integer.parseInt(fechaMovimientoStr.substring(0, 4));
+                int anioMovimiento = Integer.parseInt(fechaMovimientoStr.substring(0, 4));
                 int mesMovimiento = Integer.parseInt(fechaMovimientoStr.substring(5, 7));
-                int anioMovimiento = Integer.parseInt(fechaMovimientoStr.substring(8, 10));
+                int diaMovimiento = Integer.parseInt(fechaMovimientoStr.substring(8, 10));
 
                 Fecha fechaMovimiento = new Fecha(diaMovimiento, mesMovimiento, anioMovimiento);
 
@@ -117,9 +117,9 @@ public class MovimientosDAO {
                 int clave = query.getInt("clave");
                 double cantidad = query.getDouble("cantidad");
                 String fechaMovimientoStr = query.getString("fecha_movimiento");
-                int diaMovimiento = Integer.parseInt(fechaMovimientoStr.substring(0, 4));
+                int anioMovimiento = Integer.parseInt(fechaMovimientoStr.substring(0, 4));
                 int mesMovimiento = Integer.parseInt(fechaMovimientoStr.substring(5, 7));
-                int anioMovimiento = Integer.parseInt(fechaMovimientoStr.substring(8, 10));
+                int diaMovimiento = Integer.parseInt(fechaMovimientoStr.substring(8, 10));
 
                  Fecha fechaMovimiento = new Fecha(diaMovimiento, mesMovimiento, anioMovimiento);
                 movimientos.add(

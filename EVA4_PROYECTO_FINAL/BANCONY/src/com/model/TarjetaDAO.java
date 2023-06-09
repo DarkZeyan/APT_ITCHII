@@ -66,9 +66,9 @@ public class TarjetaDAO {
                 double limite_credito = query.getDouble("limite_credito");
                 String numeroTarjeta = query.getString("numerotarjeta");
                 String fechaAnualidadStr = query.getString("fecha_anualidad");
-                int diaAnualidad = Integer.parseInt(fechaAnualidadStr.substring(0, 4));
+                int anioAnualidad = Integer.parseInt(fechaAnualidadStr.substring(0, 4));
                 int mesAnualidad = Integer.parseInt(fechaAnualidadStr.substring(5, 7));
-                int anioAnualidad = Integer.parseInt(fechaAnualidadStr.substring(8, 10));
+                int diaAnualidad = Integer.parseInt(fechaAnualidadStr.substring(8, 10));
 
                 Fecha fechaAnualidad = new Fecha(diaAnualidad, mesAnualidad, anioAnualidad);
 
@@ -122,9 +122,9 @@ public class TarjetaDAO {
                 double limite_credito = query.getDouble("limite_credito");
                 String numeroTarjeta = query.getString("numerotarjeta");
                 String fechaAnualidadStr = query.getString("fecha_anualidad");
-                int diaAnualidad = Integer.parseInt(fechaAnualidadStr.substring(0, 4));
+                int anioAnualidad = Integer.parseInt(fechaAnualidadStr.substring(0, 4));
                 int mesAnualidad = Integer.parseInt(fechaAnualidadStr.substring(5, 7));
-                int anioAnualidad = Integer.parseInt(fechaAnualidadStr.substring(8, 10));
+                int diaAnualidad = Integer.parseInt(fechaAnualidadStr.substring(8, 10));
                 Fecha fechaAnualidad = new Fecha(diaAnualidad, mesAnualidad, anioAnualidad);
                 tarjetas.add(
                         new Tarjeta(clave_tarjeta,numeroTarjeta,fechaAnualidad,anualidad,limite_credito));
@@ -139,7 +139,7 @@ public class TarjetaDAO {
         return null;
     }
 
-    public List<Tarjeta> getTarjetasCuente(Cuenta c){
+    public List<Tarjeta> getTarjetasCuenta(Cuenta c){
         List<Tarjeta> tarjetas = new ArrayList<>();
         tarjetas = getListaTarjetasCliente(c);
         return tarjetas;

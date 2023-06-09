@@ -90,7 +90,7 @@ public class ClientesInactivos extends javax.swing.JPanel {
         tableInactive.setBackground(new java.awt.Color(255, 255, 255));
         tableInactive.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
         tableInactive.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        tableInactive.setForeground(new java.awt.Color(255, 255, 255));
+        tableInactive.setForeground(new java.awt.Color(0, 0, 0));
         tableInactive.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -166,8 +166,8 @@ public class ClientesInactivos extends javax.swing.JPanel {
     private javax.swing.JLabel lblModify;
     private javax.swing.JLabel lblReactivar;
     private javax.swing.JButton reactivarCliente;
-    private javax.swing.JScrollPane tableContainer;
-    private javax.swing.JTable tableInactive;
+    public javax.swing.JScrollPane tableContainer;
+    public javax.swing.JTable tableInactive;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

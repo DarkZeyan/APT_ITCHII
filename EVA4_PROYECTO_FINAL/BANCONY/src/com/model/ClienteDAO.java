@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
 import LibreriaFecha.Fecha;
+import com.controller.Controller;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,12 @@ import javax.swing.JOptionPane;
 
 public class ClienteDAO {
     private final Connection conexion;
+    private Controller controller;
 
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+    
     public ClienteDAO() {
         this.conexion = ConexionBD.getConexionBD();
     }
@@ -100,14 +106,14 @@ public class ClienteDAO {
                 String nombre = query.getString("nombre");
                 String paterno = query.getString("apellido_paterno");
                 String materno = query.getString("apellido_materno");
-                String celular = query.getString("celular");
+                String celular = query.getString("telefono");
                 String estadoNacimiento = query.getString("estadoNacimiento");
                 String fechaNacimientoStr = query.getString("fechaNacimiento");
                 char sexo = query.getString("sexo").charAt(0);
 
-                int diaNacimiento = Integer.parseInt(fechaNacimientoStr.substring(0, 4));
+                int anioNacimiento = Integer.parseInt(fechaNacimientoStr.substring(0, 4));
                 int mesNacimiento = Integer.parseInt(fechaNacimientoStr.substring(5, 7));
-                int anioNacimiento = Integer.parseInt(fechaNacimientoStr.substring(8, 10));
+                int diaNacimiento = Integer.parseInt(fechaNacimientoStr.substring(8, 10));
 
                 Fecha fechadeNacimiento = new Fecha(diaNacimiento, mesNacimiento, anioNacimiento);
                 return new Cliente(c_cliente, curp, paterno, materno, nombre, celular, fechadeNacimiento,
@@ -130,7 +136,7 @@ public class ClienteDAO {
 
             String qryDelete = "DELETE FROM clientes WHERE c_cliente = ?";
             PreparedStatement ps;
-            String qryInsert = "INSERT INTO clientesInactivos(nombre, apellido_paterno, apellido_materno, celular, estadoNacimiento, " +
+            String qryInsert = "INSERT INTO clientesInactivos(nombre, apellido_paterno, apellido_materno, telefono, estadoNacimiento, " +
                     "sexo, curp, fechaNacimiento) "
                     + "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
             ps = conexion.prepareStatement(qryInsert);
@@ -166,7 +172,7 @@ public class ClienteDAO {
     private List<Cliente> consultarClientes() {
         List<Cliente> clientes = new ArrayList<>();
 
-        String qrySelect = "SELECT * FROM clientes  ORDER BY curp";
+        String qrySelect = "SELECT * FROM `banco`.`clientes`  ORDER BY curp";
 
         PreparedStatement ps;
 
@@ -176,21 +182,21 @@ public class ClienteDAO {
             ps = conexion.prepareStatement(qrySelect);
             query = ps.executeQuery();
             while (query.next()) {
+                
                 int c_cliente = query.getInt("c_cliente");
                 String curp = query.getString("curp");
                 String nombre = query.getString("nombre");
                 String paterno = query.getString("apellido_paterno");
                 String materno = query.getString("apellido_materno");
-                String celular = query.getString("celular");
+                String celular = query.getString("telefono");
                 String estadoNacimiento = query.getString("estadoNacimiento");
                 String fechaNacimientoStr = query.getString("fechaNacimiento");
                 char sexo = query.getString("sexo").charAt(0);
-                int diaNacimiento = Integer.parseInt(fechaNacimientoStr.substring(0, 4));
+                int anioNacimiento = Integer.parseInt(fechaNacimientoStr.substring(0, 4));
                 int mesNacimiento = Integer.parseInt(fechaNacimientoStr.substring(5, 7));
-                int anioNacimiento = Integer.parseInt(fechaNacimientoStr.substring(8, 10));
-
-                Fecha fechadeNacimiento = new Fecha(diaNacimiento, mesNacimiento, anioNacimiento);
-
+                int diaNacimiento = Integer.parseInt(fechaNacimientoStr.substring(8, 10));
+               
+                Fecha fechadeNacimiento = new Fecha(diaNacimiento, mesNacimiento, anioNacimiento);                
                 Cliente cliente = new Cliente(c_cliente, curp, paterno, materno, nombre, celular, fechadeNacimiento,
                         estadoNacimiento, sexo);
                 clientes.add(cliente);
@@ -198,11 +204,12 @@ public class ClienteDAO {
             return clientes;
 
         } catch (SQLException e) {
-            return null;
+            JOptionPane.showMessageDialog(null,e.getSQLState());
         } catch (Exception e) {
-
+            JOptionPane.showMessageDialog(null,e.getMessage());
         }
-        return null;
+        System.out.println(clientes.size());
+        return clientes;
     }
 
     public List<Cliente> getListaClientes() {

@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.model.*;
 import com.views.*;
 import javax.swing.JPanel;
 
@@ -15,7 +16,11 @@ public class Controller {
     private RegistrarTarjeta registrarTarjeta;
     private TablaTarjetas tablaTarjetas;
     private Screen pantalla;
-
+    private LogicaCliente logicaCliente;
+    private LogicaTarjeta logicaTarjeta;
+    private LogicaMovimiento logicaMovimiento;
+    private LogicaCuenta logicaCuenta;
+    
     public Controller(ClientesActivos clientesActivos, ClientesInactivos clientesInactivos, CuentasCliente cuentasCliente, Login login,
             Movimientos movimientos, Principal principal, RegistrarCliente registrarCliente,
             RegistrarTarjeta registrarTarjeta, TablaTarjetas tablaTarjetas, Screen pantalla) {
@@ -32,6 +37,27 @@ public class Controller {
         this.tablaTarjetas = tablaTarjetas;
     }
     
+    public Controller(ClientesActivos clientesActivos, ClientesInactivos clientesInactivos,
+            CuentasCliente cuentasCliente, Login login, Movimientos movimientos, Principal principal,
+            RegistrarCliente registrarCliente, RegistrarTarjeta registrarTarjeta, TablaTarjetas tablaTarjetas,
+            Screen pantalla, LogicaCliente logicaCliente, LogicaTarjeta logicaTarjeta,
+            LogicaMovimiento logicaMovimiento, LogicaCuenta logicaCuenta) {
+        this.clientesActivos = clientesActivos;
+        this.clientesInactivos = clientesInactivos;
+        this.cuentasCliente = cuentasCliente;
+        this.login = login;
+        this.movimientos = movimientos;
+        this.principal = principal;
+        this.registrarCliente = registrarCliente;
+        this.registrarTarjeta = registrarTarjeta;
+        this.tablaTarjetas = tablaTarjetas;
+        this.pantalla = pantalla;
+        this.logicaCliente = logicaCliente;
+        this.logicaTarjeta = logicaTarjeta;
+        this.logicaMovimiento = logicaMovimiento;
+        this.logicaCuenta = logicaCuenta;
+    }
+
     public ClientesActivos getClientesActivos() {
         return clientesActivos;
     }
@@ -181,5 +207,37 @@ public class Controller {
 
     public void setClientesInactivos(ClientesInactivos clientesInactivos) {
         this.clientesInactivos = clientesInactivos;
+    }
+
+    public LogicaCliente getLogicaCliente() {
+        return logicaCliente;
+    }
+
+    public void setLogicaCliente(LogicaCliente logicaCliente) {
+        this.logicaCliente = logicaCliente;
+    }
+
+    public LogicaTarjeta getLogicaTarjeta() {
+        return logicaTarjeta;
+    }
+
+    public void setLogicaTarjeta(LogicaTarjeta logicaTarjeta) {
+        this.logicaTarjeta = logicaTarjeta;
+    }
+
+    public LogicaMovimiento getLogicaMovimiento() {
+        return logicaMovimiento;
+    }
+
+    public void setLogicaMovimiento(LogicaMovimiento logicaMovimiento) {
+        this.logicaMovimiento = logicaMovimiento;
+    }
+
+    public LogicaCuenta getLogicaCuenta() {
+        return logicaCuenta;
+    }
+
+    public void setLogicaCuenta(LogicaCuenta logicaCuenta) {
+        this.logicaCuenta = logicaCuenta;
     }
 }

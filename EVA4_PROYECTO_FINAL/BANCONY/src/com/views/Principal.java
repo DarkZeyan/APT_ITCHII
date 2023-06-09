@@ -240,6 +240,7 @@ public class Principal extends javax.swing.JPanel {
 
     private void btnActiveClientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActiveClientsActionPerformed
         controller.mostrarClientesActivos();
+        controller.getClientesActivos().llenarTabla();
     }//GEN-LAST:event_btnActiveClientsActionPerformed
 
     private void btnClientHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientHistoryActionPerformed

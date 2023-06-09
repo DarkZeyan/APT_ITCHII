@@ -2,7 +2,13 @@
 JORGE EDUARDO ESCOBAR BUGARINI - ISC - 21550317
  */
 package com.views;
+import com.conexion.ConexionBD;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Connection;
+import java.sql.SQLException;
 import com.controller.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author user
@@ -14,7 +20,7 @@ public class Login extends javax.swing.JPanel {
      */
     
     private Controller controller;
-
+    private final Connection conexion;
     public void setController(Controller controller) {
         this.controller = controller;
     }
@@ -23,6 +29,7 @@ public class Login extends javax.swing.JPanel {
     public Login() {
         initComponents();
         setSize(970, 548);
+        this.conexion = ConexionBD.getConexionBD();
     }
 
     /**
@@ -119,7 +126,24 @@ public class Login extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInBtnActionPerformed
-       controller.mostrarPrincipal();
+       String correctUser = null;
+       String correctPass = null;
+        try{
+           PreparedStatement ps = conexion.prepareStatement("SELECT username, password FROM usuarios");
+           ResultSet rs = ps.executeQuery();
+           if(rs.next()){
+               correctUser = rs.getString(1);
+               correctPass = rs.getString(2);
+           }
+           if(txtUsuario.getText().equals(correctUser) && String.valueOf(passwordField.getPassword()).equals(correctPass)){
+               JOptionPane.showMessageDialog(null, "Inicio de sesion exitoso");
+               controller.mostrarPrincipal();
+           }else{
+               JOptionPane.showMessageDialog(null, "Usuario y/o contraseña incorrectos");
+           }
+       }catch(SQLException e){
+           JOptionPane.showMessageDialog(null, "Problema con la conexion a la base de datos");
+       }
     }//GEN-LAST:event_signInBtnActionPerformed
 
 

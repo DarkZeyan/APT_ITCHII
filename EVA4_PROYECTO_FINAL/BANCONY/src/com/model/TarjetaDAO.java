@@ -25,7 +25,7 @@ public class TarjetaDAO {
         try {
             String qryInsert;
             PreparedStatement ps;
-            qryInsert = "INSERT INTO tarjetas(cuentas_c_cuenta, numerotarjeta, " +
+            qryInsert = "INSERT INTO tarjetas(cuentas_c_cuenta, numero_tarjeta, " +
                     "limite_credito, anualidad, fecha_anualidad) " +
                     "VALUES(?,?,?,?,?)";
 
@@ -47,7 +47,7 @@ public class TarjetaDAO {
                 tarjeta = null;
             }
         } catch (SQLException | ParseException e)  {
-            JOptionPane.showMessageDialog(null, "No se pudo añadir la tarjeta");
+            JOptionPane.showMessageDialog(null, e.getMessage());
             tarjeta = null;
             return tarjeta;
         }
@@ -69,7 +69,7 @@ public class TarjetaDAO {
                 int c_cuenta = query.getInt("cuentas_c_cuenta");
                 double anualidad = query.getDouble("anualidad");
                 double limite_credito = query.getDouble("limite_credito");
-                String numeroTarjeta = query.getString("numerotarjeta");
+                String numeroTarjeta = query.getString("numero_tarjeta");
                 String fechaAnualidadStr = query.getString("fecha_anualidad");
                 int anioAnualidad = Integer.parseInt(fechaAnualidadStr.substring(0, 4));
                 int mesAnualidad = Integer.parseInt(fechaAnualidadStr.substring(5, 7));
@@ -89,22 +89,25 @@ public class TarjetaDAO {
         return null;
     }
 
-    public int eliminarTarjetaDAO(Tarjeta tarjeta) {
+    public int eliminarTarjetaDAO(int c_cuenta, int clave_tarjeta) {
         int numRegistrosEliminados = 0;
+        
         try {
-
-            String qryDelete = "DELETE FROM tarjetas WHERE c_cuenta = ? AND clave_tarjeta = ?";
+            
+            String qryDelete = "DELETE FROM `banco`.`tarjetas` WHERE cuentas_c_cuenta = ? AND clave_tarjeta = ?";
+         
             PreparedStatement ps;
-            ps = conexion.prepareStatement(qryDelete);
-            ps.setInt(1, tarjeta.getCuenta().getC_cuenta());
-            ps.setInt(2, tarjeta.getClave_tarjeta());
+            
+            ps = conexion.prepareStatement(qryDelete);           
+            ps.setInt(1, c_cuenta);
+            ps.setInt(2, clave_tarjeta);
             numRegistrosEliminados = ps.executeUpdate();
-
+            System.out.println("Termino");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se pudo eliminar la tarjeta");
 
         } catch (Exception e) {
-            // TODO: handle exception
+            JOptionPane.showMessageDialog(null,e.getMessage());
         }
         return numRegistrosEliminados;
     }
@@ -125,7 +128,7 @@ public class TarjetaDAO {
                 int clave_tarjeta = query.getInt("clave_tarjeta");
                 double anualidad = query.getDouble("anualidad");
                 double limite_credito = query.getDouble("limite_credito");
-                String numeroTarjeta = query.getString("numerotarjeta");
+                String numeroTarjeta = query.getString("numero_tarjeta");
                 String fechaAnualidadStr = query.getString("fecha_anualidad");
                 int anioAnualidad = Integer.parseInt(fechaAnualidadStr.substring(0, 4));
                 int mesAnualidad = Integer.parseInt(fechaAnualidadStr.substring(5, 7));

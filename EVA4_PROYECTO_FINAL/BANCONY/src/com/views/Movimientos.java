@@ -3,7 +3,14 @@ JORGE EDUARDO ESCOBAR BUGARINI - ISC - 21550317
  */
 package com.views;
 
+import LibreriaFecha.Fecha;
 import com.controller.Controller;
+import com.model.Cuenta;
+import com.model.Movimiento;
+import com.model.Tarjeta;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -12,18 +19,48 @@ import com.controller.Controller;
 public class Movimientos extends javax.swing.JPanel {
 
     /**
-     * Creates new form Movimientos1
+     *
      */
     
     private Controller controller;
-
+    Tarjeta tarjetaActiva;
     public void setController(Controller controller) {
         this.controller = controller;
     }
     
     public Movimientos() {
         initComponents();
+        setSize(970, 548);
     }
+    
+     public void llenarTabla(Tarjeta tarjeta){
+     tarjetaActiva = tarjeta;
+    DefaultTableModel dt = (DefaultTableModel) movimientosTable.getModel();
+        List<Movimiento> movimientos = controller.getLogicaMovimiento().getListaMovimientos(tarjeta);
+        
+         int i=0;
+        while(dt.getRowCount()!=movimientos.size()){
+           
+            dt.addRow(new Object[]{
+                tarjeta.getClave_tarjeta(),
+                movimientos.get(i).getClave(),
+                movimientos.get(i).getFechaMovimiento().toString(),
+                movimientos.get(i).tipoString(),
+                movimientos.get(i).getCantidad()
+            });
+            System.out.println("Entro movimiento" +i);
+            i++;
+        }
+
+        movimientosTable.setModel(dt);
+    }
+    
+    public void limpiarTabla(){
+        DefaultTableModel dt = (DefaultTableModel) movimientosTable.getModel();
+        dt.setRowCount(0);
+        movimientosTable.setModel(dt);
+    }
+    
     
 
     /**
@@ -39,9 +76,9 @@ public class Movimientos extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         goBackBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        movimientosTable = new javax.swing.JTable();
+        btnAddMov = new javax.swing.JButton();
+        btnRemoveMov = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(null);
@@ -84,25 +121,25 @@ public class Movimientos extends javax.swing.JPanel {
         );
 
         add(banner);
-        banner.setBounds(0, 0, 970, 90);
+        banner.setBounds(0, 0, 971, 90);
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
-        jTable1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        movimientosTable.setBackground(new java.awt.Color(255, 255, 255));
+        movimientosTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 2, true));
+        movimientosTable.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        movimientosTable.setForeground(new java.awt.Color(0, 0, 0));
+        movimientosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Clave", "Fecha de movimiento", "Tipo de movimiento", "Importe"
+                "Clave_Tarjeta", "Clave Movimiento", "Fecha de movimiento", "Tipo de movimiento", "Importe"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, false, true
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -113,47 +150,93 @@ public class Movimientos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jTable1.setGridColor(new java.awt.Color(255, 0, 0));
-        jTable1.setSelectionBackground(new java.awt.Color(255, 102, 102));
-        jScrollPane1.setViewportView(jTable1);
+        movimientosTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        movimientosTable.setGridColor(new java.awt.Color(255, 0, 0));
+        movimientosTable.setSelectionBackground(new java.awt.Color(255, 102, 102));
+        jScrollPane1.setViewportView(movimientosTable);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(220, 110, 560, 350);
+        jScrollPane1.setBounds(130, 110, 690, 350);
 
-        jButton3.setBackground(new java.awt.Color(255, 0, 0));
-        jButton3.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Nuevo movimiento");
-        jButton3.setToolTipText("");
-        jButton3.setBorder(null);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton3);
-        jButton3.setBounds(330, 480, 133, 40);
+        btnAddMov.setBackground(new java.awt.Color(255, 0, 0));
+        btnAddMov.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
+        btnAddMov.setForeground(new java.awt.Color(255, 255, 255));
+        btnAddMov.setText("Nuevo movimiento");
+        btnAddMov.setToolTipText("");
+        btnAddMov.setBorder(null);
+        btnAddMov.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAddMov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddMovActionPerformed(evt);
+            }
+        });
+        add(btnAddMov);
+        btnAddMov.setBounds(330, 480, 133, 40);
 
-        jButton4.setBackground(new java.awt.Color(255, 0, 0));
-        jButton4.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Eliminar movimiento");
-        jButton4.setToolTipText("");
-        jButton4.setBorder(null);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(jButton4);
-        jButton4.setBounds(520, 480, 133, 40);
+        btnRemoveMov.setBackground(new java.awt.Color(255, 0, 0));
+        btnRemoveMov.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
+        btnRemoveMov.setForeground(new java.awt.Color(255, 255, 255));
+        btnRemoveMov.setText("Eliminar movimiento");
+        btnRemoveMov.setToolTipText("");
+        btnRemoveMov.setBorder(null);
+        btnRemoveMov.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRemoveMov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveMovActionPerformed(evt);
+            }
+        });
+        add(btnRemoveMov);
+        btnRemoveMov.setBounds(520, 480, 133, 40);
     }// </editor-fold>//GEN-END:initComponents
 
     private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
         controller.mostrarTablaTarjetas();
+        limpiarTabla();
     }//GEN-LAST:event_goBackBtnActionPerformed
+
+    private void btnAddMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMovActionPerformed
+        
+        try{
+            
+        int dia = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce el dia del movimiento"));
+        int mes = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce el mes del movimiento"));
+        int año = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce el año del movimiento"));
+        int tipoMov = Integer.parseInt(JOptionPane.showInputDialog(null, "Introduce el tipo de movimiento"));
+        double importe = Double.parseDouble(JOptionPane.showInputDialog(null, "Introduzca el importe"));
+        Fecha fechaMov =  new Fecha(dia,mes,año);
+        Tarjeta tarjeta = tarjetaActiva;
+        Movimiento mov = new Movimiento(tarjeta, fechaMov, tipoMov, importe, año);
+        controller.getLogicaMovimiento().agregar(mov);;
+        llenarTabla(tarjetaActiva);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        
+    }//GEN-LAST:event_btnAddMovActionPerformed
+
+    private void btnRemoveMovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveMovActionPerformed
+    
+         try {
+            int idMovimiento = Integer.parseInt(movimientosTable.getValueAt(movimientosTable.getSelectedRow(), 0).toString());
+
+            int idTarjeta= tarjetaActiva.getClave_tarjeta();
+                controller.getLogicaMovimiento().eliminar(idMovimiento,idTarjeta);
+                limpiarTabla();
+                llenarTabla(tarjetaActiva);
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Fallo");
+        }
+    }//GEN-LAST:event_btnRemoveMovActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel banner;
+    private javax.swing.JButton btnAddMov;
+    private javax.swing.JButton btnRemoveMov;
     private javax.swing.JButton goBackBtn;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable movimientosTable;
     // End of variables declaration//GEN-END:variables
 }

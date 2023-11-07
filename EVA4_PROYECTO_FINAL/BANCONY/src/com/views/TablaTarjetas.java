@@ -4,6 +4,12 @@ JORGE EDUARDO ESCOBAR BUGARINI - ISC - 21550317
 package com.views;
 
 import com.controller.Controller;
+import com.model.Cliente;
+import com.model.Cuenta;
+import com.model.Tarjeta;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,12 +22,43 @@ public class TablaTarjetas extends javax.swing.JPanel {
      */
     private Controller controller;
 
+    Cuenta cuentaActiva;
+
     public void setController(Controller controller) {
         this.controller = controller;
     }
+
     public TablaTarjetas() {
         initComponents();
         setSize(970, 548);
+    }
+
+    public void llenarTabla(Cuenta cuenta) {
+        cuentaActiva = cuenta;
+        DefaultTableModel dt = (DefaultTableModel) cardsTable.getModel();
+        List<Tarjeta> tarjetas = controller.getLogicaTarjeta().getListaTarjetas(cuenta);
+
+        int i = 0;
+        while (dt.getRowCount() != tarjetas.size()) {
+
+            dt.addRow(new Object[]{
+                tarjetas.get(i).getClave_tarjeta(),
+                cuenta.getC_cuenta(),
+                cuenta.getNumerocuenta(),
+                tarjetas.get(i).getNumero_tarjeta(),
+                tarjetas.get(i).getLimite_credito()
+            });
+            System.out.println("Entro tarjeta" + i);
+            i++;
+        }
+
+        cardsTable.setModel(dt);
+    }
+
+    public void limpiarTabla() {
+        DefaultTableModel dt = (DefaultTableModel) cardsTable.getModel();
+        dt.setRowCount(0);
+        cardsTable.setModel(dt);
     }
 
     /**
@@ -55,6 +92,11 @@ public class TablaTarjetas extends javax.swing.JPanel {
         goBackBtn.setBackground(new java.awt.Color(255, 0, 0));
         goBackBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/img/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png"))); // NOI18N
         goBackBtn.setBorder(null);
+        goBackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBackBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bannerLayout = new javax.swing.GroupLayout(banner);
         banner.setLayout(bannerLayout);
@@ -89,14 +131,14 @@ public class TablaTarjetas extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Numero de cuenta", "Numero de tarjeta", "Limite de crédito"
+                "Clave Tarjeta", "Clave cuenta", "Numero de cuenta", "Numero de tarjeta", "Limite de crédito"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -122,6 +164,11 @@ public class TablaTarjetas extends javax.swing.JPanel {
         addCardBtn.setToolTipText("");
         addCardBtn.setBorder(null);
         addCardBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addCardBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addCardBtnActionPerformed(evt);
+            }
+        });
         add(addCardBtn);
         addCardBtn.setBounds(270, 470, 133, 40);
 
@@ -132,6 +179,11 @@ public class TablaTarjetas extends javax.swing.JPanel {
         deleteCardBtn.setToolTipText("");
         deleteCardBtn.setBorder(null);
         deleteCardBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteCardBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteCardBtnActionPerformed(evt);
+            }
+        });
         add(deleteCardBtn);
         deleteCardBtn.setBounds(570, 470, 133, 40);
 
@@ -152,8 +204,42 @@ public class TablaTarjetas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void movBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movBtnActionPerformed
-        // TODO add your handling code here:
+        try {
+            int idTarjeta = Integer.parseInt(cardsTable.getValueAt(cardsTable.getSelectedRow(), 0).toString());
+
+            Tarjeta tarjeta = controller.getLogicaTarjeta().consultar(idTarjeta);
+
+            if (tarjeta != null) {
+                controller.getMovimientos().llenarTabla(tarjeta);
+                controller.mostrarMovimientos();
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Fallo");
+        }
     }//GEN-LAST:event_movBtnActionPerformed
+
+    private void addCardBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCardBtnActionPerformed
+        controller.mostrarRegistrarTarjeta();
+    }//GEN-LAST:event_addCardBtnActionPerformed
+
+    private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
+        controller.mostrarCuentasCliente();
+        limpiarTabla();
+    }//GEN-LAST:event_goBackBtnActionPerformed
+
+    private void deleteCardBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCardBtnActionPerformed
+        try {
+            int idTarjeta = Integer.parseInt(cardsTable.getValueAt(cardsTable.getSelectedRow(), 0).toString());
+
+            int claveCuenta = cuentaActiva.getC_cuenta();
+                controller.getLogicaTarjeta().eliminar(claveCuenta,idTarjeta);
+                limpiarTabla();
+                llenarTabla(cuentaActiva);
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Fallo");
+        }
+    }//GEN-LAST:event_deleteCardBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

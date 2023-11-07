@@ -7,6 +7,7 @@ import com.controller.Controller;
 import com.model.Cliente;
 import com.model.Cuenta;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -42,13 +43,14 @@ public class CuentasCliente extends javax.swing.JPanel {
         while(dt.getRowCount()!=cuentas.size()){
            
             dt.addRow(new Object[]{
-                
+                cuentas.get(i).getC_cuenta(),
                 cuentas.get(i).getCliente().getCurp(),
                 cuentas.get(i).getNumerocuenta()
             });
             System.out.println("Entro cuenta" +i);
             i++;
         }
+
         tableCuentas.setModel(dt);
     }
     
@@ -126,14 +128,14 @@ public class CuentasCliente extends javax.swing.JPanel {
 
             },
             new String [] {
-                "CURP", "NUMERO DE CUENTA"
+                "CLAVE CUENTA", "CURP", "NUMERO DE CUENTA"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -149,7 +151,7 @@ public class CuentasCliente extends javax.swing.JPanel {
         tableCuentas.setSelectionBackground(new java.awt.Color(255, 102, 102));
         tableContainer.setViewportView(tableCuentas);
 
-        add(tableContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 430, 350));
+        add(tableContainer, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 550, 350));
 
         addAccountBtn.setBackground(new java.awt.Color(255, 0, 0));
         addAccountBtn.setFont(new java.awt.Font("Roboto Black", 1, 12)); // NOI18N
@@ -172,6 +174,11 @@ public class CuentasCliente extends javax.swing.JPanel {
         deleteAccBtn.setToolTipText("");
         deleteAccBtn.setBorder(null);
         deleteAccBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteAccBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteAccBtnActionPerformed(evt);
+            }
+        });
         add(deleteAccBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 460, 133, 40));
 
         verTarjetasBtn.setBackground(new java.awt.Color(255, 0, 0));
@@ -181,6 +188,11 @@ public class CuentasCliente extends javax.swing.JPanel {
         verTarjetasBtn.setToolTipText("");
         verTarjetasBtn.setBorder(null);
         verTarjetasBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        verTarjetasBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verTarjetasBtnActionPerformed(evt);
+            }
+        });
         add(verTarjetasBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 460, 133, 40));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -194,6 +206,35 @@ public class CuentasCliente extends javax.swing.JPanel {
         controller.mostrarRegistrarCuenta();
         
     }//GEN-LAST:event_addAccountBtnActionPerformed
+
+    private void verTarjetasBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTarjetasBtnActionPerformed
+        try {
+            int idCuenta = Integer.parseInt(tableCuentas.getValueAt(tableCuentas.getSelectedRow(), 0).toString());
+
+            Cuenta cuenta = controller.getLogicaCuenta().consultar(idCuenta);
+
+            if (cuenta != null) {
+                controller.getTablaTarjetas().llenarTabla(cuenta);
+                controller.mostrarTablaTarjetas();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Por favor selecciona una cuenta");
+        }
+    }//GEN-LAST:event_verTarjetasBtnActionPerformed
+
+    private void deleteAccBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAccBtnActionPerformed
+         try {
+            int idCuenta = Integer.parseInt(tableCuentas.getValueAt(tableCuentas.getSelectedRow(), 0).toString());
+
+            int claveCliente = clienteActivo.getC_cliente();
+                controller.getLogicaCuenta().eliminar(idCuenta,claveCliente);
+                limpiarTabla();
+                llenarTabla(clienteActivo);
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Fallo");
+        }
+    }//GEN-LAST:event_deleteAccBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

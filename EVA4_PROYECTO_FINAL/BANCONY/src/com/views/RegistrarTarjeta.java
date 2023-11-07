@@ -3,7 +3,11 @@ JORGE EDUARDO ESCOBAR BUGARINI - ISC - 21550317
  */
 package com.views;
 
+import LibreriaFecha.Fecha;
 import com.controller.Controller;
+import com.model.Cuenta;
+import com.model.Tarjeta;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,6 +23,7 @@ public class RegistrarTarjeta extends javax.swing.JPanel {
     public void setController(Controller controller) {
         this.controller = controller;
     }
+
     public RegistrarTarjeta() {
         initComponents();
         setSize(970, 548);
@@ -306,7 +311,28 @@ public class RegistrarTarjeta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegCardActionPerformed
-        // TODO add your handling code here:
+
+        // 
+        try {
+
+            String numTarjeta = txtNumTarjeta.getText();
+            int añoAnualidad = Integer.parseInt(txtAño.getText());
+            int mesAnualidad = Integer.parseInt(comboMes.getSelectedItem().toString());
+            int diaAnualidad = Integer.parseInt(comboMes.getSelectedItem().toString());
+            double anualidad = Double.parseDouble(txtAnualidad.getText());
+            double limiteCredito = Double.parseDouble(txtLimiteC.getText());
+            Fecha fechaAnualidad = new Fecha(diaAnualidad, mesAnualidad, añoAnualidad);
+
+            Cuenta cuenta = controller.getTablaTarjetas().cuentaActiva;
+            Tarjeta tarjeta = new Tarjeta(numTarjeta, cuenta, fechaAnualidad, anualidad, limiteCredito);
+            controller.getLogicaTarjeta().agregar(tarjeta);
+            controller.getTablaTarjetas().limpiarTabla();
+            controller.getTablaTarjetas().llenarTabla(cuenta);
+            controller.mostrarTablaTarjetas();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo registrar la tarjeta");
+        }
+
     }//GEN-LAST:event_btnRegCardActionPerformed
 
     private void comboDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDiaActionPerformed
@@ -318,8 +344,8 @@ public class RegistrarTarjeta extends javax.swing.JPanel {
     }//GEN-LAST:event_comboMesActionPerformed
 
     private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
-    controller.mostrarPrincipal();
-      
+        controller.mostrarPrincipal();
+
     }//GEN-LAST:event_goBackBtnActionPerformed
 
 

@@ -23,7 +23,7 @@ public class MovimientosDAO {
         try {
             String qryInsert;
             PreparedStatement ps;
-            qryInsert = "INSERT INTO movimientos(tarjetas_tarjeta_clave, tipo_movimiento, " +
+            qryInsert = "INSERT INTO movimientos(tarjetas_clave_tarjeta, tipo_movimiento, " +
                     "fecha_movimiento, cantidad) " +
                     "VALUES(?,?,?,?)";
 
@@ -43,7 +43,7 @@ public class MovimientosDAO {
                 movimiento = null;
             }
         } catch (SQLException | ParseException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo añadir el movimiento");
+            JOptionPane.showMessageDialog(null,  e.getMessage());
             movimiento = null;
             return movimiento;
         }
@@ -51,19 +51,19 @@ public class MovimientosDAO {
     }
 
     
-    public Movimiento consultarMovimientoDAO(int clave) {
+    public Movimiento consultarMovimientoDAO(int clave_tarjeta) {
         String qrySelect;
 
-        qrySelect = "SELECT * from movimientos WHERE clave=?";
+        qrySelect = "SELECT * from movimientos WHERE tarjetas_clave_tarjeta=?";
         PreparedStatement ps;
         ResultSet query;
         try {
             ps = conexion.prepareStatement(qrySelect);
-            ps.setInt(1, clave);
+            ps.setInt(1, clave_tarjeta);
             query = ps.executeQuery();
 
             if (query.next()) {
-                int c_tarjeta = query.getInt("tarjetas_clave_tarjeta");
+                int clave = query.getInt("c_movimiento");
                 int tipoMovimiento = query.getInt("tipo_movimiento");
                 double cantidad = query.getDouble("cantidad");
                 String fechaMovimientoStr = query.getString("fecha_movimiento");
@@ -73,26 +73,27 @@ public class MovimientosDAO {
 
                 Fecha fechaMovimiento = new Fecha(diaMovimiento, mesMovimiento, anioMovimiento);
 
-                return new Movimiento(c_tarjeta,fechaMovimiento,tipoMovimiento,cantidad,clave);
+                return new Movimiento(clave_tarjeta,fechaMovimiento,tipoMovimiento,cantidad,clave);
 
             }
 
         } catch (SQLException e) {
-            return null;
+            
         } catch (Exception e) {
 
         }
         return null;
     }
 
-    public int eliminarMovimientoDAO(Movimiento movimiento) {
+    public int eliminarMovimientoDAO(int c_movimiento, int clave_tarjeta) {
         int numRegistrosEliminados = 0;
         try {
 
-            String qryDelete = "DELETE FROM movimientos WHERE clave=?";
+            String qryDelete = "DELETE FROM movimientos WHERE c_movimiento=? and tarjetas_clave_tarjeta=?";
             PreparedStatement ps;
             ps = conexion.prepareStatement(qryDelete);
-            ps.setInt(1, movimiento.getClave());
+            ps.setInt(1, c_movimiento);
+            ps.setInt(2, clave_tarjeta);
             numRegistrosEliminados = ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -107,8 +108,8 @@ public class MovimientosDAO {
     private List<Movimiento> getListaMovimientosTarjeta(Tarjeta tarjeta) {
         List<Movimiento> movimientos = new ArrayList<>();
 
-        String qrySelect = "SELECT * FROM movimientos WHERE tarjetas_tarjeta_clave=" + tarjeta.getClave_tarjeta()
-                + " ORDER BY clave";
+        String qrySelect = "SELECT * FROM movimientos WHERE tarjetas_clave_tarjeta=" + tarjeta.getClave_tarjeta()
+                + " ORDER BY c_movimiento";
 
         PreparedStatement ps;
         ResultSet query;
@@ -118,7 +119,7 @@ public class MovimientosDAO {
 
             while (query.next()) {
                 int tipoMovimiento = query.getInt("tipo_movimiento");
-                int clave = query.getInt("clave");
+                int clave = query.getInt("c_movimiento");
                 double cantidad = query.getDouble("cantidad");
                 String fechaMovimientoStr = query.getString("fecha_movimiento");
                 int anioMovimiento = Integer.parseInt(fechaMovimientoStr.substring(0, 4));
@@ -132,7 +133,7 @@ public class MovimientosDAO {
             }
             return movimientos;
         } catch (SQLException e) {
-            return null;
+           
         } catch (Exception e) {
 
         }

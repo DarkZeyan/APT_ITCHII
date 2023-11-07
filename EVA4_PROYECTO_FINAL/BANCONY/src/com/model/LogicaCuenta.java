@@ -30,8 +30,10 @@ public class LogicaCuenta {
         return cuentaDao.modificarCuentaDAO(cuenta);
     }
 
-    public int eliminar(Cuenta cuenta) {
-        return cuentaDao.eliminarCuentaDAO(cuenta);
+    public int eliminar(int c_cuenta, int c_cliente) {
+        int cuenta = c_cuenta;
+        int cliente = c_cliente;
+        return cuentaDao.eliminarCuentaDAO(cuenta,cliente);
     }
 
     public Cuenta consultar(int c_cuenta) {

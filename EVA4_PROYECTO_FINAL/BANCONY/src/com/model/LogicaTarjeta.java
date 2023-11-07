@@ -26,12 +26,14 @@ public class LogicaTarjeta {
         return tDAO.agregarTarjetaDAO(tarjeta);
     }
     
-    public int eliminar(Tarjeta tarjeta){
-        return tDAO.eliminarTarjetaDAO(tarjeta);
+    public int eliminar(int c_cuenta, int clave_tarjeta){
+        int cuenta = c_cuenta;
+        int tarjeta = clave_tarjeta;
+        return tDAO.eliminarTarjetaDAO(cuenta,tarjeta);
     }
     
-    public Tarjeta consultar(Tarjeta tarjeta){
-        return tDAO.consultarTarjetaDAO(tarjeta.getClave_tarjeta());
+    public Tarjeta consultar( int clave_tarjeta){
+        return tDAO.consultarTarjetaDAO(clave_tarjeta);
     }
     
     public List<Tarjeta> getListaTarjetas(Cuenta cuenta){

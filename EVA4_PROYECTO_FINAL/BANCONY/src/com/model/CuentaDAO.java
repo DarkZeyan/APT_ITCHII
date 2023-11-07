@@ -228,15 +228,15 @@ public class CuentaDAO {
         return cuentas;
     }
 
-    public int eliminarCuentaDAO(Cuenta cuenta) {
+    public int eliminarCuentaDAO(int c_cuenta, int c_cliente) {
         int numRegistrosEliminados = 0;
         try {
 
             String qryDelete = "DELETE FROM cuentas WHERE c_cuenta = ? AND c_cliente = ?";
             PreparedStatement ps;
             ps = conexion.prepareStatement(qryDelete);
-            ps.setInt(1, cuenta.getC_cuenta());
-            ps.setInt(2, cuenta.getCliente().getC_cliente());
+            ps.setInt(1, c_cuenta);
+            ps.setInt(2, c_cliente);
             numRegistrosEliminados = ps.executeUpdate();
 
         } catch (SQLException e) {

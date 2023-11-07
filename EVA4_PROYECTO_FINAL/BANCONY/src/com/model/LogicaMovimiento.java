@@ -23,12 +23,14 @@ public class LogicaMovimiento {
         return mDAO.agregarMovimientoDAO(movimiento);
     }
     
-    public int eliminar(Movimiento movimiento){
-        return mDAO.eliminarMovimientoDAO(movimiento);
+    public int eliminar(int c_movimiento, int clave_tarjeta){
+        int movimiento = c_movimiento;
+        int tarjeta = clave_tarjeta;
+        return mDAO.eliminarMovimientoDAO(movimiento,tarjeta);
     }
     
-    public Movimiento consultar(Movimiento movimiento){
-        return mDAO.consultarMovimientoDAO(movimiento.getClave());
+    public Movimiento consultar(int clave_tarjeta){
+        return mDAO.consultarMovimientoDAO(clave_tarjeta);
     }
     
     public List<Movimiento> getListaMovimientos(Tarjeta tarjeta){

@@ -238,7 +238,19 @@ public class ClientesActivos extends javax.swing.JPanel {
     }//GEN-LAST:event_accountsBtnActionPerformed
 
     private void removeClientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeClientBtnActionPerformed
-        // TODO add your handling code here:
+          try {
+            int idCliente = Integer.parseInt(TablaClientes.getValueAt(TablaClientes.getSelectedRow(), 0).toString());
+
+            Cliente cliente = controller.getLogicaCliente().consultar(idCliente);
+
+            if (cliente != null) {
+                controller.getLogicaCliente().eliminar(cliente);               
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Por favor selecciona un cliente");
+        }
+
+
     }//GEN-LAST:event_removeClientBtnActionPerformed
 
 
